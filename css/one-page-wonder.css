@@ -33,3 +33,30 @@ header.masthead > .overlay {
         padding: 10rem 0;
     }
 }
+
+/* Kat's custom styles start */
+/* searchbar */
+.search-container {
+    background-color: #fff;
+    border-radius: .25rem;
+    padding: 1rem;
+    
+}
+
+.search-container label {
+    display: block;
+    text-align: left;
+}
+
+.search-separator {
+    display: inline-block;
+    margin-right: 1rem;
+}
+
+.search-btn {
+    display: inline-block;
+    background-color: #cbcbcb;
+    cursor: pointer;
+}
+
+/* Kat's custom styles end */
