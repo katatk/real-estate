@@ -1,31 +1,17 @@
-/*!
- * Start Bootstrap - One Page Wonder (http://startbootstrap.com/template-overviews/one-page-wonder)
- * Copyright 2013-2017 Start Bootstrap
- * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-one-page-wonder/blob/master/LICENSE)
- */
-
-body {
-    padding-top: 54px;
-}
-
-@media (min-width: 992px) {
-    body {
-        padding-top: 56px;
-    }
-}
-
 header.masthead {
-    background: url('https://unsplash.it/1900/1080?image=304') no-repeat center center scroll;
+    background: url('.jpg') no-repeat center center scroll;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
+    opacity: 0.9;
+    height: 100vh;
+
 }
 
 header.masthead > .overlay {
     padding: 5rem 0;
     text-align: center;
-    background: rgba(0, 0, 0, 0.6);
 }
 
 @media (min-width: 992px) {
@@ -64,3 +50,33 @@ header.masthead > .overlay {
 }
 
 /* Kat's custom styles end */
+/*---------------------*/
+
+body {
+    font-family: 'Product Sans', Arial, sans-serif;
+    letter-spacing: 1px;
+}
+
+.featured-image {
+    width: 444px;
+    height: 300px;
+    border-radius: 5px;
+}
+
+.featured-image:hover {
+    opacity: 0.5;
+}
+
+.navbar {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.featured-text {
+    color: white;
+    font-size: 28px;
+}
+
+.featured-text-container {
+    padding-top: 200px;
+    padding-bottom: 200px;
+}
