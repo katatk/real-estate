@@ -4,7 +4,7 @@ header.masthead {
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
-    opacity: 0.9;
+    opacity: ;
     height: 100vh;
 
 }
@@ -80,10 +80,23 @@ body {
     padding-top: 200px;
     padding-bottom: 200px;
 }
-<<<<<<< Updated upstream
-=======
 
+.agent-image {
+    width: 200px; 
+    height: 200px;
+    border-radius: 5px;
+}
 
+.agent-details {
+    display: inline-block;
+}
 
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+.p-5 {
+    border-radius: 5px;
+    border: 1px solid lightgrey;
+}
+
+.agent-name {
+    font-size: 20px;
+    font-weight: bold;
+}
