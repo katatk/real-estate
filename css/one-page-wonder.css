@@ -40,6 +40,7 @@ header.masthead > .overlay {
     background-color: #fff;
     border-radius: .25rem;
     padding: 1rem;
+    border: 1px solid #cbcbcb;
     
 }
 
@@ -57,6 +58,9 @@ header.masthead > .overlay {
     display: inline-block;
     background-color: #cbcbcb;
     cursor: pointer;
+    margin-bottom: 1rem;
+    vertical-align: bottom;
+    padding: .25rem .5rem;
 }
 
 /* Kat's custom styles end */
