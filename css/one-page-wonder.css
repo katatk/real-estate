@@ -1,5 +1,5 @@
 header.masthead {
-    background: url('beach1.jpg') no-repeat center center scroll;
+    background: url('house3.jpg') no-repeat center center scroll;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -79,4 +79,24 @@ body {
 .featured-text-container {
     padding-top: 200px;
     padding-bottom: 200px;
+}
+
+.agent-image {
+    width: 200px; 
+    height: 200px;
+    border-radius: 5px;
+}
+
+.agent-details {
+    display: inline-block;
+}
+
+.p-5 {
+    border-radius: 5px;
+    border: 1px solid lightgrey;
+}
+
+.agent-name {
+    font-size: 20px;
+    font-weight: bold;
 }
