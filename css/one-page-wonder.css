@@ -85,15 +85,28 @@ body {
     width: 200px; 
     height: 200px;
     border-radius: 5px;
+    vertical-align: top;
 }
 
 .agent-details {
     display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%);
 }
 
-.p-5 {
+.agent-container {
+    position: relative;
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+
+.agent-border {
     border-radius: 5px;
-    border: 1px solid lightgrey;
+    border: 2px solid lightgrey;
 }
 
 .agent-name {
