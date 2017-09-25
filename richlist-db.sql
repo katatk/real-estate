@@ -1,8 +1,10 @@
 -- drop table if it already exists and rebuild it --
 
-DROP DATABASE IF EXISTS beautzo8_richlist;
+DROP DATABASE beautzo8_richlist;
 
 CREATE DATABASE beautzo8_richlist;
+
+USE beautzo8_richlist;
 
 -- create tables --
 
@@ -46,14 +48,13 @@ PRIMARY KEY (Email_Address, Property_ID)
 
 -- add data --
 INSERT INTO property_type (Type)
-VALUES (Section), (House);
+VALUES ('Section'), ('House');
 
 INSERT INTO cities (City)
-VALUES (Auckland), (Hamilton), (Tauranga);
+VALUES ('Auckland'), ('Hamilton'), ('Tauranga');
 
 INSERT INTO user_roles (Role)
-VALUES (Admin), (User);
+VALUES ('Admin'), ('User');
 
--- INSERT INTO properties (Property_ID, Title, Type, City, Price, Address, Description) VALUES (); -- 
 
 
