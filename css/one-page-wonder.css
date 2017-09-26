@@ -49,6 +49,21 @@ header.masthead > .overlay {
     padding: .25rem .5rem;
 }
 
+/* dashboard styles */
+/* add top margin to dashboard to push menu down */
+.dashboard {
+    margin-top: 56px;
+}
+
+.sidebar {
+    margin-top: 1rem;
+}
+
+.welcome {
+    margin-bottom: 2rem;
+    display: block;
+}
+
 /* Kat's custom styles end */
 /*---------------------*/
 
