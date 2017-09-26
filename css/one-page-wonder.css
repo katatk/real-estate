@@ -5,27 +5,28 @@ header.masthead {
     background-size: cover;
     -o-background-size: cover;
     height: 100vh;
-
 }
 
-header.masthead > .overlay {
+header.masthead>.overlay {
     padding: 5rem 0;
     text-align: center;
 }
 
 @media (min-width: 992px) {
-    header.masthead > .overlay {
+    header.masthead>.overlay {
         padding: 10rem 0;
     }
 }
 
+
 /* Kat's custom styles start */
 /* searchbar */
+
 .search-container {
     background-color: #fff;
     margin-top: 50px;
     margin-bottom: 50px;
-    text-align: center;   
+    text-align: center;
 }
 
 .search-container label {
@@ -54,25 +55,34 @@ select {
     height: 60px;
 }
 
-/* dashboard styles */
-/* add top margin to dashboard to push menu down */
-.dashboard {
-    margin-top: 56px;
-}
 
-.sidebar {
-    margin-top: 1rem;
+/* dashboard styles */
+
+.dashboard {
+    color: #fff;
+    padding-top: 100px;
+    background-color: #222;
 }
 
 .welcome {
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
     display: block;
 }
 
+.form-group {
+    max-width: 500px;
+}
+
+
 /* Kat's custom styles end */
+
+
 /*---------------------*/
 
+
 /*Taylas custom styles*/
+
+
 /*---------------------*/
 
 body {
@@ -91,8 +101,7 @@ body {
     padding: 5px;
     padding-left: 10px;
     border-left: 4px solid #ffcd73;
-
-/*    color: #9b9b9b;*/
+    /*    color: #9b9b9b;*/
 }
 
 .featured-image {
@@ -109,7 +118,15 @@ body {
     box-shadow: 0px 0px 5px #888888;
 }
 
-.navbar-dark .navbar-nav .nav-link, .navbar-dark .navbar-nav .nav-link:hover  {
+
+/* dashboard navbar */
+
+.dashboard-nav {
+    background-color: #303030;
+}
+
+.navbar-dark .navbar-nav .nav-link,
+.navbar-dark .navbar-nav .nav-link:hover {
     color: #9b9b9b;
 }
 
@@ -139,7 +156,7 @@ body {
 }
 
 .agent-image {
-    width: 180px; 
+    width: 180px;
     height: 180px;
     vertical-align: top;
 }
@@ -178,8 +195,6 @@ footer {
     background-color: white;
     box-shadow: 0px 0px 5px #888888;
     color: black;
-
-/*    background-color: #9b9b9b;*/
-
-/*Taylas custom styles end*/
-/*---------------------*/
+    /*    background-color: #9b9b9b;*/
+    /*Taylas custom styles end*/
+    /*---------------------*/
