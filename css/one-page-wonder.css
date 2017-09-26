@@ -1,10 +1,9 @@
 header.masthead {
-    background: url('house3.jpg') no-repeat center center scroll;
+    background: url('auckland2.jpg') no-repeat center center scroll;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
-    opacity: 0.9;
     height: 100vh;
 
 }
@@ -24,10 +23,9 @@ header.masthead > .overlay {
 /* searchbar */
 .search-container {
     background-color: #fff;
-    border-radius: .25rem;
-    padding: 1rem;
-    border: 1px solid #cbcbcb;
-    
+    margin-top: 50px;
+    margin-bottom: 50px;
+    text-align: center;   
 }
 
 .search-container label {
@@ -42,14 +40,24 @@ header.masthead > .overlay {
 
 .search-btn {
     display: inline-block;
-    background-color: #cbcbcb;
+    background-color: #ffdc73;
     cursor: pointer;
     margin-bottom: 1rem;
     vertical-align: bottom;
     padding: .25rem .5rem;
+    width: 80px;
+    height: 60px;
+}
+
+select {
+    width: 150px;
+    height: 60px;
 }
 
 /* Kat's custom styles end */
+/*---------------------*/
+
+/*Taylas custom styles*/
 /*---------------------*/
 
 body {
@@ -57,10 +65,24 @@ body {
     letter-spacing: 1px;
 }
 
+.logo {
+    width: 249px;
+    height: auto;
+}
+
+.title {
+    margin: 50px;
+    font-size: 28px;
+    padding: 5px;
+    padding-left: 10px;
+    border-left: 4px solid #ffcd73;
+
+/*    color: #9b9b9b;*/
+}
+
 .featured-image {
     width: 444px;
     height: 300px;
-    border-radius: 5px;
 }
 
 .featured-image:hover {
@@ -68,12 +90,32 @@ body {
 }
 
 .navbar {
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: white;
+    box-shadow: 0px 0px 5px #888888;
 }
 
-.featured-text {
+.navbar-dark .navbar-nav .nav-link, .navbar-dark .navbar-nav .nav-link:hover  {
+    color: #9b9b9b;
+}
+
+.navbar-dark .navbar-nav .active>.nav-link {
+    color: #ffdc73;
+}
+
+.featured-heading {
     color: white;
     font-size: 28px;
+}
+
+.featured-text1 {
+    color: #ffcd73;
+    font-size: 18px;
+    word-spacing: 15px;
+}
+
+.featured-text2 {
+    color: white;
+    font-size: 20px;
 }
 
 .featured-text-container {
@@ -82,34 +124,47 @@ body {
 }
 
 .agent-image {
-    width: 200px; 
-    height: 200px;
-    border-radius: 5px;
+    width: 180px; 
+    height: 180px;
     vertical-align: top;
 }
 
 .agent-details {
     display: inline-block;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%);
-}
-
-.agent-container {
     position: relative;
-    display: inline-block;
-    height: 100%;
-    width: 100%;
-    text-align: center;
+    color: #9b9b9b;
+    font-family: 'Product Sans', Arial, sans-serif;
+    text-transform: uppercase;
+    font-size: 14px;
+    padding: 2rem;
 }
 
 .agent-border {
-    border-radius: 5px;
-    border: 2px solid lightgrey;
+    border: 1px solid #efefef;
+    transition: border-color .22s ease-in-out;
+}
+
+.agent-border:hover {
+    border: 1px solid darkgrey;
 }
 
 .agent-name {
     font-size: 20px;
     font-weight: bold;
+    color: black;
+    text-transform: capitalize;
 }
+
+.agent-padding {
+    padding: 1.5rem;
+}
+
+footer {
+    background-color: white;
+    box-shadow: 0px 0px 5px #888888;
+    color: black;
+
+/*    background-color: #9b9b9b;*/
+
+/*Taylas custom styles end*/
+/*---------------------*/
