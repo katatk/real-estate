@@ -1,3 +1,4 @@
+
 header.masthead {
     background: url('auckland2.jpg') no-repeat center center scroll;
     -webkit-background-size: cover;
@@ -20,6 +21,43 @@ header.masthead>.overlay {
 
 
 /* Kat's custom styles start */
+/* move everything from out underneath the header */
+
+body {
+    padding-top: 84px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+/* keeps footer at bottom of page */
+
+html {
+    height: 100%;
+}
+
+.flex {
+    flex: 1 0 auto;
+    padding: 6rem 0;
+}
+/* footer links */
+
+footer a {
+    padding: 0.5rem;
+}
+/* give footer more space */
+
+footer {
+    flex-shrink: 0;
+}
+
+a {
+    color: #9b9b9b;
+}
+
+a:hover {
+    text-decoration: none;
+    color: inherit;
+}
 /* searchbar */
 
 .search-container {
@@ -54,8 +92,6 @@ select {
     width: 150px;
     height: 60px;
 }
-
-
 /* dashboard styles */
 
 .dashboard {
@@ -68,21 +104,31 @@ select {
     margin-bottom: 3rem;
     display: block;
 }
+/* form styles */
 
 .form-group {
     max-width: 500px;
 }
 
+.btn {
+    cursor: pointer;
+}
+
+.btn-default {
+     border: 1px solid rgba(0,0,0,.15)
+}
+
+#validation-message-container {
+    margin: 1rem 0;
+}
+
+.error {
+    color: #ff5656;
+}
 
 /* Kat's custom styles end */
-
-
 /*---------------------*/
-
-
 /*Taylas custom styles*/
-
-
 /*---------------------*/
 
 body {
@@ -117,8 +163,6 @@ body {
     background-color: white;
     box-shadow: 0px 0px 5px #888888;
 }
-
-
 /* dashboard navbar */
 
 .dashboard-nav {

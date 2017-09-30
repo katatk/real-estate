@@ -13,20 +13,18 @@ $msg_empty = 'Please fill in all required fields.';
 
 // set POST values to variables
 $first_name = $_POST['firstname'];
-$last_name = $_POST['lastname'];
 $email = $_POST['email'];
 $password = $_POST['password'];
 $password_confirm = $_POST['password-confirm'];
 
 // set the placeholders
 $_SESSION['placeholder_first_name'] = $first_name;
-$_SESSION['placeholder_last_name'] = $last_name;
 $_SESSION['placeholder_email'] = $email;
 $_SESSION['placeholder_password'] = $password;
 $_SESSION['placeholder_password_confirm'] = $password_confirm;
 
 // if no fields have been filled out
-if (empty($first_name) && empty($last_name) && empty($email) && empty($password) && empty($password_confirm)) {
+if (empty($first_name) && empty($email) && empty($password) && empty($password_confirm)) {
      $_SESSION['alertMessage'] = $msg_empty;
      header("Location: register.php");
      die();
@@ -52,19 +50,6 @@ function clean_input($data) {
         }
     } else {
         $_SESSION['error_first_name'] = "Please enter a first name";
-        }
-
-    // validate last name
-    $valid_last_name = false;
-    if (!empty($last_name)) {
-        if (strlen($last_name) >= 2) {
-            $valid_last_name = true;
-            $last_name = clean_input($last_name);
-        } else {
-         $_SESSION['error_last_name'] = "Last name is too short, please enter at least 2 characters";
-        }
-    } else {
-        $_SESSION['error_last_name'] = "Please enter a last name";
         }
     
     // validate email
@@ -108,14 +93,14 @@ function clean_input($data) {
     }
 
     // if everything is valid then set valid_form to true
-    $valid_form = $valid_first_name && $valid_last_name && $valid_email && $valid_password &&  $valid_password_confirm;
+    $valid_form = $valid_first_name && $valid_email && $valid_password &&  $valid_password_confirm;
     
     if ($valid_form) {
         // create the connection
         include('config.php');
         
          // create query to check if email already exists in the database
-        $stmt = $db->prepare("SELECT email FROM students WHERE email=?");
+        $stmt = $db->prepare("SELECT Email_Address FROM users WHERE email=?");
         // bind parameters
         $stmt->bind_param('s', $email); 
         
@@ -164,7 +149,7 @@ function clean_input($data) {
     $db->close();    
         
     // send confirmation email
-    $subject = 'Student Registration';
+   /* $subject = 'Student Registration';
         
     $body = "You have been registered as a student - your parents will be so proud. Here are your login details:\n";
     $body .= "Username: $email\n";
@@ -178,7 +163,7 @@ function clean_input($data) {
         $log = "email not sent.";
     }
 
-     error_log($log."\n");
+     error_log($log."\n");*/
         
     // take user to login page
     header("Location: login.php");

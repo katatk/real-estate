@@ -9,7 +9,5 @@
     // check connection
     if ($db->connect_errno) {
         die("Connection failed: " . $db->connect_errno);
-    } else {
-        echo "on and connected";
     }
 ?>
