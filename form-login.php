@@ -3,7 +3,7 @@ session_start();
 
 // user can only access form-login via the POST method, not GET (typing directly into the address bar)
 if (empty($_POST['submit'])) {
-  header('Location: login');
+  header('Location: login.php');
   die(); 
 } 
 
@@ -23,7 +23,7 @@ $_SESSION['placeholder_password'] = $password;
 // if no fields have been filled out
 if (empty($email) && empty($password)) {
      $_SESSION['alertMessage'] = $msg_empty;
-     header("Location: login");
+     header("Location: login.php");
      die();
 } 
 
@@ -64,7 +64,7 @@ if ($valid_form) {
     include 'config.php';
     
     // check if email exists in database
-    $stmt = $db->prepare("SELECT email, password FROM students WHERE email=?");
+    $stmt = $db->prepare("SELECT Email_Address, Password FROM users WHERE Email_Address=?");
     $stmt->bind_param('s', $email);    
 
       // running insert statement
@@ -92,7 +92,7 @@ if ($valid_form) {
         echo "another something";
          $_SESSION['error_email'] = "That email address does not exist";
          $_SESSION['alertMessage'] = $msg_fail;
-         header("Location: login");
+         header("Location: login.php");
          die();
     }
     
@@ -102,18 +102,18 @@ if ($valid_form) {
     // if matching, send user to welcome page
     if ($correct_password) {
         $_SESSION['logged_in'] = true;
-        header("Location: welcome");
+        header("Location: dashboard.php");
         die();
     } else {
          $_SESSION['error_password'] = "Your password is incorrect";
          $_SESSION['alertMessage'] = $msg_fail;
-         header("Location: login");
+         header("Location: login.php");
          die();
     }
 
 } else {
     $_SESSION['alertMessage'] = $msg_fail;
-    header("Location: login");
+    header("Location: login.php");
     die();
 }
 ?>

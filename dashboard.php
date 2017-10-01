@@ -1,7 +1,7 @@
 <?php 
 session_start();
 $title = "Dashboard";
-include 'header.php'; 
+include 'dashboard-header.php'; 
 ?>
 
 <div class="container">
@@ -9,7 +9,7 @@ include 'header.php';
     <main class="col-xs-12 pt-3" role="main">
         <h1>Dashboard</h1>
 
-        <span class="welcome">Welcome, <?php echo "$First_Name" ?></span>
+        <span class="welcome">Welcome, <?php echo "First_Name" ?></span>
 
         <h2>Properties</h2>
 

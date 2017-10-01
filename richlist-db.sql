@@ -28,8 +28,6 @@ Role VARCHAR(20) NOT NULL,
 FOREIGN KEY (Role) REFERENCES user_roles(Role)
 ) DEFAULT CHARACTER SET utf8 ENGINE=InnoDB;
 
-/* ALTER TABLE users
-ADD FOREIGN KEY (Role) REFERENCES user_roles(Role); */
 
 CREATE TABLE properties (
 Property_ID INT(3) ZEROFILL NOT NULL PRIMARY KEY,
@@ -43,9 +41,6 @@ FOREIGN KEY (Type) REFERENCES property_type(Type),
 FOREIGN KEY (City) REFERENCES cities(City)
 ) DEFAULT CHARACTER SET utf8 ENGINE=InnoDB;
 
-/* ALTER TABLE properties
-ADD FOREIGN KEY (Type) REFERENCES property_type(Type),
-ADD FOREIGN KEY (City) REFERENCES cities(City);*/
 
 CREATE TABLE user_wishlist (
 Email_Address VARCHAR(80) NOT NULL,
@@ -61,7 +56,7 @@ INSERT INTO cities (City)
 VALUES ('Auckland'), ('Hamilton'), ('Tauranga');
 
 INSERT INTO user_roles (Role)
-VALUES ('Admin'), ('User');
+VALUES ('Admin'), ('User'), ('Agent');
 
 
 

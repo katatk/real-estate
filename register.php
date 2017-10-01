@@ -7,13 +7,13 @@ include 'header.php';
 <section>
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-md-6">
+            <div class="col-xs-12 col-lg-7">
 
                 <h2>Register an Account</h2>
                 <p>As a buyer, an account allows you to add properties to your wishlist. If you are an agent, you can manage and add new properties and update exsiting listings.</p>
                 <form method="post" action="form-register.php" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label for="firstname">First Name</label>
+                        <label for="firstname">First Name*</label>
                         <input type="text" class="form-control" name="firstname" id="firstname" value="<?php 
                 if (isset($_SESSION['placeholder_first_name'])) 
                     echo $_SESSION['placeholder_first_name']; unset($_SESSION['placeholder_first_name']);
@@ -27,8 +27,9 @@ include 'header.php';
                 ?>
                         </div>
                     </div>
+
                     <div class="form-group">
-                        <label for="email">Email</label>
+                        <label for="email">Email*</label>
                         <input type="text" class="form-control" name="email" id="email" value="<?php 
                 if (isset($_SESSION['placeholder_email'])) 
                     echo $_SESSION['placeholder_email'];
@@ -45,24 +46,7 @@ include 'header.php';
                     </div>
 
                     <div class="form-group">
-                        <label for="account-type">Account Type</label>
-                        <select class="form-control" id="city" name="city">
-                          <option>Auckland</option>
-                          <option>Hamilton</option>
-                          <option>Tauranga</option>
-                    </select>
-                        <div class="error">
-                            <?php 
-                if (isset($_SESSION['error_email'])) { 
-                    echo $_SESSION['error_email']; 
-                    unset($_SESSION['error_email']);
-                }; 
-            ?>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="password">Password</label>
+                        <label for="password">Password*</label>
                         <input type="password" class="form-control" name="password" id="password" value="<?php 
                 if (isset($_SESSION['placeholder_password'])) 
                     echo $_SESSION['placeholder_password']; unset($_SESSION['placeholder_password']);
@@ -78,7 +62,7 @@ include 'header.php';
                     </div>
 
                     <div class="form-group">
-                        <label for="password-confirm">Confirm Password</label>
+                        <label for="password-confirm">Confirm Password*</label>
                         <input type="password" class="form-control" name="password-confirm" id="password-confirm" value="<?php 
                 if (isset($_SESSION['placeholder_password_confirm'])) 
                     echo $_SESSION['placeholder_password_confirm']; unset($_SESSION['placeholder_password_confirm']);
@@ -92,6 +76,13 @@ include 'header.php';
             ?>
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <div class="checkbox">
+                            <label><input type="checkbox" value="role" name="role"> Please check if you are an agent</label>
+                        </div>
+                    </div>
+
 
                     <input type="submit" value="Submit" name="submit" class="btn btn-primary">
                     <a href='register.php' class='btn btn-default reset'>Reset</a>
@@ -111,7 +102,7 @@ include 'header.php';
             ?>
             </span>
                 </div>
-                <div class="login-register">Already have an account? <a href="login">Login here</a></div>
+                <div class="login-register">Already have an account? <a href="login.php">Login here</a></div>
             </div>
         </div>
     </div>

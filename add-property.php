@@ -1,7 +1,7 @@
 <?php 
 session_start();
 $title = "Add a Property";
-include 'header.php'; 
+include 'dashboard-header.php'; 
 ?>
     <div class="container">
 

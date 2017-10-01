@@ -16,6 +16,8 @@ $first_name = $_POST['firstname'];
 $email = $_POST['email'];
 $password = $_POST['password'];
 $password_confirm = $_POST['password-confirm'];
+// returns true or false
+$role = isset($_POST['role']);
 
 // set the placeholders
 $_SESSION['placeholder_first_name'] = $first_name;
@@ -92,6 +94,12 @@ function clean_input($data) {
         } 
     }
 
+    if ($role) {
+        $role = "Agent";
+    } else {
+         $role = "User";
+    }
+
     // if everything is valid then set valid_form to true
     $valid_form = $valid_first_name && $valid_email && $valid_password &&  $valid_password_confirm;
     
@@ -100,7 +108,7 @@ function clean_input($data) {
         include('config.php');
         
          // create query to check if email already exists in the database
-        $stmt = $db->prepare("SELECT Email_Address FROM users WHERE email=?");
+        $stmt = $db->prepare("SELECT Email_Address FROM users WHERE Email_Address=?");
         // bind parameters
         $stmt->bind_param('s', $email); 
         
@@ -133,12 +141,13 @@ function clean_input($data) {
         
     // if data is valid, insert into database
     // creates the statement, prepare removes SQL syntax to prevent SQL injection attacks eg someone typing 'DROP table students' into a field
-    $stmt = $db->prepare("INSERT INTO students (firstname, lastname, email, password) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param('ssss', $first_name, $last_name, $email, $hashed_password);
+    $stmt = $db->prepare("INSERT INTO users (Email_Address, First_Name, Password, Role) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param('ssss', $email, $first_name, $hashed_password, $role);
 
     // running insert statement
     if ($stmt->execute() === TRUE) {
         echo "New record created successfully";
+         $_SESSION['account_successful'] = "Account created successfully";
     } else {
         echo "Error: " . $db->error;
     }
