@@ -3,12 +3,12 @@
 
 <head>
 
-     <meta charset="utf-8">
+   <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="The dashboard is where you can manage properties as an agent">
+    <meta name="description" content="Manage your property wishlist in your user account.">
     <meta name="author" content="Tayla and Kat">
 
-    <title>Richlist Real Estate Dashboard -
+    <title>Richlist Real Estate -
         <?php echo $title ?>
     </title>
 
@@ -32,19 +32,17 @@
         </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                      <li class="nav-item <?php echo ($title == 'Dashboard') ? ' active' : ''; ?>">
-                        <a class="nav-link" href="dashboard.php">Dashboard</a>
+                    <li class="nav-item <?php echo ($title == 'Your Account') ? ' active' : ''; ?>">
+                        <a class="nav-link" href="dashboard-user.php">Your Account</a>
                     </li>
-                     <li class="nav-item <?php echo ($title == 'Add Property') ? ' active' : ''; ?>">
-                        <a class="nav-link" href="add-property.php">Add Property</a>
+                    <li class="nav-item <?php echo ($title == 'Home') ? ' active' : ''; ?>">
+                        <a class="nav-link" href="index.html">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">View Site</a>
-                    </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="logout.php">Logout</a>
-                    </li>
-                   
+                    <li class="nav-item <?php echo ($title == 'About Us') ? ' active' : ''; ?>">
+                        <a class="nav-link" href="about.html">About Us</a>
+                        <li class="nav-item <?php echo ($title == 'Contact') ? ' active' : ''; ?>">
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
                 </ul>
             </div>
         </div>

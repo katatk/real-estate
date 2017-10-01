@@ -15,6 +15,8 @@ $msg_unknown = 'Something went wrong.';
 // set POST values to variables
 $email = $_POST['email'];
 $password = $_POST['password'];
+$firstname = "";
+$password_confirm = "";
 
 // set the placeholders
 $_SESSION['placeholder_email'] = $email;
@@ -64,7 +66,7 @@ if ($valid_form) {
     include 'config.php';
     
     // check if email exists in database
-    $stmt = $db->prepare("SELECT Email_Address, Password FROM users WHERE Email_Address=?");
+    $stmt = $db->prepare("SELECT Email_Address, Password, Role, First_Name FROM users WHERE Email_Address=?");
     $stmt->bind_param('s', $email);    
 
       // running insert statement
@@ -75,7 +77,7 @@ if ($valid_form) {
         }
 
         // bind result variables
-        $stmt->bind_result($stored_email, $stored_password);
+        $stmt->bind_result($stored_email, $stored_password, $stored_role, $stored_first_name);
  
         // fetch value
         $stmt->fetch();
@@ -87,9 +89,7 @@ if ($valid_form) {
         $db->close();
     
     // if email address does not exist, redirect back to login page with an error message
-    
-    if ($stored_email === NULL) {
-        echo "another something";
+    if ($stored_email == NULL) {
          $_SESSION['error_email'] = "That email address does not exist";
          $_SESSION['alertMessage'] = $msg_fail;
          header("Location: login.php");
@@ -101,8 +101,16 @@ if ($valid_form) {
     
     // if matching, send user to welcome page
     if ($correct_password) {
-        $_SESSION['logged_in'] = true;
-        header("Location: dashboard.php");
+        /* get info about the logged in user to use elsewhere */
+         $_SESSION['first_name'] = $stored_first_name;
+         $_SESSION['role'] = $stored_role;
+         $_SESSION['email_address'] = $stored_email;
+         $_SESSION['logged_in'] = true;
+        if ($stored_role == "User") {
+            header("Location: dashboard-user.php");
+            die();
+        }
+        header("Location: dashboard-agent.php");
         die();
     } else {
          $_SESSION['error_password'] = "Your password is incorrect";

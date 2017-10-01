@@ -5,10 +5,10 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="We sell highend properties and spacious sections with breathtaking views.">
+    <meta name="author" content="Tayla and Kat">
 
-    <title>Richlist -
+    <title>Richlist Real Estate -
         <?php echo $title ?>
     </title>
 
