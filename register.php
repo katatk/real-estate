@@ -1,7 +1,7 @@
 <?php 
 session_start();
 $title = "Register";
-include 'header.php';
+include 'dashboard-header.php';
 ?>
 
 <section>
@@ -108,4 +108,4 @@ include 'header.php';
     </div>
 </section>
 
-<?php include 'footer.php'; ?>
+<?php include 'dashboard-footer.php'; ?>

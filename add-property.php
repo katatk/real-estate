@@ -53,4 +53,4 @@ include 'dashboard-header.php';
         </div>
     </div>
 
-    <?php include "footer.php"; ?>
+    <?php include "dashboard-footer.php"; ?>

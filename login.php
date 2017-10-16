@@ -1,7 +1,7 @@
 <?php 
 session_start();
 $title = "Login";
-include 'header.php';
+include 'dashboard-header.php';
 ?>
 
 
@@ -79,4 +79,4 @@ include 'header.php';
 </section>
 
 
-<?php include 'footer.php'; ?>
+<?php include 'dashboard-footer.php'; ?>

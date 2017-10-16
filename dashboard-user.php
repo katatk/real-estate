@@ -109,4 +109,4 @@ if (!$_SESSION['logged_in']) {
 
     </main>
 </div>
-<?php include 'footer.php'; ?>
+<?php include 'dashboard-footer.php'; ?>
