@@ -8,7 +8,7 @@
     <meta name="description" content="We sell highend properties and spacious sections with breathtaking views.">
     <meta name="author" content="Tayla and Kat">
 
-    <title>Richlist Real Estate -
+    <title>Rich List Real Estate -
         <?php echo $title ?>
     </title>
 
