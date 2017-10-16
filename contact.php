@@ -5,32 +5,38 @@ include 'header.php';
 ?>
    
     <div class="container">
-        <h1 class="title">CONTACT US</h1>
+        <h1 class="title">Contact Us</h1>
         <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </div>
     </div>
 
-    <div class="contact-form">
-        <main>
-            <form>
-                <div class="form-group" id="name-group">
-                    <label class="contact-label" for="full-name">Name:</label>
-                    <input type="text" id="full-name" placeholder="Enter your full name">
-                </div>
-                <div class="form-group" id="email-group">
-                    <label class="contact-label" for="email">Email Address:</label>
-                    <input type="email" id="email" placeholder="Enter your email address">
-                </div>
-                <div id="message-label"><b>Your message:</b></div>
-                <div id="messagebox"><textarea id="textarea" rows="8" cols="30" maxlength="150" placeholder="Type message here..."></textarea>
-                </div>
-                <div id="textarea_feedback"></div>
-                <br>
+<br><br>
 
-                <input type="button" value="Submit" onclick="validateForm()">
-            </form>
-        </main>
+<section>
+<div class="form-container">
+<div class="row align-items-center">
+    <div class="col-xs-12 col-lg-7">
+
+    <form>
+        <div class="form-group" id="name-group">
+            <label for="full-name">Name:</label>
+            <input type="text" class="form-control">
+        </div>
+        <div class="form-group" id="email-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control">
+        </div>
+        <div class="form-group">Your Message:</div>
+        <div id="messagebox"><textarea id="textarea" rows="8" cols="30" maxlength="300"></textarea>
+        </div>
+        <div id="textarea_feedback"></div>
+        <br>
+
+        <input type="button" class="button" value="SEND" onclick="validateForm()">
+    </form>
     </div>
-    </div>
+</div>
+</div>
+</section>
 
 
      <?php include 'footer.php'; ?>
@@ -39,7 +45,7 @@ include 'header.php';
 
 <script type="text/javascript">
     function characterCount() {
-        var text_max = 150;
+        var text_max = 300;
         document.getElementById('textarea_feedback').innerHTML = text_max + ' characters remaining';
 
         document.getElementById('textarea')
