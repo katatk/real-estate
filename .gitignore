@@ -1,7 +1,6 @@
 node_modules
-images/
-*.png
-*.ai
-*.jpg
-*.svg
+/images/*
+!/images/properties/
+!/images/agents/
+css/*.jpg
 
