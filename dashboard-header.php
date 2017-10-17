@@ -33,7 +33,7 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                       <li class="nav-item <?php echo ($title == 'Dashboard') ? ' active' : ''; ?>">
-                        <a class="nav-link" href="dashboard.php">Dashboard</a>
+                        <a class="nav-link" href= if"dashboard.php">Dashboard</a>
                     </li>
                      <li class="nav-item <?php echo ($title == 'Add Property') ? ' active' : ''; ?>">
                         <a class="nav-link" href="add-property.php">Add Property</a>
