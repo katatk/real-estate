@@ -157,23 +157,6 @@ function clean_input($data) {
     // close connection
     $db->close();    
         
-    // send confirmation email
-   /* $subject = 'Student Registration';
-        
-    $body = "You have been registered as a student - your parents will be so proud. Here are your login details:\n";
-    $body .= "Username: $email\n";
-    $body .= "Password: $password\n";
-    $headers = "From: localhost";
-
-    if(mail($email,$subject,$body,$headers)){
-        $emailDataLog = "To: $email\n$subject\nbody: $body";
-        $log = "Email successfully sent:\n$emailDataLog";
-    } else {
-        $log = "email not sent.";
-    }
-
-     error_log($log."\n");*/
-        
     // take user to login page
     header("Location: login.php");
     die();

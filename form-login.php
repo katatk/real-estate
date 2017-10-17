@@ -125,3 +125,8 @@ if ($valid_form) {
     die();
 }
 ?>
+
+$output = "";
+$output .= "";
+
+echo $output;
