@@ -181,6 +181,19 @@ body {
     border-left: 4px solid #ffcd73;
 }
 
+.listing-title {
+    font-size: 20px;
+}
+
+.listing-city {
+    font-size: 18px;
+    color: #9b9b9b;
+}
+
+.listing-price {
+    font-size: 18px;
+}
+
 .form-container {
     margin-left: 210px;
     padding-bottom: 20px;

@@ -2,6 +2,8 @@
 session_start();
 $title = "Home";
 include 'header.php';
+error_reporting(E_ALL);
+ini_set('display_errors', "1");
 ?>
    
     <header class="masthead">
@@ -64,12 +66,21 @@ include 'header.php';
 </div>
 </header>
 
-    <section>
-        <div class="container">
-            <h1 class="title">Featured Properties</h1>
-            <div class="row align-items-center">
 
-                <div class="col-md-6 order-2">
+<section>
+<div class="container">
+<h1 class="title">Featured Properties</h1>
+<div class="row align-items-center">
+
+<?php include('homepage-listings.php'); ?>
+
+</div>
+</div>
+</section>
+
+               
+
+                <!-- <div class="col-md-6 order-2">
                     <div class="p-5">
                         <img class="featured-image" src="images/auckland1.jpg" alt="auckland1">
                     </div>
@@ -78,8 +89,8 @@ include 'header.php';
                     <div class="p-5">
                         <img class="featured-image" src="images/auckland3.jpg" alt="auckland3">
                     </div>
-                </div>
-            </div>
+                </div> -->
+            <!-- </div>
         </div>
     </section>
 
@@ -116,7 +127,7 @@ include 'header.php';
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     
 
    <?php include 'footer.php'; ?>
