@@ -53,7 +53,7 @@ include 'dashboard-header.php';
                         </div>
                     </div>
 
-                    <input type="submit" value="Submit" name="submit">
+                    <input type="submit" class="button" value="LOG IN" name="submit">
                 </form>
 
                 <div id="validation-message-container">

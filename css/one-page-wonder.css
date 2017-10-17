@@ -22,7 +22,7 @@ header.masthead>.overlay {
 /* move everything from out underneath the header */
 
 body {
-    padding-top: 84px;
+    padding-top: 60px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -124,7 +124,6 @@ select {
     display: block;
 }
 
-
 /* form styles */
 
 .form-group {
@@ -169,18 +168,22 @@ body {
 }
 
 .logo {
-    width: 249px;
+    width: 209px;
     height: auto;
 }
 
 .title {
     margin: 50px;
-    font-size: 28px;
+    font-size: 30px;
     padding: 5px;
     padding-left: 10px;
-    border-left: 4px solid #ffcd73;
     text-align: left;
-    /*    color: #9b9b9b;*/
+    border-left: 4px solid #ffcd73;
+}
+
+.form-container {
+    margin-left: 210px;
+    padding-bottom: 20px;
 }
 
 .featured-image {
@@ -221,7 +224,7 @@ body {
 
 .featured-text1 {
     color: #ffcd73;
-    font-size: 18px;
+    font-size: 14px;
     word-spacing: 15px;
 }
 
@@ -231,7 +234,6 @@ body {
 }
 
 .featured-text-container {
-/*    padding-top: 100px;*/
     padding-bottom: 100px;
 }
 
@@ -282,10 +284,10 @@ footer {
 /*-------contact form-------*/
 
 main {
-  background-color:;
+    background-color:;
     width: 30%;
-  padding: 10px;
-  display: inline-block;
+    padding: 10px;
+    display: inline-block;
 }
         
 .form-group {
@@ -311,17 +313,18 @@ main {
 
 }
 
-input[type=button] {
-
-  color: white;
-  text-shadow: none; /* Prevent inheritence from `body` */
-  background-color: #ffcd73;
-  border: 1px solid #ffcd73;
-  border-radius: 6px;
+.button {
+    color: black;
+    text-shadow: none; /* Prevent inheritence from `body` */
+    background-color: #ffcd73;
+    border: 1px solid #ffcd73;
+    padding: 10px;
+    border-radius: 6px;
 }
 
 input[type=text], 
-input[type=email], 
+input[type=email],
+input[type=password], 
 #textarea {
     width: 100%;
     padding: 12px 20px;
@@ -336,15 +339,15 @@ input[type=email],
     border-radius: 6px;
 }
 
-input[type=text]:focus, 
+input[type=text]:focus,
+input[type=password]:focus,
 input[type=email]:focus, 
 #textarea:focus {
-    border: 3px solid #555;
+    border: 3px solid #ffcd73;
 }
         
 .contact-label,
 input,
-select,
 .label,
 #message-label {
     display: block;
