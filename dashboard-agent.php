@@ -8,53 +8,70 @@ if (!$_SESSION['logged_in']) {
   die(); 
 }
 ?>
+<h1>Dashboard</h1>
 
-<div class="container">
+<span class="welcome">Welcome, <?php echo $_SESSION['first_name']; ?></span>
 
-    <main class="col-xs-12 pt-3" role="main">
-        <h1>Dashboard</h1>
+<h2>All Properties</h2>
 
-        <span class="welcome">Welcome, <?php echo $_SESSION['first_name']; ?></span>
+    <table class="table table-responsive table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Photo</th>
+                <th>Title</th>
+                <th>Type</th>
+                <th>City</th>
+                <th>Price</th>
+                <th>Address</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- fetch properties from the database -->
+            <?php
+            include('config.php');
 
-        <h2>Properties</h2>
+            $sql = "SELECT * FROM properties ORDER BY Property_ID";
+            
+            $stmt = $db->prepare($sql);
 
-        <div class="table-responsive">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Title</th>
-                        <th>Type</th>
-                        <th>City</th>
-                        <th>Price</th>
-                        <th>Address</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- fetch properties from the database -->
-                    <?php
+            if ($stmt === false) {
+                printf("Errormessage: %s\n", $db->error);
+                die();
+            }
 
-                    include('config.php');
+            $stmt->execute();
 
-                    $sql = "SELECT * FROM properties ORDER BY Property_ID";
+            $results = $stmt->get_result();
 
-                    $result = $db->query($sql);
+            if ($results->num_rows > 0) {
+                // output data of each row
+                while($row = $results->fetch_assoc()) {
+                    $output = "<tr>";
+                    $output .= "<td>".$row["Property_ID"]."</td>";
+                    $output .= "<td><img src='".$row["Image_URL"]."' alt='".$row["Title"]."' class='thumbnail'></td>";
+                    $output .= "<td>".$row["Title"]."</td>";
+                    $output .= "<td>".$row["Type"]."</td>";
+                    $output .= "<td>".$row["City"]."</td>";
+                    $output .= "<td>".$row["Price"]."</td>";
+                    $output .= "<td>".$row["Address"]."</td>";
+                    $output .= "<td>".$row["Description"]."</td>";
+                    $output .= "</tr>";
+                    echo $output;
+                }
+            } else {
+                echo "There are no properties in the database";
+            }
 
-                    if ($result->num_rows > 0) {
-                        // output data of each row
-                        while($row = $result->fetch_assoc()) {
-                            echo "<tr><td>".$row["Property_ID"]."</td><td>".$row["Title"]."</td><td>".$row["Type"]."</td><td>".$row["City"]."</td><td>".$row["Price"]."</td><td>".$row["Address"]."</td><td>".$row["Description"]."</td></tr>";
-                        }
-                    } else {
-                        echo "0 results";
-                    }
+            // close statement
+            $stmt->close();
 
-                    mysqli_close($db);
-                    ?>
-                </tbody>
-            </table>
-        </div>
-    </main>
-</div>
-<?php include 'dashboard-footer.php'; ?>
+            // close the connection
+            $db->close();
+            ?>
+            
+        </tbody>
+    </table>
+
+    <?php include 'dashboard-footer.php'; ?>

@@ -3,7 +3,7 @@
 
 <head>
 
-     <meta charset="utf-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="The dashboard is where you can manage properties as an agent">
     <meta name="author" content="Tayla and Kat">
@@ -32,21 +32,24 @@
         </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                      <li class="nav-item <?php echo ($title == 'Dashboard') ? ' active' : ''; ?>">
-                        <a class="nav-link" href= if"dashboard.php">Dashboard</a>
+                    <li class="nav-item <?php echo ($title == 'Dashboard') ? ' active' : ''; ?>">
+                        <a class="nav-link" href="dashboard.php">Dashboard</a>
                     </li>
-                     <li class="nav-item <?php echo ($title == 'Add Property') ? ' active' : ''; ?>">
+                    <li class="nav-item <?php echo ($title == 'Add Property') ? ' active' : ''; ?>">
                         <a class="nav-link" href="add-property.php">Add Property</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">View Site</a>
+                        <a class="nav-link" href="index.php">View Site</a>
                     </li>
-                      <li class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link" href="logout.php">Logout</a>
                     </li>
-                   
+
                 </ul>
             </div>
         </div>
     </nav>
     <div class="flex">
+        <div class="container">
+           <div class="row">
+            <div class="col-12" role="main">

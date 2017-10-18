@@ -84,7 +84,8 @@ include 'dashboard-header.php';
                     </div>
 
 
-                    <input type="submit" class="button" value="REGISTER" name="submit"><a href='register.php' class='btn btn-default reset'>Reset</a>
+                    <input type="submit" class="button" value="REGISTER" name="submit">
+                    <a href='register.php' class='btn btn-default reset'>Clear</a>
                 </form>
 
                 <div id="validation-message-container">

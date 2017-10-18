@@ -67,6 +67,7 @@ if ($valid_form) {
     
     // check if email exists in database
     $stmt = $db->prepare("SELECT Email_Address, Password, Role, First_Name FROM users WHERE Email_Address=?");
+    
     $stmt->bind_param('s', $email);    
 
       // running insert statement
@@ -125,8 +126,3 @@ if ($valid_form) {
     die();
 }
 ?>
-
-$output = "";
-$output .= "";
-
-echo $output;

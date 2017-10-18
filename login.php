@@ -11,11 +11,11 @@ include 'dashboard-header.php';
 
                 <h2>Login</h2>
                 <p>
-                    <?php 
-                if (isset($_SESSION['account_successful'])) { 
-                    echo $_SESSION['account_successful']; 
-                    unset($_SESSION['account_successful']);
-                }; 
+                <?php 
+                    if (isset($_SESSION['account_successful'])) { 
+                        echo $_SESSION['account_successful']; 
+                        unset($_SESSION['account_successful']);
+                    }; 
                 ?>
                 </p>
     
