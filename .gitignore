@@ -1,6 +1,4 @@
 node_modules
 /images/*
-!/images/properties/
-!/images/agents/
 css/*.jpg
 
