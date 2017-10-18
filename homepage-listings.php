@@ -22,7 +22,7 @@ while($row = $results->fetch_assoc()) {
     $output .= "<div class='col-md-6'><div class='p-5'><img class='featured-image' src='".$row['Image_URL']."'>";
     $output .= "<h1 class='listing-title'>".$row["Title"]."</h1>";
     $output .= "<h1 class='listing-city'>".$row["City"]."</h1>";
-    $output .= "<h1 class='listing-price'>".money_format('$%.2n', $row["Price"])."</h1></div></div>";
+    $output .= "<h1 class='listing-price'>$".number_format($row["Price"])."</h1></div></div>";
 
     echo $output;
 }
