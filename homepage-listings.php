@@ -1,6 +1,5 @@
 <?php include('config.php'); 
 
-echo "hi"; 
 $sql = "SELECT Image_URL, Title, City, Price FROM properties";
 
 $stmt = $db->prepare($sql);
@@ -20,10 +19,10 @@ if ($results->num_rows > 0) {
 
 while($row = $results->fetch_assoc()) {
     $output = "";
-    $output .= "<img src='".$row['Image_URL']."'>";
+    $output .= "<div class='col-md-6'><div class='p-5'><img class='featured-image' src='".$row['Image_URL']."'>";
     $output .= "<h1 class='listing-title'>".$row["Title"]."</h1>";
     $output .= "<h1 class='listing-city'>".$row["City"]."</h1>";
-    $output .= "<h1 class='listing-price'>".$row["Price"]."</h1>";
+    $output .= "<h1 class='listing-price'>".money_format('$%.2n', $row["Price"])."</h1></div></div>";
 
     echo $output;
 }
