@@ -2,6 +2,10 @@
 session_start();
 $title = "Login";
 include 'dashboard-header.php';
+// unset these placeholders so they don't show on if user goes back to register page
+unset($_SESSION['placeholder_password_confirm']);
+unset($_SESSION['placeholder_first_name']);
+
 ?>
 
 <section>
@@ -12,9 +16,9 @@ include 'dashboard-header.php';
                 <h2>Login</h2>
                 <p>
                 <?php 
-                    if (isset($_SESSION['account_successful'])) { 
-                        echo $_SESSION['account_successful']; 
-                        unset($_SESSION['account_successful']);
+                    if (isset($_SESSION['alertMessage'])) { 
+                        echo $_SESSION['alertMessage']; 
+                        unset($_SESSION['alertMessage']);
                     }; 
                 ?>
                 </p>

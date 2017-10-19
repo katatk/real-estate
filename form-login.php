@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+include 'validation.php';
 // user can only access form-login via the POST method, not GET (typing directly into the address bar)
 if (empty($_POST['submit'])) {
   header('Location: login.php');
@@ -15,8 +16,6 @@ $msg_unknown = 'Something went wrong.';
 // set POST values to variables
 $email = $_POST['email'];
 $password = $_POST['password'];
-$firstname = "";
-$password_confirm = "";
 
 // set the placeholders
 $_SESSION['placeholder_email'] = $email;
@@ -37,29 +36,8 @@ function clean_input($data) {
   return $data;
 }
 
-// filter that checks if valid email address
-$valid_email = false;
-if (!empty($email)) {
-    if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $valid_email = true;
-        $email = clean_input($email);
-    } else {
-           $_SESSION['error_email'] = "Email address is invalid";
-        }
-     } else {
-        $_SESSION['error_email'] = "Please enter an email address";
-        }
-
-// validate password
-$valid_password = false;
- if (!empty($password)) {
-     $valid_password = true;
- } else {
-    $_SESSION['error_password'] = "Please enter a password";
-    }
-
 // if everything is valid then set valid_form to true
-$valid_form = $valid_email && $valid_password;
+$valid_form = validateEmail($email) && validatePassword($password);
 
 if ($valid_form) {
     // Create connection
@@ -107,8 +85,15 @@ if ($valid_form) {
          $_SESSION['role'] = $stored_role;
          $_SESSION['email_address'] = $stored_email;
          $_SESSION['logged_in'] = true;
+        // unset session placeholders
+       
+        unset($_SESSION['placeholder_first_name']);
+        unset($_SESSION['placeholder_email']);
+        unset($_SESSION['placeholder_password']);
+        unset($_SESSION['placeholder_password_confirm']);
+      
         if ($stored_role == "User") {
-            header("Location: dashboard-user.php");
+            header("Location: wishlist.php");
             die();
         }
         header("Location: dashboard-agent.php");

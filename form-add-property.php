@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+include 'validation.php';
 // user can only access form-register via the POST method, not GET (typing directly into the address bar)
 if (empty($_POST['submit'])) {
   header('Location: add-property.php');
@@ -11,6 +12,13 @@ if (empty($_POST['submit'])) {
 $msg_fail = 'One or more fields have an error.';
 $msg_empty = 'Please fill in all required fields.';
 $msg_success = 'Property successfully added.';
+
+// set the error messages
+$error_img = "Please upload an image or enter a url";
+$error_title = "Please enter a title";
+$error_price = "Please enter a price (numbers only)";
+$error_address = "Please enter an address";
+$error_description = "Please enter a description";
 
 // set POST values to variables
 $img_url = $_POST['img-url'];
@@ -30,10 +38,20 @@ $_SESSION['placeholder_price'] = $price;
 $_SESSION['placeholder_address'] = $address;
 $_SESSION['placeholder_description'] = $description;
 
+// if no fields have been filled out
+if (empty($img_url) && empty($title) && empty($type) && empty($city) && empty($price) && empty($address) && empty($description)) {
+     $_SESSION['alertMessage'] = $msg_empty;
+     header("Location: add-property.php");
+     die();
+} 
+ 
+// if everything is valid then set valid_form to true
+$valid_form = isEmpty($img_url, $error_img) && isEmpty($title, $error_title) && isEmpty($type, null) && isEmpty($city, null) && isEmpty($price, $error_price) && isEmpty($address, $error_address) && isEmpty($description, $error_description);
 
-$is_filled = !empty($img_url) && !empty($title) && !empty($type) && !empty($city) && !empty($price) && !empty($address) && !empty($description);
-
-if ($is_filled) {
+/*echo isEmpty($img_url, $error_img);
+die();*/
+    
+if ($valid_form == null) {
     // create the connection
     include('config.php');
 
