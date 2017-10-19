@@ -1,6 +1,6 @@
-
-<!-- Footer -->
-<footer>
+<!-- container flex -->
+</div>
+<footer role="contentinfo">
     <div class="container">
         <p class="m-0 text-center">Copyright &copy; Rich List
             <?php echo date("Y"); ?>  Made by Tayla &amp; Kat<br><a href="login">Login</a><a href="register">Register</a></p>

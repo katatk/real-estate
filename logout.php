@@ -1,6 +1,6 @@
 <?php
 session_start();
-unset($_SESSION["logged_in"]);
+$_SESSION['logged_in'] = false;
 $_SESSION['alertMessage'] = "You have been logged out";
 header("Location: login.php");
 die();

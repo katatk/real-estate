@@ -67,66 +67,13 @@ ini_set('display_errors', "1");
 
 
     <section>
-        <div class="container">
             <h1 class="title">Featured Properties</h1>
             <div class="row align-items-center">
 
                 <?php include('homepage-listings.php'); ?>
 
             </div>
-        </div>
     </section>
-
-
-
-    <!-- <div class="col-md-6 order-2">
-                    <div class="p-5">
-                        <img class="featured-image" src="images/auckland1.jpg" alt="auckland1">
-                    </div>
-                </div>
-                <div class="col-md-6 order-1">
-                    <div class="p-5">
-                        <img class="featured-image" src="images/auckland3.jpg" alt="auckland3">
-                    </div>
-                </div> -->
-    <!-- </div>
-        </div>
-    </section>
-
-    <section>
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <div class="p-5">
-                        <img class="featured-image" src="images/hamilton3.jpg" alt="hamilton3">
-
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="p-5">
-                        <img class="featured-image" src="images/hamilton4.jpg" alt="hamilton4">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6 order-2">
-                    <div class="p-5">
-                        <img class="featured-image" src="images/tauranga1.jpg" alt="tauranga1">
-                    </div>
-                </div>
-                <div class="col-md-6 order-1">
-                    <div class="p-5">
-                        <img class="featured-image" src="images/tauranga4.jpg" alt="tauranga4">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
 
 
     <?php include 'footer.php'; ?>

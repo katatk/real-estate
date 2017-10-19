@@ -1,17 +1,6 @@
 <?php
 // validation functions
 
-// checks if a field is empty
-// empty() checks for an empty string
-function isEmpty($param_value, $param_error) {
-    if(empty($param_value)) {
-        return $param_error; 
-        
-    } else {
-        return null;
-    }
-}
-
 // checks for a valid email address
 function validateEmail($param_email) {
    $valid_email = false; 
@@ -61,19 +50,15 @@ function validatePassword($param_password) {
 }
 
 // checks if passwords match
-function passwordsMatch($param_password, $param_password_confirm){
-  $valid_password_confirm = false;
+function passwordsMatch($param_password, $param_password_confirm) {
+    $passwords_match = false;
     if (!empty($param_password) && (!empty($param_password_confirm))) {
         if ($param_password_confirm === $param_password) {
-            $valid_password_confirm = true;
-            // if passwords match, hash the original password
-            // cost represents how many times you run the hash function will take longer to crack the higher the cost
-            $hashed_password = password_hash($param_password, PASSWORD_DEFAULT, ['cost' => 12]);
+            $passwords_match = true;
             
         } else {
             $_SESSION['error_password_confirm'] = "Passwords do not match";
         } 
-        return  $valid_password_confirm;
+        return $passwords_match;
     }
 }
-

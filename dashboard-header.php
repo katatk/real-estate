@@ -39,7 +39,7 @@
                         <a class="nav-link" href="add-property.php">Add Property</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php">View Site</a>
+                        <a class="nav-link" href="./">View Site</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="logout.php">Logout</a>
@@ -49,7 +49,4 @@
             </div>
         </div>
     </nav>
-    <div class="flex">
-        <div class="container">
-           <div class="row">
-            <div class="col-12" role="main">
+    <div class="container flex" role="main">

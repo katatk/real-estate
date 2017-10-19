@@ -3,133 +3,129 @@ session_start();
 $title = "Contact";
 include 'header.php';
 ?>
-   
-    <div class="container">
-        <h1 class="title">Contact Us</h1>
-        <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </div>
+
+    <div class="row">
+        <div class="col-12">
+            <h1 class="title">Contact Us</h1>
+            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </div>
+        </div>
     </div>
 
-<br><br>
+    <section>
+        <div class="form-container">
+            <div class="row align-items-center">
+                <div class="col-12 col-lg-7">
+                    <form>
+                        <div class="form-group" id="name-group">
+                            <label for="full-name">Name:</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="form-group" id="email-group">
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control">
+                        </div>
+                        <div class="form-group">Your Message:</div>
+                        <div id="messagebox"><textarea id="textarea" rows="8" cols="30" maxlength="300"></textarea>
+                        </div>
+                        <div id="textarea_feedback"></div>
+                        <br>
 
-<section>
-<div class="form-container">
-<div class="row align-items-center">
-    <div class="col-xs-12 col-lg-7">
-
-    <form>
-        <div class="form-group" id="name-group">
-            <label for="full-name">Name:</label>
-            <input type="text" class="form-control">
+                        <input type="button" class="button" value="SEND" onclick="validateForm()">
+                    </form>
+                </div>
+            </div>
         </div>
-        <div class="form-group" id="email-group">
-            <label for="email">Email:</label>
-            <input type="email" class="form-control">
-        </div>
-        <div class="form-group">Your Message:</div>
-        <div id="messagebox"><textarea id="textarea" rows="8" cols="30" maxlength="300"></textarea>
-        </div>
-        <div id="textarea_feedback"></div>
-        <br>
-
-        <input type="button" class="button" value="SEND" onclick="validateForm()">
-    </form>
-    </div>
-</div>
-</div>
-</section>
+    </section>
 
 
-     <?php include 'footer.php'; ?>
-
-</body>
-
-<script type="text/javascript">
-    function characterCount() {
-        var text_max = 300;
-        document.getElementById('textarea_feedback').innerHTML = text_max + ' characters remaining';
-
-        document.getElementById('textarea')
-        var text_length = document.getElementById('textarea').value.length;
-        var text_remaining = text_max - text_length;
-
-        document.getElementById('textarea_feedback').innerHTML = text_remaining + ' characters remaining';
-    };
-
-    document.getElementById("textarea").addEventListener("keydown", characterCount);
-    window.onload = characterCount();
-
-    // validate a form
-    // create an error list ul for each field
-    var errorListEmail = document.createElement("ul");
-    var errorListName = document.createElement("ul");
-
-    // create an empty string for error list
-    var errorListContentEmail = "";
-    var errorListContentName = "";
-
-    // grab the form groups to append error lists to
-    var emailGroup = document.getElementById("email-group");
-    var nameGroup = document.getElementById("name-group");
 
 
-    function validateForm() {
+    <script type="text/javascript">
+        function characterCount() {
+            var text_max = 300;
+            document.getElementById('textarea_feedback').innerHTML = text_max + ' characters remaining';
 
-        // get the form field values on button click
-        var strEmailAddress = document.getElementById("email").value;
-        var strFullName = document.getElementById("full-name").value;
+            document.getElementById('textarea')
+            var text_length = document.getElementById('textarea').value.length;
+            var text_remaining = text_max - text_length;
 
-        // validate email
-        if (strEmailAddress == "") {
-            errorListContentEmail = "<li>Please enter an email address</li>";
-            // add invalid class
-            errorListEmail.className = "invalid";
-        }
-        if (!/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/.test(strEmailAddress)) {
-            errorListContentEmail = "<li>" + strEmailAddress + " is NOT a valid email address</li>";
-            // add invalid class
-            errorListEmail.className = "invalid";
-        }
-
-        if (strEmailAddress != "" && /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/.test(strEmailAddress)) {
-            errorListContentEmail = "<li>" + strEmailAddress + " is a valid email address</li>";
-            // add valid class
-            errorListEmail.className = "valid";
-        }
-
-        // validate full name
-        if (strFullName == "") {
-            errorListContentName += "<li>Please enter a name</li>";
-
-            // add valid class
-            errorListName.className = "invalid";
-        } else if (!/^[a-zA-Z]+\s[a-zA-Z]+$/.test(strFullName)) {
-            errorListContentName += "<li>" + strFullName + " is NOT a valid first and last name</li>";
-
-            // add valid class
-            errorListName.className = "invalid";
-        }
-
-        if (strFullName != "" && strFullName.match(/^[a-zA-Z]+\s[a-zA-Z]+$/)) {
-            errorListContentName = "<li>" + strFullName + " is a valid name</li>";
-            // add valid class
-            errorListName.className = "valid";
+            document.getElementById('textarea_feedback').innerHTML = text_remaining + ' characters remaining';
         };
 
-        // set innerHTML of the error list ul to content (string)  
-        errorListEmail.innerHTML = errorListContentEmail;
-        errorListName.innerHTML = errorListContentName;
+        document.getElementById("textarea").addEventListener("keydown", characterCount);
+        window.onload = characterCount();
 
-        // append error list ul to form group
-        emailGroup.appendChild(errorListEmail);
-        nameGroup.appendChild(errorListName);
+        // validate a form
+        // create an error list ul for each field
+        var errorListEmail = document.createElement("ul");
+        var errorListName = document.createElement("ul");
+
+        // create an empty string for error list
+        var errorListContentEmail = "";
+        var errorListContentName = "";
+
+        // grab the form groups to append error lists to
+        var emailGroup = document.getElementById("email-group");
+        var nameGroup = document.getElementById("name-group");
 
 
-        // set error lists to empty, to be rebuilt when validateForm runs
-        errorListContentEmail = "";
-        errorListContentName = "";
+        function validateForm() {
 
-    }
+            // get the form field values on button click
+            var strEmailAddress = document.getElementById("email").value;
+            var strFullName = document.getElementById("full-name").value;
 
-</script>
+            // validate email
+            if (strEmailAddress == "") {
+                errorListContentEmail = "<li>Please enter an email address</li>";
+                // add invalid class
+                errorListEmail.className = "invalid";
+            }
+            if (!/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/.test(strEmailAddress)) {
+                errorListContentEmail = "<li>" + strEmailAddress + " is NOT a valid email address</li>";
+                // add invalid class
+                errorListEmail.className = "invalid";
+            }
 
-</html>
+            if (strEmailAddress != "" && /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/.test(strEmailAddress)) {
+                errorListContentEmail = "<li>" + strEmailAddress + " is a valid email address</li>";
+                // add valid class
+                errorListEmail.className = "valid";
+            }
+
+            // validate full name
+            if (strFullName == "") {
+                errorListContentName += "<li>Please enter a name</li>";
+
+                // add valid class
+                errorListName.className = "invalid";
+            } else if (!/^[a-zA-Z]+\s[a-zA-Z]+$/.test(strFullName)) {
+                errorListContentName += "<li>" + strFullName + " is NOT a valid first and last name</li>";
+
+                // add valid class
+                errorListName.className = "invalid";
+            }
+
+            if (strFullName != "" && strFullName.match(/^[a-zA-Z]+\s[a-zA-Z]+$/)) {
+                errorListContentName = "<li>" + strFullName + " is a valid name</li>";
+                // add valid class
+                errorListName.className = "valid";
+            };
+
+            // set innerHTML of the error list ul to content (string)  
+            errorListEmail.innerHTML = errorListContentEmail;
+            errorListName.innerHTML = errorListContentName;
+
+            // append error list ul to form group
+            emailGroup.appendChild(errorListEmail);
+            nameGroup.appendChild(errorListName);
+
+
+            // set error lists to empty, to be rebuilt when validateForm runs
+            errorListContentEmail = "";
+            errorListContentName = "";
+
+        }
+
+    </script>
+    <?php include 'footer.php'; ?>

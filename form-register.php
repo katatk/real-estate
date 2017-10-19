@@ -52,68 +52,76 @@ if ($role) {
 // if everything is valid then set valid_form to true
 $valid_form = validateName($first_name) && validateEmail($email) && validatePassword($password) &&  passwordsMatch($password, $password_confirm);
 
+
+
+// if passwords match, hash password otherwise return false
+if (passwordsMatch($password, $password_confirm)){ 
+        // cost represents how many times you run the hash function, will take longer to crack the higher the cost but also becomes slower
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT, ['cost' => 12]);
+}
     
-    if ($valid_form) {
-        // create the connection
-        include('config.php');
-        
-         // create query to check if email already exists in the database
-        $stmt = $db->prepare("SELECT Email_Address FROM users WHERE Email_Address=?");
-        // bind parameters
-        $stmt->bind_param('s', $email); 
-        
-         // running insert statement
-        if ($stmt->execute() === TRUE) {
-            echo "Email checked successfully";
-        } else {
-            echo "Error: " . $db->error;
-        }
+if ($valid_form) {
+    
+    // create the connection
+    include('config.php');
 
-        // bind result variables
-        $stmt->bind_result($stored_email);
+     // create query to check if email already exists in the database
+    $stmt = $db->prepare("SELECT Email_Address FROM users WHERE Email_Address=?");
+    // bind parameters
+    $stmt->bind_param('s', $email); 
 
-        // fetch value
-        $stmt->fetch();
-        
-        // close statement
-        $stmt->close();
-        
-        // check email is unique
-        if ($stored_email === $email) {
-
-        $_SESSION['error_email'] = "That email address is already taken, please use another or <a href='login'>login here</a>";
-        $_SESSION['alertMessage'] = $msg_fail;
-
-        // go back to the register page
-        header("Location: register.php");
-        die();
-        }
-
-        // if data is valid, insert into database
-        // creates the statement, prepare removes SQL syntax to prevent SQL injection attacks eg someone typing 'DROP table students' into a field
-        $stmt = $db->prepare("INSERT INTO users (Email_Address, First_Name, Password, Role) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param('ssss', $email, $first_name, $hashed_password, $role);
-
-        // running insert statement
-        if ($stmt->execute() === TRUE) {
-            echo "New record created successfully";
-            
-        } else {
-            echo "Error: " . $db->error;
-        }
-
-        // close statement
-        $stmt->close();
-        // close connection
-        $db->close();    
-
-        // take user to login page
-        $_SESSION['alertMessage'] = "Account created successfully";
-        header("Location: login.php");
-        die();
-        
+     // running insert statement
+    if ($stmt->execute() === TRUE) {
+        echo "Email checked successfully";
     } else {
-        $_SESSION['alertMessage'] = $msg_fail;
-        header("Location: register.php");
-        die();
+        echo "Error: " . $db->error;
+    }
+
+    // bind result variables
+    $stmt->bind_result($stored_email);
+
+    // fetch value
+    $stmt->fetch();
+
+    // close statement
+    $stmt->close();
+
+    // check email is unique
+    if ($stored_email === $email) {
+
+    $_SESSION['error_email'] = "That email address is already taken, please use another or <a href='login'>login here</a>";
+    $_SESSION['alertMessage'] = $msg_fail;
+
+    // go back to the register page
+    header("Location: register.php");
+    die();
+    }
+
+    // if data is valid, insert into database
+    // creates the statement, prepare removes SQL syntax to prevent SQL injection attacks eg someone typing 'DROP table students' into a field
+    $stmt = $db->prepare("INSERT INTO users (Email_Address, First_Name, Password, Role) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param('ssss', $email, $first_name, $hashed_password, $role);
+
+    // running insert statement
+    if ($stmt->execute() === TRUE) {
+        echo "New record created successfully";
+
+    } else {
+        echo "Error: " . $db->error;
+    }
+
+    // close statement
+    $stmt->close();
+    // close connection
+    $db->close();    
+
+    // take user to login page
+    $_SESSION['alertMessage'] = "Account created successfully";
+    header("Location: login.php");
+    die();
+
+} else {
+    $_SESSION['alertMessage'] = $msg_fail;
+    header("Location: register.php");
+    die();
 }

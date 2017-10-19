@@ -3,33 +3,37 @@ session_start();
 $title = "Dashboard";
 include 'dashboard-header.php'; 
 
-if (!$_SESSION['logged_in']) {
+if ($_SESSION['logged_in'] == false) {
   header('Location: login.php');
   die(); 
 }
 ?>
-<h1>Dashboard</h1>
+<div class="row">
+    <div class="col-12">
+        <h1>Dashboard</h1>
 
-<span class="welcome">Welcome, <?php echo $_SESSION['first_name']; ?></span>
+        <span class="welcome">Welcome, <?php echo $_SESSION['first_name']; ?></span>
 
-<h2>All Properties</h2>
+        <h2>All Properties</h2>
 
-    <table class="table table-responsive table-striped">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Photo</th>
-                <th>Title</th>
-                <th>Type</th>
-                <th>City</th>
-                <th>Price</th>
-                <th>Address</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- fetch properties from the database -->
-            <?php
+        <table class="table table-responsive table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Photo</th>
+                    <th>Title</th>
+                    <th>Type</th>
+                    <th>City</th>
+                    <th>Price</th>
+                    <th>Address</th>
+                    <th>Description</th>
+                    <th>Edit Property</th>
+                    <th>Delete Property</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- fetch properties from the database -->
+                <?php
             include('config.php');
 
             $sql = "SELECT * FROM properties ORDER BY Property_ID";
@@ -57,6 +61,8 @@ if (!$_SESSION['logged_in']) {
                     $output .= "<td>".$row["Price"]."</td>";
                     $output .= "<td>".$row["Address"]."</td>";
                     $output .= "<td>".$row["Description"]."</td>";
+                    $output .= "<td><button class='btn btn-default'>Edit</button></td>";
+                    $output .= "<td><button class='btn btn-danger'>Delete</button></td>";
                     $output .= "</tr>";
                     echo $output;
                 }
@@ -70,8 +76,10 @@ if (!$_SESSION['logged_in']) {
             // close the connection
             $db->close();
             ?>
-            
-        </tbody>
-    </table>
 
-    <?php include 'dashboard-footer.php'; ?>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<?php include 'footer.php'; ?>

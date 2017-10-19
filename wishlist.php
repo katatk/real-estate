@@ -1,28 +1,21 @@
 <?php 
 session_start();
-$title = "User Account";
-include 'user-header.php';
+$title = "Wishlist";
+include 'header.php';
 
 if (!$_SESSION['logged_in']) {
   header('Location: login.php');
   die(); 
 } 
 
-/* get the logged in user's email address and account type */
-
 ?>
-
-<div class="container">
-
-    <main class="col-xs-12 pt-3" role="main">
-        <h1>Dashboard</h1>
+<div class="row">
+                <div class="col-12">
+        <h1>Wishlist</h1>
 
         <span class="welcome">Hi, <?php echo $_SESSION['first_name']; ?></span>
 
-        <h2>Wishlist</h2>
-
-        <div class="table-responsive">
-            <table class="table table-striped">
+            <table class="table table-responsive table-striped">
                 <thead>
                     <tr>
                         <th>Photo</th>
@@ -72,41 +65,11 @@ if (!$_SESSION['logged_in']) {
 
                     // close the connection
                     $db->close();
-
-                   /* // running insert statement
-                    if ($stmt->execute() === TRUE) {
-                        echo "Email checked successfully";
-                    } else {
-                        echo "Error: " . $db->error;
-                    }
-
-                    // bind result variables
-                    $stmt->bind_result($stored_property_url, $stored_property_title, $stored_property_type, $stored_property_city, $stored_property_price, $stored_property_address);
-
-                    // fetch value
-                    $stmt->fetch();
-
-                    
-
-                    $sql = "SELECT * FROM user_wishlist WHERE Email_Address =  ORDER BY Property_ID";
-
-                    $result = $db->query($sql);
-
-                    if ($result->num_rows > 0) {
-                        // output data of each row
-                        while($row = $result->fetch_assoc()) {
-                            echo "<tr><td>".$row["Type"]."</td><td>".$row["City"]."</td><td>".$row["Price"]."</td><td>".$row["Address"]."</td><td>".$row["Description"]."</td></tr>";
-                        }
-                    } else {
-                        echo "0 results";
-                    }
-
-                    mysqli_close($db); */
                     ?>
+
+    
                 </tbody>
             </table>
-        </div>
-
-    </main>
-</div>
-<?php include 'dashboard-footer.php'; ?>
+    </div>
+</div>            
+<?php include 'footer.php'; ?>

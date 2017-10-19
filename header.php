@@ -26,22 +26,32 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="index.php"><img class="logo" src="images/logo.svg" alt="logo"></a>
+            <a class="navbar-brand" href="./"><img class="logo" src="images/logo.svg" alt="logo"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item <?php echo ($title == 'Home') ? ' active' : ''; ?>">
-                        <a class="nav-link" href="index">Home</a>
+                        <a class="nav-link" href="./">Home</a>
                     </li>
                     <li class="nav-item <?php echo ($title == 'About Us') ? ' active' : ''; ?>">
                         <a class="nav-link" href="about">About Us</a>
                         <li class="nav-item <?php echo ($title == 'Contact') ? ' active' : ''; ?>">
                             <a class="nav-link" href="contact">Contact</a>
                         </li>
+                        <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
+                                if ($_SESSION['role'] == "User") {
+                                    echo "<li class='nav-item";
+                                    echo ($title == 'Wishlist') ? ' active' : '';
+                                    echo "'><a class='nav-link' href='wishlist'><i class='icon icon-heart-empty'></i>Wishlist</a></li>";
+                                }
+                            }
+                        ?>
                 </ul>
             </div>
         </div>
     </nav>
-
+        <div class="container <?php echo ($title == 'Home') ? '' : ' flex';?>" role="main">
+            
+                

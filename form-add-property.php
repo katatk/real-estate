@@ -13,15 +13,9 @@ $msg_fail = 'One or more fields have an error.';
 $msg_empty = 'Please fill in all required fields.';
 $msg_success = 'Property successfully added.';
 
-// set the error messages
-$error_img = "Please upload an image or enter a url";
-$error_title = "Please enter a title";
-$error_price = "Please enter a price (numbers only)";
-$error_address = "Please enter an address";
-$error_description = "Please enter a description";
-
 // set POST values to variables
 $img_url = $_POST['img-url'];
+$img_upload = $_POST['img-upload'];
 $title = $_POST['title'];
 $type = $_POST['type'];
 $city = $_POST['city'];
@@ -39,19 +33,33 @@ $_SESSION['placeholder_address'] = $address;
 $_SESSION['placeholder_description'] = $description;
 
 // if no fields have been filled out
-if (empty($img_url) && empty($title) && empty($type) && empty($city) && empty($price) && empty($address) && empty($description)) {
+if (empty($img_url) && empty($img_upload) && empty($title) && empty($type) && empty($city) && empty($price) && empty($address) && empty($description)) {
      $_SESSION['alertMessage'] = $msg_empty;
      header("Location: add-property.php");
      die();
-} 
- 
-// if everything is valid then set valid_form to true
-$valid_form = isEmpty($img_url, $error_img) && isEmpty($title, $error_title) && isEmpty($type, null) && isEmpty($city, null) && isEmpty($price, $error_price) && isEmpty($address, $error_address) && isEmpty($description, $error_description);
+}
 
-/*echo isEmpty($img_url, $error_img);
-die();*/
-    
-if ($valid_form == null) {
+// set the error messages
+if (empty($img_url) || empty($img_upload)) {
+   $_SESSION['error_img'] = "Please upload an image or enter a url";
+}
+if (empty($title)) {
+    $_SESSION['error_title'] = "Please enter a title";
+}
+if (empty($price)) {
+    $_SESSION['error_price'] = "Please enter a price (numbers only)";
+}
+if (empty($address)) {
+   $_SESSION['error_address'] = "Please enter an address";
+}
+if (empty($description)) {
+   $_SESSION['error_description'] = "Please enter a description";
+}
+
+// if everything is valid then set valid_form to true
+$valid_form = !isset($error_img) && !isset($error_title) && !isset($error_price) && !isset($error_address) && !isset($error_description);
+  
+if ($valid_form) {
     // create the connection
     include('config.php');
 
@@ -77,8 +85,8 @@ if ($valid_form == null) {
     header("Location: add-property.php");
     die();
 
-    } else {
-        $_SESSION['alertMessage'] = $msg_empty;
-         header("Location: add-property.php");
-        die();
-    }
+} else {
+    $_SESSION['alertMessage'] = $msg_empty;
+     header("Location: add-property.php");
+    die();
+}

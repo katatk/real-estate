@@ -93,10 +93,12 @@ if ($valid_form) {
         unset($_SESSION['placeholder_password_confirm']);
       
         if ($stored_role == "User") {
+            $_SESSION['role'] = "User";
             header("Location: wishlist.php");
             die();
         }
-        header("Location: dashboard-agent.php");
+        $_SESSION['role'] = "Agent";
+        header("Location: dashboard.php");
         die();
     } else {
          $_SESSION['error_password'] = "Your password is incorrect";
