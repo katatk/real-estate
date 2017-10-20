@@ -41,17 +41,21 @@
                             <a class="nav-link" href="contact">Contact</a>
                         </li>
                         <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
+                                // if logged in as a normal user, show wishlist link
                                 if ($_SESSION['role'] == "User") {
                                     echo "<li class='nav-item";
                                     echo ($title == 'Wishlist') ? ' active' : '';
                                     echo "'><a class='nav-link' href='wishlist'><i class='icon icon-heart-empty'></i>Wishlist</a></li>";
+                                    // if an agent/admin, show this menu
+                                } elseif ($_SESSION['role'] == "Agent" || $_SESSION['role'] == "Admin") {
+                                    echo "<li class='nav-item'><a class='nav-link' href='dashboard'>Dashboard</a></li>";
                                 }
+                                // if logged in, show logout link
+                                echo "<li class='nav-item'><a class='nav-link' href='logout'>Logout</a></li>";
                             }
                         ?>
                 </ul>
             </div>
         </div>
     </nav>
-        <div class="container <?php echo ($title == 'Home') ? '' : ' flex';?>" role="main">
-            
-                
+    <div class="container <?php echo ($title == 'Home') ? '' : ' flex';?>" role="main">

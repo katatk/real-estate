@@ -2,7 +2,8 @@
 session_start();
 $title = "Login";
 // if user is logged in and their role is agent, show them the dashboard nav, otherwise show the normal header
-(isset($_SESSION['logged_in']) && $_SESSION['role'] == "Agent") ? include 'dashboard-header.php' : include 'header.php';
+(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true && ($_SESSION['role'] == "Agent" || $_SESSION['role'] == "Admin")) ? include 'dashboard-header.php' : include 'header.php';
+
 // unset these placeholders so they don't show on if user goes back to register page
 unset($_SESSION['placeholder_password_confirm']);
 unset($_SESSION['placeholder_first_name']);
@@ -16,14 +17,14 @@ unset($_SESSION['placeholder_first_name']);
 
                 <h2>Login</h2>
                 <p>
-                <?php 
+                    <?php 
                     if (isset($_SESSION['alertMessage'])) { 
                         echo $_SESSION['alertMessage']; 
                         unset($_SESSION['alertMessage']);
                     }; 
                 ?>
                 </p>
-    
+
                 <form method="post" action="form-login.php" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="email">Email</label>
