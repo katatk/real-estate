@@ -92,19 +92,15 @@ $edit = false;
 
     // close statement
     $stmt->close();
-    
-    // close connection
-    $db->close();  
-    
+     
+    $edit = ($stored_id !== null);
 }
 
 // close connection
 $db->close();  
 
-
-$edit = ($stored_id !== null);
-
 if ($edit) {
+    
 $_SESSION['property_id'] = $stored_id;
 $_SESSION['img_url'] = $stored_img_url;
 $_SESSION['title'] = $stored_title;
