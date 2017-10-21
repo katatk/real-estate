@@ -4,14 +4,15 @@ session_start();
 include 'validation.php';
 // user can only access form-register via the POST method, not GET (typing directly into the address bar)
 if (empty($_POST['submit'])) {
-  header('Location: add-property.php');
+  header('Location: add-property');
   die(); 
 } 
 
 // set the submit messages
 $msg_fail = 'One or more fields have an error.';
 $msg_empty = 'Please fill in all required fields.';
-$msg_success = 'Property successfully added.';
+$msg_success_add = 'Property successfully added.';
+$msg_success_edit = 'Property successfully updated.';
 
 // set POST values to variables
 $img_url = $_POST['img-url'];
@@ -60,9 +61,38 @@ if (empty($description)) {
 $valid_form = !isset($error_img) && !isset($error_title) && !isset($error_price) && !isset($error_address) && !isset($error_description);
   
 if ($valid_form) {
+    
     // create the connection
     include('config.php');
 
+    // if id has been set, edit the current listing, else we are adding a new entry
+    if (isset($_POST['id'])) {
+    // creates the statement, prepare removes SQL syntax to prevent SQL injection attacks eg someone typing 'DROP table' into a field
+    $stmt = $db->prepare("INSERT INTO properties (Image_URL, Title, Type, City, Price, Address, Description) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param('sssssss', $img_url, $title, $type, $city, $price, $address, $description);
+
+    // running insert statement
+    if ($stmt->execute() === TRUE) {
+        echo "New record created successfully";
+         $_SESSION['alertMessage'] = "Property added successfully";
+    } else {
+        echo "Error: " . $db->error;
+    }
+
+    // close statement
+    $stmt->close();
+    // close connection
+    $db->close();   
+        
+    // show a success message
+     $_SESSION['alertMessage'] = $msg_success_edit;
+        
+    header("Location: add-property");
+    die();
+    }
+    
+    
+    
     // creates the statement, prepare removes SQL syntax to prevent SQL injection attacks eg someone typing 'DROP table' into a field
     $stmt = $db->prepare("INSERT INTO properties (Image_URL, Title, Type, City, Price, Address, Description) VALUES (?, ?, ?, ?, ?, ?, ?)");
     $stmt->bind_param('sssssss', $img_url, $title, $type, $city, $price, $address, $description);
@@ -81,12 +111,12 @@ if ($valid_form) {
     $db->close();    
 
     // show a success message
-     $_SESSION['alertMessage'] = $msg_success;
-    header("Location: add-property.php");
+     $_SESSION['alertMessage'] = $msg_success_add;
+    header("Location: add-property");
     die();
 
 } else {
     $_SESSION['alertMessage'] = $msg_empty;
-     header("Location: add-property.php");
+     header("Location: add-property");
     die();
 }

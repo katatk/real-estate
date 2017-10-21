@@ -65,8 +65,10 @@ if ($valid_form) {
     // create the connection
     include('config.php');
 
+    $sql = "SELECT Email_Address FROM users WHERE Email_Address=?";
+    
      // create query to check if email already exists in the database
-    $stmt = $db->prepare("SELECT Email_Address FROM users WHERE Email_Address=?");
+    $stmt = $db->prepare($sql);
     // bind parameters
     $stmt->bind_param('s', $email); 
 
@@ -98,7 +100,10 @@ if ($valid_form) {
 
     // if data is valid, insert into database
     // creates the statement, prepare removes SQL syntax to prevent SQL injection attacks eg someone typing 'DROP table students' into a field
-    $stmt = $db->prepare("INSERT INTO users (Email_Address, First_Name, Password, Role) VALUES (?, ?, ?, ?)");
+    
+    $sql = "INSERT INTO users (Email_Address, First_Name, Password, Role) VALUES (?, ?, ?, ?)";
+    
+    $stmt = $db->prepare($sql);
     $stmt->bind_param('ssss', $email, $first_name, $hashed_password, $role);
 
     // running insert statement

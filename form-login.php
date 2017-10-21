@@ -43,13 +43,15 @@ if ($valid_form) {
     // Create connection
     include 'config.php';
     
+    $sql = "SELECT Email_Address, Password, Role, First_Name FROM users WHERE Email_Address=?";
+    
     // check if email exists in database
-    $stmt = $db->prepare("SELECT Email_Address, Password, Role, First_Name FROM users WHERE Email_Address=?");
+    $stmt = $db->prepare($sql);
     
     $stmt->bind_param('s', $email);    
 
       // running insert statement
-        if ($stmt->execute() === TRUE) {
+        if ($stmt->execute() === true) {
             echo "Email checked successfully";
         } else {
             echo "Error: " . $db->error;
@@ -68,7 +70,7 @@ if ($valid_form) {
         $db->close();
     
     // if email address does not exist, redirect back to login page with an error message
-    if ($stored_email == NULL) {
+    if ($stored_email == null) {
          $_SESSION['error_email'] = "That email address does not exist";
          $_SESSION['alertMessage'] = $msg_fail;
          header("Location: login.php");
