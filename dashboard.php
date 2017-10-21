@@ -62,7 +62,7 @@ if ($_SESSION['logged_in'] == false) {
                     $output .= "<td>".$row["Address"]."</td>";
                     $output .= "<td>".$row["Description"]."</td>";
                     $output .= "<td><button class='btn btn-default'>Edit</button></td>";
-                    $output .= "<td><button class='btn btn-danger'>Delete</button></td>";
+                    $output .= "<td><a href='delete-property.php?id=".$row["Property_ID"]."' class='btn btn-danger' onclick='deleteProperty(btn)'>Delete</button></td> ";
                     $output .= "</tr>";
                     echo $output;
                 }

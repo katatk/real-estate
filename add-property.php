@@ -7,6 +7,43 @@ if (!$_SESSION['logged_in']) {
   header('Location: login.php');
   die(); 
 }
+
+include 'config.php';
+
+// adding not editing
+$edit = false;
+
+if (isset($_GET['id'])) {
+   
+    $property_id = $_GET['id'];
+    
+    $stmt = $db->prepare("SELECT Image_URL, Title, Type, City, Price, Address, Description FROM properties WHERE Property_ID=?");
+    
+    if ($stmt === FALSE) {
+        echo "Error: " . $db->error;
+        die();
+    }
+    
+    $stmt->bind_param('i', $property_id);
+
+    // running insert statement
+      if ($stmt->execute() === FALSE) {
+        echo "Error: " . $db->error;
+        die();
+    }
+    
+     $stmt->bind_result($img_url, $title, $type, $city, $price, $address, $description);
+
+    // close statement
+    $stmt->close();
+    
+    // close connection
+    $db->close();  
+    
+    $edit = true;
+}
+
+
 ?>
 
 <div class="row">
@@ -19,11 +56,11 @@ if (!$_SESSION['logged_in']) {
         <h2>Add a Property</h2>
 
         <?php 
-if (isset($_SESSION['alertMessage'])) { 
-    echo "<p>".$_SESSION['alertMessage']."</p>"; 
-    unset($_SESSION['alertMessage']);
-}; 
-?>
+        if (isset($_SESSION['alertMessage'])) { 
+            echo "<p>".$_SESSION['alertMessage']."</p>"; 
+            unset($_SESSION['alertMessage']);
+        }; 
+        ?>
         <form method="post" action="form-add-property.php" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="img-url">Image URL</label>

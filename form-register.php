@@ -71,10 +71,9 @@ if ($valid_form) {
     $stmt->bind_param('s', $email); 
 
      // running insert statement
-    if ($stmt->execute() === TRUE) {
-        echo "Email checked successfully";
-    } else {
+    if ($stmt->execute() === FALSE) {
         echo "Error: " . $db->error;
+        die();
     }
 
     // bind result variables
