@@ -83,9 +83,6 @@ function getPropertyById($db, $param_id) {
     // close statement
     $stmt->close();
     
-    // get all cities and property types
-    getAllCitiesAndTypes();
-        
     // close connection
     $db->close();  
     
