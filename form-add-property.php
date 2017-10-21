@@ -95,8 +95,10 @@ if ($valid_form) {
     
     else {
     
+    $sql = "INSERT INTO properties (Image_URL, Title, Type, City, Price, Address, Description) VALUES (?, ?, ?, ?, ?, ?, ?)";  
+        
     // creates the statement, prepare removes SQL syntax to prevent SQL injection attacks eg someone typing 'DROP table' into a field
-    $stmt = $db->prepare("INSERT INTO properties (Image_URL, Title, Type, City, Price, Address, Description) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $stmt = $db->prepare($sql);
     $stmt->bind_param('ssssiss', $img_url, $title, $type, $city, $price, $address, $description);
 
     // running insert statement
