@@ -9,19 +9,98 @@ if (!$_SESSION['logged_in']) {
 }
 
 include 'config.php';
-include 'sql-statements.php';
 
 // adding not editing
 $edit = false;
 
-// get property by id
-getPropertyById($db, $_GET['id']);
+  // get all the cities and property types
+    $cityArray = [];
+    $typeArray = [];
+    
+    $sql = "SELECT * FROM cities";
+            
+    $stmt = $db->prepare($sql);
 
-// get all cities and property types
-getAllCitiesAndTypes($db);
+    if ($stmt === false) {
+        echo "SQL statement error message: " . $db->error;
+        die();
+    }
+
+    $stmt->execute();
+
+    $results = $stmt->get_result();
+
+    if ($results->num_rows > 0) {
+        // output data of each row
+        while($row = $results->fetch_assoc()) {
+            array_push($cityArray, ($row["City"]));
+
+        }
+    }
+
+     // close statement
+    $stmt->close();
+    
+     $sql = "SELECT * FROM property_type";
+            
+    $stmt = $db->prepare($sql);
+
+    if ($stmt === false) {
+        echo "SQL statement error message:  " . $db->error;
+        die();
+    }
+
+    $stmt->execute();
+
+    $results = $stmt->get_result();
+
+    if ($results->num_rows > 0) {
+        // output data of each row
+        while($row = $results->fetch_assoc()) {
+            array_push($typeArray, ($row["Type"]));
+        }
+    }
+
+     // close statement
+    $stmt->close();
+
+ if (isset($_GET['$id'])) {
+   
+    $property_id = $_GET['$id'];
+    
+    $sql = "SELECT Property_ID, Image_URL, Title, Type, City, Price, Address, Description FROM properties WHERE Property_ID=?";
+    
+    $stmt = $db->prepare($sql);
+    
+    if ($stmt === false) {
+        echo "SQL statement error message: " . $db->error;
+        die();
+    }
+    
+    $stmt->bind_param('i', $property_id);
+
+    // running insert statement
+      if ($stmt->execute() === false) {
+        echo "Error: " . $db->error;
+        die();
+    }
+    
+     $stmt->bind_result($stored_id, $stored_img_url, $stored_title, $stored_type, $stored_city, $stored_price, $stored_address, $stored_description);
+    
+    // fetch value
+    $stmt->fetch();
+
+    // close statement
+    $stmt->close();
+    
+    // close connection
+    $db->close();  
+    
+}
 
 // close connection
 $db->close();  
+
 
 $edit = ($stored_id !== null);
 
@@ -35,7 +114,6 @@ $_SESSION['price'] = $stored_price;
 $_SESSION['address'] = $stored_address;
 $_SESSION['description'] = $stored_description;
 }
-
 
 ?>
 
@@ -55,13 +133,13 @@ $_SESSION['description'] = $stored_description;
         }; 
         ?>
         <form method="post" action="form-add-property.php" enctype="multipart/form-data">
-           
-           <input type="hidden" value="<?php 
+
+            <input type="hidden" value="<?php 
                 if (isset($_SESSION['property_id'])) 
                     echo $_SESSION['property_id']; 
                     unset($_SESSION['property_id']);
                 ?>" name="id">
-           
+
             <div class="form-group">
                 <label for="img-url">Image URL</label>
                 <input type="text" class="form-control" id="img-url" name="img-url" placeholder="eg. http://www.houses.com/your-property.jpg" value="<?php 
