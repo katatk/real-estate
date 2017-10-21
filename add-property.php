@@ -13,70 +13,70 @@ include 'config.php';
 // adding not editing
 $edit = false;
 
-  // get all the cities and property types
-    $cityArray = [];
-    $typeArray = [];
-    
-    $sql = "SELECT * FROM cities";
-            
-    $stmt = $db->prepare($sql);
+// get all the cities and property types
+$cityArray = [];
+$typeArray = [];
 
-    if ($stmt === false) {
-        echo "SQL statement error message: " . $db->error;
-        die();
+$sql = "SELECT * FROM cities";
+
+$stmt = $db->prepare($sql);
+
+if ($stmt === false) {
+    echo "SQL statement error message: " . $db->error;
+    die();
+}
+
+$stmt->execute();
+
+$results = $stmt->get_result();
+
+if ($results->num_rows > 0) {
+    // output data of each row
+    while($row = $results->fetch_assoc()) {
+        array_push($cityArray, ($row["City"]));
+
     }
+}
 
-    $stmt->execute();
+ // close statement
+$stmt->close();
 
-    $results = $stmt->get_result();
+ $sql = "SELECT * FROM property_type";
 
-    if ($results->num_rows > 0) {
-        // output data of each row
-        while($row = $results->fetch_assoc()) {
-            array_push($cityArray, ($row["City"]));
+$stmt = $db->prepare($sql);
 
-        }
+if ($stmt === false) {
+    echo "SQL statement error message:  " . $db->error;
+    die();
+}
+
+$stmt->execute();
+
+$results = $stmt->get_result();
+
+if ($results->num_rows > 0) {
+    // output data of each row
+    while($row = $results->fetch_assoc()) {
+        array_push($typeArray, ($row["Type"]));
     }
+}
 
-     // close statement
-    $stmt->close();
-    
-     $sql = "SELECT * FROM property_type";
-            
-    $stmt = $db->prepare($sql);
+ // close statement
+$stmt->close();
 
-    if ($stmt === false) {
-        echo "SQL statement error message:  " . $db->error;
-        die();
-    }
+if (isset($_GET['id'])) {
 
-    $stmt->execute();
+    $property_id = $_GET['id'];
 
-    $results = $stmt->get_result();
-
-    if ($results->num_rows > 0) {
-        // output data of each row
-        while($row = $results->fetch_assoc()) {
-            array_push($typeArray, ($row["Type"]));
-        }
-    }
-
-     // close statement
-    $stmt->close();
-
- if (isset($_GET['$id'])) {
-   
-    $property_id = $_GET['$id'];
-    
     $sql = "SELECT Property_ID, Image_URL, Title, Type, City, Price, Address, Description FROM properties WHERE Property_ID=?";
-    
+
     $stmt = $db->prepare($sql);
-    
+
     if ($stmt === false) {
         echo "SQL statement error message: " . $db->error;
         die();
     }
-    
+
     $stmt->bind_param('i', $property_id);
 
     // running insert statement
@@ -84,31 +84,31 @@ $edit = false;
         echo "Error: " . $db->error;
         die();
     }
-    
+
      $stmt->bind_result($stored_id, $stored_img_url, $stored_title, $stored_type, $stored_city, $stored_price, $stored_address, $stored_description);
-    
+
     // fetch value
     $stmt->fetch();
 
     // close statement
     $stmt->close();
-     
+
     $edit = ($stored_id !== null);
-}
+    }
 
-// close connection
-$db->close();  
+    // close connection
+    $db->close();  
 
-if ($edit) {
-    
-$_SESSION['property_id'] = $stored_id;
-$_SESSION['img_url'] = $stored_img_url;
-$_SESSION['title'] = $stored_title;
-$_SESSION['type'] = $stored_type;
-$_SESSION['city'] = $stored_city;
-$_SESSION['price'] = $stored_price;
-$_SESSION['address'] = $stored_address;
-$_SESSION['description'] = $stored_description;
+    if ($edit) {
+
+    $_SESSION['property_id'] = $stored_id;
+    $_SESSION['img_url'] = $stored_img_url;
+    $_SESSION['title'] = $stored_title;
+    $_SESSION['type'] = $stored_type;
+    $_SESSION['city'] = $stored_city;
+    $_SESSION['price'] = $stored_price;
+    $_SESSION['address'] = $stored_address;
+    $_SESSION['description'] = $stored_description;
 }
 
 ?>
@@ -143,7 +143,7 @@ $_SESSION['description'] = $stored_description;
                     echo $_SESSION['img_url']; 
                     unset($_SESSION['img_url']);
                 ?>">
-
+<!--
                 <label for="img-url">or upload an image</label>
                 <input type="file" name="img-upload" accept="image/*">
                 <div class="error">
@@ -153,7 +153,7 @@ $_SESSION['description'] = $stored_description;
                 unset($_SESSION['error_img']);
             }; 
         ?>
-                </div>
+                </div>-->
             </div>
             <div class="form-group">
                 <label for="title">Title</label>
@@ -177,7 +177,7 @@ $_SESSION['description'] = $stored_description;
                 <?php foreach ($typeArray as $type) {
                   echo "<option ";
                     echo "value='".$type."'";
-                    if($type == $stored_type) {
+                    if(isset($stored_type) && $type == $stored_type) {
                         echo " selected";
                     }
                     echo ">";
@@ -185,8 +185,6 @@ $_SESSION['description'] = $stored_description;
                    echo "</option>";
                     }
                 ?>
-             <!-- <option>Section</option>
-              <option>House</option>-->
         </select>
             </div>
             <div class="form-group">
@@ -196,7 +194,7 @@ $_SESSION['description'] = $stored_description;
                 foreach ($cityArray as $city) {
                     echo "<option ";
                     echo "value='".$city."'";
-                    if($city == $stored_city) {
+                    if(isset($stored_city) &&$city == $stored_city) {
                         echo " selected";
                     }
                     echo ">";
@@ -204,9 +202,6 @@ $_SESSION['description'] = $stored_description;
                     echo "</option>";
                 }
                 ?>
-            <!--<option>Auckland</option>
-            <option>Hamilton</option>
-            <option>Tauranga</option>-->
         </select>
             </div>
             <div class="form-group">

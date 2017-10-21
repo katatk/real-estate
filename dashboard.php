@@ -15,7 +15,12 @@ if ($_SESSION['logged_in'] == false) {
         <span class="welcome">Welcome, <?php echo $_SESSION['first_name']; ?></span>
 
         <h2>All Properties</h2>
-
+           <?php 
+        if (isset($_SESSION['alertMessage'])) { 
+            echo "<p>".$_SESSION['alertMessage']."</p>"; 
+            unset($_SESSION['alertMessage']);
+        }; 
+        ?>
         <table class="table table-responsive table-striped">
             <thead>
                 <tr>
@@ -62,7 +67,7 @@ if ($_SESSION['logged_in'] == false) {
                     $output .= "<td>".$row["Address"]."</td>";
                     $output .= "<td>".$row["Description"]."</td>";
                     $output .= "<td><a class='btn btn-default' href='add-property.php?id=".$row["Property_ID"]."'>Edit</a></td>";
-                    $output .= "<td><a href='delete-property.php?id=".$row["Property_ID"]."' class='btn btn-danger'>Delete</a></td> ";
+                    $output .= "<td><form method='get' action='delete-property.php' enctype='multipart/form-data'><a href='delete-property.php?id=".$row["Property_ID"]."' class='btn btn-danger'>Delete</a></form></td>";
                     $output .= "</tr>";
                     echo $output;
                 }

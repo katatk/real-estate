@@ -16,7 +16,7 @@ $msg_success_edit = 'Property successfully updated.';
 
 // set POST values to variables
 $img_url = $_POST['img-url'];
-$img_upload = $_POST['img-upload'];
+/*$img_upload = $_POST['img-upload'];*/
 $title = $_POST['title'];
 $type = $_POST['type'];
 $city = $_POST['city'];
@@ -67,16 +67,18 @@ if ($valid_form) {
 
     // if id has been set, edit the current listing, else we are adding a new entry
     if (isset($_POST['id'])) {
+        
+    $id = $_POST['id'];
+        
+    $sql = "INSERT INTO properties (Image_URL, Title, Type, City, Price, Address, Description) VALUES (?, ?, ?, ?, ?, ?, ?) WHERE Property_ID=?";
+        
     // creates the statement, prepare removes SQL syntax to prevent SQL injection attacks eg someone typing 'DROP table' into a field
-    $stmt = $db->prepare("INSERT INTO properties (Image_URL, Title, Type, City, Price, Address, Description) VALUES (?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param('sssssss', $img_url, $title, $type, $city, $price, $address, $description);
+    $stmt = $db->prepare($sql);
+    $stmt->bind_param('ssssissi', $img_url, $title, $type, $city, $price, $address, $description, $id);
 
     // running insert statement
-    if ($stmt->execute() === TRUE) {
-        echo "New record created successfully";
-         $_SESSION['alertMessage'] = "Property added successfully";
-    } else {
-        echo "Error: " . $db->error;
+    if ($stmt->execute() === false) {
+       echo "Error: " . $db->error;
     }
 
     // close statement
@@ -91,17 +93,14 @@ if ($valid_form) {
     die();
     }
     
-    
+    else {
     
     // creates the statement, prepare removes SQL syntax to prevent SQL injection attacks eg someone typing 'DROP table' into a field
     $stmt = $db->prepare("INSERT INTO properties (Image_URL, Title, Type, City, Price, Address, Description) VALUES (?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param('sssssss', $img_url, $title, $type, $city, $price, $address, $description);
+    $stmt->bind_param('ssssiss', $img_url, $title, $type, $city, $price, $address, $description);
 
     // running insert statement
-    if ($stmt->execute() === TRUE) {
-        echo "New record created successfully";
-         $_SESSION['alertMessage'] = "Property added successfully";
-    } else {
+    if ($stmt->execute() === false) {
         echo "Error: " . $db->error;
     }
 
@@ -115,8 +114,9 @@ if ($valid_form) {
     header("Location: add-property");
     die();
 
-} else {
-    $_SESSION['alertMessage'] = $msg_empty;
-     header("Location: add-property");
-    die();
+    }  
 }
+$_SESSION['alertMessage'] = $msg_empty;
+ header("Location: add-property");
+die();
+
