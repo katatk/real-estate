@@ -8,16 +8,17 @@ if (!$_SESSION['logged_in']) {
   die(); 
 }
 
+include 'config.php';
 include 'sql-statements.php';
 
 // adding not editing
 $edit = false;
 
 // get property by id
-getPropertyById($_GET['id']);
+getPropertyById($db, $_GET['id']);
 
 // get all cities and property types
-getAllCitiesAndTypes();
+getAllCitiesAndTypes($db);
 
 // close connection
 $db->close();  

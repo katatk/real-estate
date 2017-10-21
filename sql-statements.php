@@ -1,8 +1,6 @@
 <?php
 
-include 'config.php';
-
-function getAllCitiesAndTypes() {
+function getAllCitiesAndTypes($db) {
      // get all the cities and property types
     $cityArray = [];
     $typeArray = [];
@@ -55,7 +53,7 @@ function getAllCitiesAndTypes() {
     $stmt->close();
 }
 
-function getPropertyById($param_id) {
+function getPropertyById($db, $param_id) {
     if ($param_id) {
    
     $property_id = $param_id;
@@ -96,10 +94,10 @@ function getPropertyById($param_id) {
     
 }
 
-function sqlInsert($param_table, $param_columns, $param_values) {
+function sqlInsert($db, $param_table, $param_columns, $param_values) {
     
 }
 
-function sqlSelect($param_column, $param_table, $param_where=null) {
+function sqlSelect($db, $param_column, $param_table, $param_where=null) {
     
 }
