@@ -63,7 +63,7 @@ if ($_SESSION['logged_in'] == false) {
                     $output .= "<td>".$row["Title"]."</td>";
                     $output .= "<td>".$row["Type"]."</td>";
                     $output .= "<td>".$row["City"]."</td>";
-                    $output .= "<td>".$row["Price"]."</td>";
+                    $output .= "<td>$" . number_format($row["Price"])."</td>";
                     $output .= "<td>".$row["Address"]."</td>";
                     $output .= "<td>".$row["Description"]."</td>";
                     $output .= "<td><a class='btn btn-default' href='add-property.php?id=".$row["Property_ID"]."'>Edit</a></td>";

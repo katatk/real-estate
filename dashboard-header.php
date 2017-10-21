@@ -32,7 +32,7 @@
         </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                    <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true && ($_SESSION['role'] == "Agent" || $_SESSION['role'] == "Admin")) {
+                    <?php if (isset($_SESSION['logged_in']) && ($_SESSION['role'] == "Agent" || $_SESSION['role'] == "Admin")) {
                                 echo "<li class='nav-item";
                                 echo ($title == 'Dashboard') ? ' active' : '';
                                 echo "'><a class='nav-link' href='dashboard'>Dashboard</a></li>";
@@ -44,7 +44,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="./">View Site</a>
                     </li>
-                    <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
+                    <?php if (isset($_SESSION['logged_in'])) {
                                     echo "<li class='nav-item'><a class='nav-link' href='logout'>Logout</a></li>";
                                 }
                         ?>

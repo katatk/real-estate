@@ -70,7 +70,7 @@ if ($valid_form) {
         
     $id = $_POST['id'];
         
-    $sql = "INSERT INTO properties (Image_URL, Title, Type, City, Price, Address, Description) VALUES (?, ?, ?, ?, ?, ?, ?) WHERE Property_ID=?";
+    $sql = "UPDATE properties SET Image_URL=?, Title=?, Type=?, City=?, Price=?, Address=?, Description=? WHERE Property_ID=?";
         
     // creates the statement, prepare removes SQL syntax to prevent SQL injection attacks eg someone typing 'DROP table' into a field
     $stmt = $db->prepare($sql);
@@ -79,6 +79,7 @@ if ($valid_form) {
     // running insert statement
     if ($stmt->execute() === false) {
        echo "Error: " . $db->error;
+        die();
     }
 
     // close statement
@@ -104,6 +105,7 @@ if ($valid_form) {
     // running insert statement
     if ($stmt->execute() === false) {
         echo "Error: " . $db->error;
+        die();
     }
 
     // close statement

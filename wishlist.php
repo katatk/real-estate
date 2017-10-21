@@ -25,6 +25,7 @@ if (!$_SESSION['logged_in']) {
                         <th>Price</th>
                         <th>Address</th>
                         <th>Description</th>
+                        <th>Remove From Wishlist</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -34,7 +35,7 @@ if (!$_SESSION['logged_in']) {
                     include('config.php');
                     /* get all the rows of the property ID where the user email matches the user that's logged in */
                    
-                    $sql = "SELECT properties.Image_URL, properties.Title, properties.Type, properties.City, properties.Price, properties.Address, properties.Description FROM user_wishlist INNER JOIN properties
+                    $sql = "SELECT properties.Property_ID, properties.Image_URL, properties.Title, properties.Type, properties.City, properties.Price, properties.Address, properties.Description FROM user_wishlist INNER JOIN properties
                     ON user_wishlist.Property_ID = properties.Property_ID
                     WHERE user_wishlist.Email_Address=?";
                     
@@ -54,7 +55,7 @@ if (!$_SESSION['logged_in']) {
                     if ($results->num_rows > 0) {
                         // output data of each row
                         while($row = $results->fetch_assoc()) {
-                            echo "<tr><td>".$row["Image_URL"]."</td><td>".$row["Title"]."</td><td>".$row["Type"]."</td><td>".$row["City"]."</td><td>".$row["Price"]."</td><td>".$row["Address"]."</td><td>".$row["Description"]."</td></tr>";
+                            echo "<tr><td><img src='".$row["Image_URL"]."' class='thumbnail'></td><td>".$row["Title"]."</td><td>".$row["Type"]."</td><td>".$row["City"]."</td><td>$" . number_format($row["Price"])."</td><td>".$row["Address"]."</td><td>".$row["Description"]."</td><td><form method='get' action='remove-wishlist.php' enctype='multipart/form-data'><a href='remove-wishlist.php?id=".$row["Property_ID"]."' class='btn btn-danger'>Remove</a></form></td></tr>";
                         }
                     } else {
                         echo "You have no properties saved to your wishlist";

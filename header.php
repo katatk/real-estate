@@ -40,7 +40,7 @@
                         <li class="nav-item <?php echo ($title == 'Contact') ? ' active' : ''; ?>">
                             <a class="nav-link" href="contact">Contact</a>
                         </li>
-                        <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
+                        <?php if (isset($_SESSION['logged_in'])) {
                                 // if logged in as a normal user, show wishlist link
                                 if ($_SESSION['role'] == "User") {
                                     echo "<li class='nav-item";

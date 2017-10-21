@@ -96,6 +96,7 @@ if ($valid_form) {
       
         if ($stored_role == "User") {
             $_SESSION['role'] = "User";
+            $_SESSION['email_address'] = $stored_email;
             header("Location: wishlist.php");
             die();
         }

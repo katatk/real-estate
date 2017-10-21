@@ -47,7 +47,8 @@ $title = "View Property";
             // close connection
             $db->close();  
             
-            $output = "<img src='" . $stored_img_url . "' alt='" .$stored_title. "'>";
+            $output = "<form method='post' action='add-wishlist.php' enctype='multipart/form-data'><a href='add-wishlist?id=".$id."'><i class='icon icon-heart-empty shadow'></i></a></form>";
+            $output .= "<img src='" . $stored_img_url . "' alt='" .$stored_title. "'>";
             $output .= "<h1>" . $stored_title . "</h1>";
             $output .= "<h2>" . $stored_type . "</h2>";
             $output .= "<h2>" . $stored_city . "</h2>";

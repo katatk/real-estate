@@ -1,4 +1,5 @@
-<?php include('config.php'); 
+<?php 
+include('config.php'); 
 
 $sql = "SELECT Property_ID, Image_URL, Title, City, Price FROM properties";
 
@@ -20,6 +21,7 @@ if ($results->num_rows > 0) {
 while($row = $results->fetch_assoc()) {
     $output = "";
     $output .= "<div class='col-md-6'><div class='p-5'>";
+    $output .= "<form method='post' action='add-wishlist.php' enctype='multipart/form-data'><a href='add-wishlist?id=" . $row['Property_ID'] . "'><i class='icon icon-heart-empty shadow'></i></a></form>";
     $output .= "<a href='./view-property?id=" . $row['Property_ID'] . "'>";
     $output .= "<img class='featured-image' src='".$row['Image_URL']."'>";
     $output .= "</a>";
