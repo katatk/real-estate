@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include 'validation.php';
+include_once 'validation.php';
 // user can only access form-login via the POST method, not GET (typing directly into the address bar)
 if (empty($_POST['submit'])) {
   header('Location: login.php');
@@ -41,7 +41,7 @@ $valid_form = validateEmail($email) && validatePassword($password);
 
 if ($valid_form) {
     // Create connection
-    include 'config.php';
+    include_once 'config.php';
     
     $sql = "SELECT Email_Address, Password, Role, First_Name FROM users WHERE Email_Address=?";
     
@@ -65,9 +65,6 @@ if ($valid_form) {
         
         // close statement
         $stmt->close();
-    
-        // close the connection
-        $db->close();
     
     // if email address does not exist, redirect back to login page with an error message
     if ($stored_email == null) {

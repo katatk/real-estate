@@ -65,7 +65,7 @@ VALUES ('images/properties/auckland-house.jpg', '1053B Whangaparaoa Road', 'Hous
 ('images/properties/hamilton-house.jpg', '1049 River Road', 'House', 'Hamilton', 2250000, '1049 River Road, Hamilton', 'It is our pleasure to present this quality home at its exclusive address. From the moment you walk in the door of 1049 River Road you know you are about to view something extraordinary and you will want to own and experience this home for a lifetime.'),
 ('images/properties/auckland-section.jpg', 'Lot 2 Borman Road', 'Section', 'Hamilton', 800000, 'Lot 2 Borman Road', 'Large Greenfield site in the heart of the booming north-east Hamilton suburbs. Zoned for the new Rototuna Junior and Senior High Schools, and in proximity to the expressway and planned new mega town centre in Rototuna'),
 ('images/properties/tauranga-house.jpg', '18 Royal Ascot Drive', 'House', 'Tauranga', 2790000, '18 Royal Ascot Drive, Tauranga', 'Welcome to 26 Pillans Road, the pinnacle of luxury residential living, positioned in the beautiful suburb of Otumoetai and the growing city of Tauranga.'),
-('images/properties/auckland-section.jpg', '1 Papamoa Beach Road', 'Section', 'Tauranga', 775000, '1 Papamoa Beach Road, Tauranga', 'A large corner site of 574m² with a 16m wide frontage facing the coastal reserve and 38m long offering loads of room for off-street parking')
+('images/properties/auckland-section.jpg', '1 Papamoa Beach Road', 'Section', 'Tauranga', 775000, '1 Papamoa Beach Road, Tauranga', 'A large corner site of 574m² with a 16m wide frontage facing the coastal reserve and 38m long offering loads of room for off-street parking');
 
 
 

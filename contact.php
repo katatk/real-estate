@@ -1,7 +1,7 @@
 <?php
 session_start();
 $title = "Contact";
-include 'header.php';
+include_once 'header.php';
 ?>
 
     <div class="row">
@@ -128,4 +128,4 @@ include 'header.php';
         }
 
     </script>
-    <?php include 'footer.php'; ?>
+    <?php include_once 'footer.php'; ?>

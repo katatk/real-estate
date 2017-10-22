@@ -1,7 +1,7 @@
 <?php
 session_start();
 $title = "About Us";
-include 'header.php';
+include_once 'header.php';
 ?>
     <div class="row">
         <div class="col-12">
@@ -157,4 +157,4 @@ include 'header.php';
     </section>
 
 
-    <?php include 'footer.php'; ?>
+    <?php include_once 'footer.php'; ?>

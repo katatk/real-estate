@@ -83,9 +83,6 @@ function getPropertyById($db, $param_id) {
     // close statement
     $stmt->close();
     
-    // close connection
-    $db->close();  
-    
 }
 
     

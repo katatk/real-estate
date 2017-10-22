@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'config.php';
+include_once 'config.php';
 
 if (isset($_GET['id'])) {
    
@@ -19,8 +19,6 @@ if (isset($_GET['id'])) {
 
     // close statement
     $stmt->close();
-    // close connection
-    $db->close();   
         
     // show a success message
     $_SESSION['alertMessage'] = "Property 00". $id . " deleted";

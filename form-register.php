@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include 'validation.php';
+include_once 'validation.php';
 
 // user can only access form-register via the POST method, not GET (typing directly into the address bar)
 if (empty($_POST['submit'])) {
@@ -63,7 +63,7 @@ if (passwordsMatch($password, $password_confirm)){
 if ($valid_form) {
     
     // create the connection
-    include('config.php');
+    include_once('config.php');
 
     $sql = "SELECT Email_Address FROM users WHERE Email_Address=?";
     
@@ -116,8 +116,6 @@ if ($valid_form) {
 
     // close statement
     $stmt->close();
-    // close connection
-    $db->close();    
 
     // take user to login page
     $_SESSION['alertMessage'] = "Account created successfully";

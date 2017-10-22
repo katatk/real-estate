@@ -1,14 +1,14 @@
 <?php 
 session_start();
 $title = "Add a Property";
-include 'dashboard-header.php'; 
+include_once 'dashboard-header.php'; 
 
 if (!$_SESSION['logged_in']) {
   header('Location: login.php');
   die(); 
 }
 
-include 'config.php';
+include_once 'config.php';
 
 // adding not editing
 $edit = false;
@@ -95,9 +95,7 @@ if (isset($_GET['id'])) {
 
     $edit = ($stored_id !== null);
     }
-
-    // close connection
-    $db->close();  
+  
 
     if ($edit) {
 
@@ -143,17 +141,17 @@ if (isset($_GET['id'])) {
                     echo $_SESSION['img_url']; 
                     unset($_SESSION['img_url']);
                 ?>">
-<!--
+
                 <label for="img-url">or upload an image</label>
                 <input type="file" name="img-upload" accept="image/*">
                 <div class="error">
                     <?php 
-            if (isset($_SESSION['error_img'])) { 
-                echo $_SESSION['error_img'];
-                unset($_SESSION['error_img']);
-            }; 
-        ?>
-                </div>-->
+                    if (isset($_SESSION['error_img'])) { 
+                        echo $_SESSION['error_img'];
+                        unset($_SESSION['error_img']);
+                    }; 
+                    ?>
+                </div>
             </div>
             <div class="form-group">
                 <label for="title">Title</label>
@@ -174,16 +172,17 @@ if (isset($_GET['id'])) {
             <div class="form-group">
                 <label for="type">Type</label>
                 <select class="form-control" id="type" name="type">
-                <?php foreach ($typeArray as $type) {
-                  echo "<option ";
-                    echo "value='".$type."'";
-                    if(isset($stored_type) && $type == $stored_type) {
-                        echo " selected";
-                    }
-                    echo ">";
-                   echo $type;
-                   echo "</option>";
-                    }
+                <?php 
+                foreach ($typeArray as $type) {
+                echo "<option ";
+                echo "value='".$type."'";
+                if(isset($stored_type) && $type == $stored_type) {
+                    echo " selected";
+                }
+                echo ">";
+                echo $type;
+                echo "</option>";
+                }
                 ?>
         </select>
             </div>
@@ -191,17 +190,17 @@ if (isset($_GET['id'])) {
                 <label for="city">City</label>
                 <select class="form-control" id="city" name="city">
                  <?php
-                foreach ($cityArray as $city) {
+                 foreach ($cityArray as $city) {
                     echo "<option ";
                     echo "value='".$city."'";
-                    if(isset($stored_city) &&$city == $stored_city) {
+                    if(isset($stored_city) && city == $stored_city) {
                         echo " selected";
                     }
                     echo ">";
                     echo $city;
                     echo "</option>";
-                }
-                ?>
+                 }
+                 ?>
         </select>
             </div>
             <div class="form-group">
@@ -260,4 +259,4 @@ if (isset($_GET['id'])) {
 </div>
 
 
-<?php include "footer.php"; ?>
+<?php include_once "footer.php"; ?>

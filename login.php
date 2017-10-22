@@ -2,7 +2,7 @@
 session_start();
 $title = "Login";
 // if user is logged in and their role is agent, show them the dashboard nav, otherwise show the normal header
-(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true && ($_SESSION['role'] == "Agent" || $_SESSION['role'] == "Admin")) ? include 'dashboard-header.php' : include 'header.php';
+(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true && ($_SESSION['role'] == "Agent" || $_SESSION['role'] == "Admin")) ? include_once 'dashboard-header.php' : include_once 'header.php';
 
 // unset these placeholders so they don't show on if user goes back to register page
 unset($_SESSION['placeholder_password_confirm']);
@@ -84,4 +84,4 @@ unset($_SESSION['placeholder_first_name']);
 </section>
 
 
-<?php include 'footer.php'; ?>
+<?php include_once 'footer.php'; ?>

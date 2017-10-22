@@ -1,7 +1,7 @@
 <?php 
 session_start();
 $title = "Wishlist";
-include 'header.php';
+include_once 'header.php';
 
 if (!$_SESSION['logged_in']) {
   header('Location: login.php');
@@ -32,7 +32,7 @@ if (!$_SESSION['logged_in']) {
                     <!-- fetch properties from the database -->
                     <?php
 
-                    include('config.php');
+                    include_once('config.php');
                     /* get all the rows of the property ID where the user email matches the user that's logged in */
                    
                     $sql = "SELECT properties.Property_ID, properties.Image_URL, properties.Title, properties.Type, properties.City, properties.Price, properties.Address, properties.Description FROM user_wishlist INNER JOIN properties
@@ -64,8 +64,6 @@ if (!$_SESSION['logged_in']) {
                     // close statement
                     $stmt->close();
 
-                    // close the connection
-                    $db->close();
                     ?>
 
     
@@ -73,4 +71,4 @@ if (!$_SESSION['logged_in']) {
             </table>
     </div>
 </div>            
-<?php include 'footer.php'; ?>
+<?php include_once 'footer.php'; ?>

@@ -1,23 +1,25 @@
 <?php 
-include('config.php'); 
+
+include_once 'config.php';
 
 $sql = "SELECT Property_ID, Image_URL, Title, City, Price FROM properties";
 
 $stmt = $db->prepare($sql);
                    
-        if ($stmt === false) {
-        printf("Errormessage: %s\n", $db->error);
-        die();
-        }
+    if ($stmt === false) {
+    printf("Errormessage: %s\n", $db->error);
+    die();
+    }
        
-       
-$stmt->execute();
+// running insert statement
+if ($stmt->execute() === false) {
+    echo "Error: " . $db->error;
+}
 
 $results = $stmt->get_result();
 
 if ($results->num_rows > 0) {
 // output data of each row
-
 while($row = $results->fetch_assoc()) {
     $output = "";
     $output .= "<div class='col-md-6'><div class='p-5'>";
@@ -34,12 +36,10 @@ while($row = $results->fetch_assoc()) {
 }
 
 } else {
-echo "No properties found.";
+    echo "<p>No properties found.</p>";
 }
 
 // close statement
 $stmt->close();
 
-// close the connection
-$db->close();
 

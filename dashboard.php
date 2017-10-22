@@ -1,7 +1,7 @@
 <?php 
 session_start();
 $title = "Dashboard";
-include 'dashboard-header.php'; 
+include_once 'dashboard-header.php'; 
 
 if ($_SESSION['logged_in'] == false) {
   header('Location: login.php');
@@ -39,7 +39,7 @@ if ($_SESSION['logged_in'] == false) {
             <tbody>
                 <!-- fetch properties from the database -->
                 <?php
-            include('config.php');
+            include_once('config.php');
 
             $sql = "SELECT * FROM properties ORDER BY Property_ID";
             
@@ -78,8 +78,6 @@ if ($_SESSION['logged_in'] == false) {
             // close statement
             $stmt->close();
 
-            // close the connection
-            $db->close();
             ?>
 
             </tbody>
@@ -87,4 +85,4 @@ if ($_SESSION['logged_in'] == false) {
     </div>
 </div>
 
-<?php include 'footer.php'; ?>
+<?php include_once 'footer.php'; ?>

@@ -2,7 +2,7 @@
 session_start();
 $title = "Register";
 /// if user is logged in and their role is agent, show them the dashboard nav, otherwise show the normal header
-(isset($_SESSION['logged_in']) && $_SESSION['role'] == "Agent") ? include 'dashboard-header.php' : include 'header.php';
+(isset($_SESSION['logged_in']) && $_SESSION['role'] == "Agent") ? include_once 'dashboard-header.php' : include_once 'header.php';
 ?>
 
 <section>
@@ -109,4 +109,4 @@ $title = "Register";
     </div>
 </section>
 
-<?php include 'footer.php'; ?>
+<?php include_once 'footer.php'; ?>

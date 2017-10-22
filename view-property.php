@@ -3,7 +3,7 @@ session_start();
 
 $title = "View Property";
  
-(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true && ($_SESSION['role'] == "Agent" || $_SESSION['role'] == "Admin")) ? include 'dashboard-header.php' : include 'header.php';
+(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true && ($_SESSION['role'] == "Agent" || $_SESSION['role'] == "Admin")) ? include_once 'dashboard-header.php' : include_once 'header.php';
 ?>
 
     <div class="row">
@@ -11,7 +11,7 @@ $title = "View Property";
 
         <?php
 
-        include('config.php');             
+        include_once('config.php');             
 
         if(!isset($_GET['id'])) {
             echo "<p>Property not found.</p>";
@@ -44,9 +44,6 @@ $title = "View Property";
             // close statement
             $stmt->close();
 
-            // close connection
-            $db->close();  
-            
             $output = "<form method='post' action='add-wishlist.php' enctype='multipart/form-data'><a href='add-wishlist?id=".$id."'><i class='icon icon-heart-empty shadow'></i></a></form>";
             $output .= "<img src='" . $stored_img_url . "' alt='" .$stored_title. "'>";
             $output .= "<h1>" . $stored_title . "</h1>";
@@ -64,4 +61,4 @@ $title = "View Property";
         </div>
     </div>
 
-    <?php include 'footer.php' ?>
+    <?php include_once 'footer.php' ?>
