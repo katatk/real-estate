@@ -59,4 +59,4 @@
             </div>
         </div>
     </nav>
-    <div class="container <?php echo ($title == 'Home') ? '' : ' flex';?>" role="main">
+    <div class="container<?php echo ($title == 'Home') ? '-fluid' : ' flex';?>" role="main">

@@ -1,7 +1,5 @@
 <?php
 
-include_once 'config.php';
-
 // get all the cities and property types
 $cityArray = [];
 $typeArray = [];
@@ -66,7 +64,7 @@ $stmt->close();
             ?>
         </select>
     </div>
-    <!-- <div class="form-group search-separator">
+     <div class="form-group search-separator">
         <label for="property-type">PROPERTY TYPE</label>
         <select name="property-type" id="property-type">
            <option value="All Types">All Types</option>
@@ -97,6 +95,6 @@ $stmt->close();
             <option value="5m">$5M</option>
             <option value="10m" selected>$10M+</option>
        </select>
-    </div>-->
+    </div>
     <button type="submit" name="submit" class="btn search-btn"><span class="glyphicon glyphicon-search"></span>SEARCH</button>
 </form>

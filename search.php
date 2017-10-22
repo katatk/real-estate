@@ -29,7 +29,6 @@ include_once 'config.php';
         </div>
     </header>
 
-
     <section>
         <h1 class="title">Results <?php echo (isset($_GET['city']) ? "For " . $_GET['city'] : "")?> </h1>
         <div class="row align-items-center">

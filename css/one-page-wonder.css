@@ -1,5 +1,5 @@
     header.masthead {
-        background: url('auckland2.jpg') no-repeat center center scroll;
+        background: url('../images/auckland2.jpg') no-repeat center center scroll;
         background-size: cover;
         -o-background-size: cover;
         height: 100vh;
@@ -248,6 +248,7 @@
         padding-left: 10px;
         text-align: left;
         border-left: 4px solid #ffcd73;
+        text-transform: uppercase;
     }
 
     .listing-title {
