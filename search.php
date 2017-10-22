@@ -3,15 +3,14 @@ session_start();
 $title = "Home";
 
 include_once 'header.php';
-include_once 'config.php';
             
 ?>
        <header class="masthead">
         <div class="overlay">
             <div class="container featured-text-container">
-                <a href="./search.php?city=Auckland">AUCKLAND</a> 
-                <a href="./search.php?city=Hamilton">HAMILTON</a>
-                <a href="./search.php?city=Tauranga">TAURANGA</a>
+                <a href="./search?city=Auckland">AUCKLAND</a> 
+                <a href="./search?city=Hamilton">HAMILTON</a>
+                <a href="./search?city=Tauranga">TAURANGA</a>
                 <p class="featured-heading">THE REAL ESTATE COMPANY<br>THATS WITH YOU ALL THE WAY</p>
                 <p class="featured-text2">HIGH END LUXURY HOUSES &amp; GRAND SECTIONS WITH BEAUTIFUL VIEWS</p>
                 <section>

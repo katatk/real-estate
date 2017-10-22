@@ -1,14 +1,15 @@
 <?php
 session_start();
 
-include_once 'validation.php';
-include_once 'file-upload.php';
-
 // user can only access form-register via the POST method, not GET (typing directly into the address bar)
 if (empty($_POST['submit'])) {
   header('Location: add-property');
   die(); 
 } 
+
+include_once 'validation.php';
+include_once 'file-upload.php';
+include_once 'config.php';
 
 // set the submit messages
 $msg_fail = 'One or more fields have an error.';
@@ -18,7 +19,7 @@ $msg_success_edit = 'Property successfully updated.';
 
 // set POST values to variables
 $img_url = $_POST['img-url'];
-$img_upload = $_FILES['img-upload'];
+$img_upload = $_FILES['img-upload']['tmp_name'];
 $title = $_POST['title'];
 $type = $_POST['type'];
 $city = $_POST['city'];
@@ -26,11 +27,10 @@ $price = $_POST['price'];
 $address = $_POST['address'];
 $description = $_POST['description'];
 
+$redirect_url = 'add-property';
 
-$redirect_url = 'add-property.php';
-    
 // edit redirect url
-if(isset($_POST['id'])) {
+if(!empty($_POST['id'])) {
     $redirect_url .= '?id=' . $_POST['id'];
 }
 
@@ -53,7 +53,7 @@ if ((empty($img_url) || empty($img_upload)) && empty($title) && empty($type) && 
 $empty_form = true;
 
 // set the error messages if any fields are empty
-if (empty($img_url) || empty($img_upload)) {
+if (empty($img_url) && empty($img_upload)) {
    $_SESSION['error_img'] = "Please upload an image or enter a url";
     $empty_form = false;
 }
@@ -84,14 +84,16 @@ if (!$empty_form) {
 // validate the data
 $valid_form = true;
 
+// if an image has been uploaded (not empty) then validate it
+
 if (!empty($img_upload)) {
-    validateMimeType($img_upload['tmp_name']);
+    validateMimeType($img_upload);
     
-    if (validateMimeType($img_upload['tmp_name']) == false) {
+    if (validateMimeType($img_upload) == false) {
        $_SESSION['error_img'] = "Please upload a valid image type: PNG or JPG";
        $valid_form = false;
     } else {
-        $img_url = storeUploadedFile($img_upload['tmp_name']);
+        $img_url = storeUploadedFile($img_upload);
     }
 }
 
@@ -101,11 +103,8 @@ if (!$valid_form) {
     die();
 }
 
-// create the connection
-include_once('config.php');
-
 // if id has been set, edit the current listing, else we are adding a new entry
-if (isset($_POST['id'])) {
+if (!empty($_POST['id'])) {
     
     $id = $_POST['id'];
     

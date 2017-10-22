@@ -1,6 +1,8 @@
 <?php 
 session_start();
+
 $title = "Login";
+
 // if user is logged in and their role is agent, show them the dashboard nav, otherwise show the normal header
 (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true && ($_SESSION['role'] == "Agent" || $_SESSION['role'] == "Admin")) ? include_once 'dashboard-header.php' : include_once 'header.php';
 

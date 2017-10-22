@@ -1,10 +1,9 @@
 <?php 
 session_start();
 
-if (isset($_SESSION['logged_in']) && $_SESSION['role'] == "User") {
+include_once 'config.php';
 
-    // create the connection
-    include_once('config.php');
+if (isset($_SESSION['logged_in']) && $_SESSION['role'] == "User") {
 
     // if id has been set, edit the current listing, else we are adding a new entry
     if (isset($_GET['id'])) {

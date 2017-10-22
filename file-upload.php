@@ -1,5 +1,4 @@
 <?php
-$target_file = $target_dir . basename($_FILES["img-upload"]["name"]);
 
 function storeUploadedFile($tmpFilePath){
     

@@ -1,12 +1,14 @@
 <?php
 session_start();
 
-include_once 'validation.php';
 // user can only access form-login via the POST method, not GET (typing directly into the address bar)
 if (empty($_POST['submit'])) {
-  header('Location: login.php');
+  header('Location: login');
   die(); 
 } 
+
+include_once 'validation.php';
+include_once 'config.php';
 
 // set the submit messages
 $msg_fail = 'One or more fields have an error.';
@@ -24,7 +26,7 @@ $_SESSION['placeholder_password'] = $password;
 // if no fields have been filled out
 if (empty($email) && empty($password)) {
      $_SESSION['alertMessage'] = $msg_empty;
-     header("Location: login.php");
+     header("Location: login");
      die();
 } 
 
@@ -40,8 +42,6 @@ function clean_input($data) {
 $valid_form = validateEmail($email) && validatePassword($password);
 
 if ($valid_form) {
-    // Create connection
-    include_once 'config.php';
     
     $sql = "SELECT Email_Address, Password, Role, First_Name FROM users WHERE Email_Address=?";
     
@@ -70,7 +70,7 @@ if ($valid_form) {
     if ($stored_email == null) {
          $_SESSION['error_email'] = "That email address does not exist";
          $_SESSION['alertMessage'] = $msg_fail;
-         header("Location: login.php");
+         header("Location: login");
          die();
     }
     
@@ -94,22 +94,22 @@ if ($valid_form) {
         if ($stored_role == "User") {
             $_SESSION['role'] = "User";
             $_SESSION['email_address'] = $stored_email;
-            header("Location: wishlist.php");
+            header("Location: wishlist");
             die();
         }
         $_SESSION['role'] = "Agent";
-        header("Location: dashboard.php");
+        header("Location: dashboard");
         die();
     } else {
          $_SESSION['error_password'] = "Your password is incorrect";
          $_SESSION['alertMessage'] = $msg_fail;
-         header("Location: login.php");
+         header("Location: login");
          die();
     }
 
 } else {
     $_SESSION['alertMessage'] = $msg_fail;
-    header("Location: login.php");
+    header("Location: login");
     die();
 }
 ?>

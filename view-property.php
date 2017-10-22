@@ -11,8 +11,6 @@ $title = "View Property";
 
         <?php
 
-        include_once('config.php');             
-
         if(!isset($_GET['id'])) {
             echo "<p>Property not found.</p>";
         } else {

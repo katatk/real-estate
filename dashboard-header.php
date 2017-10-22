@@ -45,10 +45,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="./">View Site</a>
                     </li>
-                    <?php if (isset($_SESSION['logged_in'])) {
-                                    echo "<li class='nav-item'><a class='nav-link' href='logout'>Logout</a></li>";
-                                }
-                        ?>
+                    <?php 
+                    if (isset($_SESSION['logged_in'])) {
+                        echo "<li class='nav-item'><a class='nav-link' href='logout'>Hi ". $_SESSION['first_name'] .", Logout?</a></li>";
+                    }
+                    ?>
                 </ul>
             </div>
         </div>

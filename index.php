@@ -14,9 +14,9 @@ ini_set('display_errors', "1");
         <div class="overlay">
             <div class="container featured-text-container">
                 <p class="featured-text1">
-                    <a href="./search.php?city=Auckland">AUCKLAND</a>
-                    <a href="./search.php?city=Hamilton">HAMILTON</a>
-                    <a href="./search.php?city=Tauranga">TAURANGA</a>
+                    <a href="./search?city=Auckland">AUCKLAND</a>
+                    <a href="./search?city=Hamilton">HAMILTON</a>
+                    <a href="./search?city=Tauranga">TAURANGA</a>
                 </p>
                 <p class="featured-heading">THE REAL ESTATE COMPANY<br>THATS WITH YOU ALL THE WAY</p>
                 <p class="featured-text2">HIGH END LUXURY HOUSES &amp; GRAND SECTIONS WITH BEAUTIFUL VIEWS</p>

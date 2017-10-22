@@ -4,11 +4,9 @@ $title = "Add a Property";
 include_once 'dashboard-header.php'; 
 
 if (!$_SESSION['logged_in']) {
-  header('Location: login.php');
+  header('Location: login');
   die(); 
 }
-
-include_once 'config.php';
 
 // adding not editing
 $edit = false;
@@ -174,14 +172,14 @@ if (isset($_GET['id'])) {
                 <select class="form-control" id="type" name="type">
                 <?php 
                 foreach ($typeArray as $type) {
-                echo "<option ";
-                echo "value='".$type."'";
-                if(isset($stored_type) && $type == $stored_type) {
-                    echo " selected";
-                }
-                echo ">";
-                echo $type;
-                echo "</option>";
+                    echo "<option ";
+                    echo "value='".$type."'";
+                    if(isset($stored_type) && $type == $stored_type) {
+                        echo " selected";
+                    }
+                    echo ">";
+                    echo $type;
+                    echo "</option>";
                 }
                 ?>
         </select>

@@ -4,7 +4,7 @@ $title = "Wishlist";
 include_once 'header.php';
 
 if (!$_SESSION['logged_in']) {
-  header('Location: login.php');
+  header('Location: login');
   die(); 
 } 
 
@@ -31,8 +31,6 @@ if (!$_SESSION['logged_in']) {
                 <tbody>
                     <!-- fetch properties from the database -->
                     <?php
-
-                    include_once('config.php');
                     /* get all the rows of the property ID where the user email matches the user that's logged in */
                    
                     $sql = "SELECT properties.Property_ID, properties.Image_URL, properties.Title, properties.Type, properties.City, properties.Price, properties.Address, properties.Description FROM user_wishlist INNER JOIN properties

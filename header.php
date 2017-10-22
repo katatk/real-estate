@@ -52,7 +52,7 @@
                                     echo "<li class='nav-item'><a class='nav-link' href='dashboard'>Dashboard</a></li>";
                                 }
                                 // if logged in, show logout link
-                                echo "<li class='nav-item'><a class='nav-link' href='logout'>Logout</a></li>";
+                                echo "<li class='nav-item'><a class='nav-link' href='logout'>Hi ". $_SESSION['first_name'] .", Logout?</a></li>";
                             }
                         ?>
                 </ul>

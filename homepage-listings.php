@@ -1,7 +1,5 @@
 <?php 
 
-include_once 'config.php';
-
 $sql = "SELECT Property_ID, Image_URL, Title, City, Price FROM properties";
 
 $stmt = $db->prepare($sql);

@@ -4,7 +4,7 @@ $title = "Dashboard";
 include_once 'dashboard-header.php'; 
 
 if ($_SESSION['logged_in'] == false) {
-  header('Location: login.php');
+  header('Location: login');
   die(); 
 }
 ?>
@@ -37,9 +37,8 @@ if ($_SESSION['logged_in'] == false) {
                 </tr>
             </thead>
             <tbody>
-                <!-- fetch properties from the database -->
-                <?php
-            include_once('config.php');
+            <!-- fetch properties from the database -->
+            <?php
 
             $sql = "SELECT * FROM properties ORDER BY Property_ID";
             

@@ -225,6 +225,10 @@
         text-shadow: none;
     }
 
+.navbar-nav {
+    color: #000;
+}
+
 
     /* Kat's custom styles end */
 

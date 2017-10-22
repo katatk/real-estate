@@ -1,13 +1,14 @@
 <?php
 session_start();
 
-include_once 'validation.php';
-
 // user can only access form-register via the POST method, not GET (typing directly into the address bar)
 if (empty($_POST['submit'])) {
-  header('Location: register.php');
+  header('Location: register.');
   die(); 
 } 
+
+include_once 'validation.php';
+include_once 'config.php';
 
 // set the submit messages
 $msg_fail = 'One or more fields have an error.';
@@ -30,7 +31,7 @@ $_SESSION['placeholder_password_confirm'] = $password_confirm;
 // if no fields have been filled out
 if (empty($first_name) && empty($email) && empty($password) && empty($password_confirm)) {
      $_SESSION['alertMessage'] = $msg_empty;
-     header("Location: register.php");
+     header("Location: register");
      die();
 } 
 
@@ -62,9 +63,6 @@ if (passwordsMatch($password, $password_confirm)){
     
 if ($valid_form) {
     
-    // create the connection
-    include_once('config.php');
-
     $sql = "SELECT Email_Address FROM users WHERE Email_Address=?";
     
      // create query to check if email already exists in the database
@@ -94,7 +92,7 @@ if ($valid_form) {
     $_SESSION['alertMessage'] = $msg_fail;
 
     // go back to the register page
-    header("Location: register.php");
+    header("Location: register");
     die();
     }
 
@@ -119,11 +117,11 @@ if ($valid_form) {
 
     // take user to login page
     $_SESSION['alertMessage'] = "Account created successfully";
-    header("Location: login.php");
+    header("Location: login");
     die();
 
 } else {
     $_SESSION['alertMessage'] = $msg_fail;
-    header("Location: register.php");
+    header("Location: register");
     die();
 }
