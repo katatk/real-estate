@@ -94,9 +94,8 @@ if (isset($_GET['id'])) {
     $edit = ($stored_id !== null);
     }
   
-
+    // if id is set in get, we are editing listing
     if ($edit) {
-
     $_SESSION['property_id'] = $stored_id;
     $_SESSION['img_url'] = $stored_img_url;
     $_SESSION['title'] = $stored_title;
@@ -133,7 +132,11 @@ if (isset($_GET['id'])) {
                 ?>" name="id">
 
             <div class="form-group">
-                <label for="img-url">Image URL</label>
+               <?php if($edit){
+                echo "<img class='thumbnail' src='" . $stored_img_url . "'>";
+               }
+               ?>
+                <br><label for="img-url">Image URL</label>
                 <input type="text" class="form-control" id="img-url" name="img-url" placeholder="eg. http://www.houses.com/your-property.jpg" value="<?php 
                 if (isset($_SESSION['img_url'])) 
                     echo $_SESSION['img_url']; 
