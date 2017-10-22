@@ -9,7 +9,6 @@ error_reporting(E_ALL);
 ini_set('display_errors', "1");
 
 ?>
-    >
     <header class="masthead">
         <div class="overlay">
             <div class="container featured-text-container">
@@ -18,7 +17,7 @@ ini_set('display_errors', "1");
                     <a href="./search?city=Hamilton">HAMILTON</a>
                     <a href="./search?city=Tauranga">TAURANGA</a>
                 </p>
-                <p class="featured-heading">THE REAL ESTATE COMPANY<br>THATS WITH YOU ALL THE WAY</p>
+                <p class="featured-heading">THE REAL ESTATE COMPANY<br>THAT'S WITH YOU ALL THE WAY</p>
                 <p class="featured-text2">HIGH END LUXURY HOUSES &amp; GRAND SECTIONS WITH BEAUTIFUL VIEWS</p>
                 <section>
 

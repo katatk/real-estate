@@ -66,7 +66,7 @@ $stmt->close();
     </div>
      <div class="form-group search-separator">
         <label for="property-type">PROPERTY TYPE</label>
-        <select name="property-type" id="property-type">
+        <select name="type" id="property-type">
            <option value="All Types">All Types</option>
             <?php 
             foreach ($typeArray as $type) {
@@ -79,21 +79,20 @@ $stmt->close();
         <label for="price">PRICE</label>
         <select name="price-min" id="price-min">
             <option value="0">$0</option>
-            <option value="100">$100k</option>
-            <option value="500">$500k</option>
-            <option value="1m">$1M</option>
-            <option value="2m">$2M</option>
-            <option value="5m">$5M</option>
-            <option value="10m">$10M+</option>
+            <option value="100000">$100k</option>
+            <option value="500000">$500k</option>
+            <option value="1000000">$1M</option>
+            <option value="2000000">$2M</option>
+            <option value="5000000">$5M</option>
+            <option value="10000000">$10M+</option>
         </select> to
         <select name="price-max" id="price-max">
-            <option value="0">$0</option>
-            <option value="100">$100k</option>
-            <option value="500">$500k</option>
-            <option value="1m">$1M</option>
-            <option value="2m">$2M</option>
-            <option value="5m">$5M</option>
-            <option value="10m" selected>$10M+</option>
+            <option value="100000">$100k</option>
+            <option value="500000">$500k</option>
+            <option value="1000000">$1M</option>
+            <option value="2000000">$2M</option>
+            <option value="5000000">$5M</option>
+            <option selected value="10000000">$10M+</option>
        </select>
     </div>
     <button type="submit" name="submit" class="btn search-btn"><span class="glyphicon glyphicon-search"></span>SEARCH</button>
