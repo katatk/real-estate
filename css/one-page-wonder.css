@@ -46,6 +46,9 @@
         padding: 6rem 0;
     }
 
+    .container-fluid {
+        padding: 0;
+    }
 
     /* footer links */
 

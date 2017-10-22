@@ -9,7 +9,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', "1");
 
 ?>
-
+    >
     <header class="masthead">
         <div class="overlay">
             <div class="container featured-text-container">
@@ -21,13 +21,12 @@ ini_set('display_errors', "1");
                 <p class="featured-heading">THE REAL ESTATE COMPANY<br>THATS WITH YOU ALL THE WAY</p>
                 <p class="featured-text2">HIGH END LUXURY HOUSES &amp; GRAND SECTIONS WITH BEAUTIFUL VIEWS</p>
                 <section>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12 search-container">
 
-                                <?php include_once 'search-form.php'; ?>
+                    <div class="row">
+                        <div class="col-12 search-container">
 
-                            </div>
+                            <?php include_once 'search-form.php'; ?>
+
                         </div>
                     </div>
                 </section>
