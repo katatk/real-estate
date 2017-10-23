@@ -94,7 +94,7 @@ if ($valid_form) {
         if ($stored_role == "User") {
             $_SESSION['role'] = "User";
             $_SESSION['email_address'] = $stored_email;
-            header("Location: /real-estate/wishlist.php");
+            header("Location: wishlist");
             die();
         }
         $_SESSION['role'] = "Agent";

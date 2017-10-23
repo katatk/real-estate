@@ -117,11 +117,11 @@ if ($valid_form) {
 
     // take user to login page
     $_SESSION['alertMessage'] = "Account created successfully";
-    header("Location: login.php");
+    header("Location: login");
     die();
 
 } else {
     $_SESSION['alertMessage'] = $msg_fail;
-    header("Location: register.php");
+    header("Location: register");
     die();
 }
