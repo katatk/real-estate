@@ -32,7 +32,7 @@ include_once 'header.php';
     </div>
     <div class="container">
         <section>
-            <h1 class="title">Results
+            <h1 class="title"><?php echo (isset($_SESSION['num_results']) ? $_SESSION['num_results'] : "")?> Results
                 <?php echo (isset($_GET['city']) ? "For " . $_GET['city'] : "")?> </h1>
             <div class="row align-items-center">
             <?php
@@ -93,9 +93,11 @@ include_once 'header.php';
                     }
 
                     $results = $stmt->get_result();
+                  
 
                     if ($results->num_rows > 0) {
-                        // output data of each row
+                    // output data of each row
+                        
                         while($row = $results->fetch_assoc()) {
                             $output = "";
                             $output .= "<div class='col-md-6'><div class='p-5'>";
@@ -109,6 +111,8 @@ include_once 'header.php';
                             $output .= "</div></div>";
 
                             echo $output;
+                            
+                            $_SESSION['num_results'] = $row;
                         }
 
                     } else {
