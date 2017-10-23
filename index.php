@@ -36,6 +36,7 @@ ini_set('display_errors', "1");
     </div>
     <div class="container">
 
+       <!--  bhhio -->
         <section>
             <h1 class="title">All Properties</h1>
             <div class="row align-items-center">

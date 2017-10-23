@@ -23,7 +23,7 @@ while($row = $results->fetch_assoc()) {
     $output .= "<div class='col-md-6'><div class='p-5'>";
     $output .= "<form method='post' action='add-wishlist.php' enctype='multipart/form-data'><a href='add-wishlist?id=" . $row['Property_ID'] . "'><i class='icon icon-heart-empty shadow'></i></a></form>";
     $output .= "<a href='./view-property?id=" . $row['Property_ID'] . "'>";
-    $output .= "<img class='featured-image' src='".$row['Image_URL']."'>";
+    $output .= "<div class='agent-padding'><div class='agent-border'><img class='featured-image' src='".$row['Image_URL']."'>";
     $output .= "</a>";
     $output .= "<h1 class='listing-title'>".$row["Title"]."</h1>";
     $output .= "<h1 class='listing-city'>".$row["City"]."</h1>";
