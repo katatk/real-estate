@@ -111,6 +111,7 @@ include_once 'header.php';
                         </div>
                     </div>
                 </div>
+            </div>
                 <div class="col-md-6 order-1">
                     <div class="agent-padding">
                         <div class="agent-border">
@@ -124,7 +125,6 @@ include_once 'header.php';
                     </div>
                 </div>
             </div>
-        </div>
     </section>
 
     <section>
