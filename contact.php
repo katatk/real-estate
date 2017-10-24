@@ -19,7 +19,8 @@ include_once 'header.php';
 
                 <span class="bold">Phone:</span> 0800 RICH LIST<br>
                     <span class="bold">Email:</span> hello@richlist.com<br>
-                    <span class="bold">Address:</span> 666 Fast Lane<br> Remuera
+                    <span class="bold">Address:</span><br>
+                       666 Fast Lane<br> Remuera
                         <br> 2017
                 
             </div>
