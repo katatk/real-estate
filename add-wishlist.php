@@ -10,7 +10,40 @@ if (isset($_SESSION['logged_in']) && $_SESSION['role'] == "User") {
         
     $id = $_GET['id'];
     $email =  $_SESSION['email_address'];
-        
+    
+    $sql = "SELECT Property_ID FROM user_wishlist WHERE Email_Address=?";
+   
+     // create query to check if listing is already in wishlist
+    $stmt = $db->prepare($sql);
+    // bind parameters
+    $stmt->bind_param('s', $email);
+ 
+     // running insert statement
+    if ($stmt->execute() === FALSE) {
+        echo "Error: " . $db->error;
+        die();
+    }
+ 
+    // bind result variables
+    $stmt->bind_result($stored_id);
+ 
+    // fetch value
+    $stmt->fetch();
+ 
+    // close statement
+    $stmt->close();
+ 
+    // check id is unique
+    if ($stored_id === $id) {
+ 
+    $_SESSION['alertMessage'] = "This property is already added to your Wishlist";
+ 
+    // go back to the wishlist page
+    header("Location: wishlist");
+    die();
+    } elseif {
+
+
     $sql = "INSERT INTO user_wishlist SET Property_ID=?, Email_Address=?";
         
     // creates the statement, prepare removes SQL syntax to prevent SQL injection attacks eg someone typing 'DROP table' into a field
@@ -30,7 +63,7 @@ if (isset($_SESSION['logged_in']) && $_SESSION['role'] == "User") {
      $_SESSION['alertMessage'] = "Property added to wishlist";
         
     header("Location: wishlist");
-    die();
+    die();}
     
     
     } 
