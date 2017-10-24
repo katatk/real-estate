@@ -17,7 +17,7 @@ unset($_SESSION['placeholder_first_name']);
         <div class="row align-items-center">
             <div class="col-xs-12 col-lg-7">
 
-                <h2>Login</h2>
+                <h1 class="title">Login</h1>
                 <p>
                     <?php 
                     if (isset($_SESSION['alertMessage'])) { 
