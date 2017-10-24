@@ -12,8 +12,15 @@ if (!$_SESSION['logged_in']) {
 <div class="row">
                 <div class="col-12">
         <h1>Wishlist</h1>
-        <br>
-        <span class="welcome">Hi, <?php echo $_SESSION['first_name']; ?></span>
+
+        <p class="welcome">Hi, <?php echo $_SESSION['first_name']; ?></p>
+            
+             <?php 
+            if (isset($_SESSION['alertMessage'])) { 
+            echo "<p>".$_SESSION['alertMessage']."</p>"; 
+            unset($_SESSION['alertMessage']);
+            }; 
+            ?>
 
             <table class="table table-responsive table-striped">
                 <thead>

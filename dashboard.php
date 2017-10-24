@@ -15,7 +15,7 @@ if ($_SESSION['logged_in'] == false) {
         <span class="welcome">Welcome, <?php echo $_SESSION['first_name']; ?></span>
 
         <h2>All Properties</h2>
-           <?php 
+        <?php 
         if (isset($_SESSION['alertMessage'])) { 
             echo "<p>".$_SESSION['alertMessage']."</p>"; 
             unset($_SESSION['alertMessage']);

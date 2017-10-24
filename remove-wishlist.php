@@ -22,7 +22,7 @@ if (isset($_GET['id'])) {
     $stmt->close();
         
     // show a success message
-    $_SESSION['alertMessage'] = "Property 00". $id . " removed from Wishlist";
+    $_SESSION['alertMessage'] = "Property removed from Wishlist";
     header("Location: wishlist");
     die();
   }

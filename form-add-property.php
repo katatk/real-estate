@@ -15,7 +15,6 @@ include_once 'config.php';
 $msg_fail = 'One or more fields have an error.';
 $msg_empty = 'Please fill in all required fields.';
 $msg_success_add = 'Property successfully added.';
-$msg_success_edit = 'Property successfully updated.';
 
 // set POST values to variables
 $img_url = $_POST['img-url'];
@@ -84,8 +83,16 @@ if (!$empty_form) {
 // validate the data
 $valid_form = true;
 
-// if an image has been uploaded (not empty) then validate it
+// if url has been set, validate it
+if (!empty($img_url)) {
+    // returns false if url not valid
+    if(!filter_var($img_url, FILTER_VALIDATE_URL)) {
+    $_SESSION['error_img'] = "Please enter a valid url";
+    $valid_form = false; 
+    }
+}
 
+// if an image has been uploaded (not empty) then validate it
 if (!empty($img_upload)) {
     validateMimeType($img_upload);
     
@@ -125,7 +132,7 @@ if (!empty($_POST['id'])) {
 
 
     // show a success message
-     $_SESSION['alertMessage'] = $msg_success_edit;
+     $_SESSION['alertMessage'] = "Property 00" . $id . " successfully edited.";
 
     header("Location: " . $redirect_url);
     die();
