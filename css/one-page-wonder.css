@@ -225,9 +225,13 @@
         text-shadow: none;
     }
 
-.navbar-nav {
-    color: #000;
-}
+    .navbar-nav {
+        color: #000;
+    }
+
+    .bold {
+        font-weight: bold;
+    }
 
 
     /* Kat's custom styles end */
@@ -255,7 +259,7 @@
         padding-left: 10px;
         text-align: left;
         border-left: 4px solid #ffcd73;
-    /*    text-transform: uppercase;*/
+        /*    text-transform: uppercase;*/
     }
 
     .listing-title {
