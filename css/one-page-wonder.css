@@ -167,53 +167,7 @@ input[type=radio] {
     display: inline-block;
 }
 
-/* heart icon */
-
-@font-face {
-    font-family: 'fontello';
-    src: url('../icons/font/fontello.eot?42587924');
-    src: url('../icons/font/fontello.eot?42587924#iefix') format('embedded-opentype'),
-    url('../icons/font/fontello.woff?42587924') format('woff'),
-    url('../icons/font/fontello.ttf?42587924') format('truetype'),
-    url('../icons/font/fontello.svg?42587924#fontello') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-
-
-[class^="icon-"]:before,
-[class*=" icon-"]:before {
-    font-family: "fontello";
-    font-style: normal;
-    font-weight: normal;
-    speak: none;
-
-    display: inline-block;
-    text-decoration: inherit;
-    width: 1em;
-    margin-right: .2em;
-    text-align: center;
-    /* opacity: .8; */
-    /* For safety - reset parent styles, that can break glyph codes*/
-    font-variant: normal;
-    text-transform: none;
-
-    /* fix buttons height, for twitter bootstrap */
-    line-height: 1em;
-
-    /* Animation center compensation - margins should be symmetric */
-    /* remove if not needed */
-    margin-left: .2em;
-
-    /* you can be more comfortable with increased icons size */
-    /* font-size: 120%; */
-    /* Font smoothing. That was taken from TWBS */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-
-    /* Uncomment for 3D effect */
-    text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3);
-}
+/* icons */
 
 .homepage-heart {
     font-size: 20px;
@@ -221,6 +175,7 @@ input[type=radio] {
     position: absolute;
     left: 5rem;
     top: 2rem;
+    text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3);
 }
 
 
@@ -234,13 +189,32 @@ input[type=radio] {
     text-shadow: none;
 }
 
-    .navbar-nav {
-        color: #000;
-    }
+.icon-menu {
+    color: #ffcd73;
 
-    .bold {
-        font-weight: bold;
-    }
+}
+
+icon-menu:focus {
+    outline: none;
+}
+
+.navbar-dark .navbar-toggler {
+    font-size: 28px;
+}
+
+.navbar-dark .navbar-toggler:focus {
+    outline: none;
+
+}
+
+
+.navbar-nav {
+    color: #000;
+}
+
+.bold {
+    font-weight: bold;
+}
 
 
 /* Kat's custom styles end */
@@ -441,6 +415,7 @@ body {
     font-size: 30px;
     color: #ffcd73;
     float: right;
+    text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3);
 }
 
 footer {
@@ -570,20 +545,20 @@ ul li {
 
 @media (max-width: 400px) {
 
-.featured-image {
-    max-width: 50%;
-    height: auto;
-}
+    .featured-image {
+        max-width: 50%;
+        height: auto;
+    }
 
-.agent-image {
-    width: 100%;
-    height: auto;
-}
+    .agent-image {
+        width: 100%;
+        height: auto;
+    }
 
-.about-info {
-    padding-left: 15px;
-    padding-right: 15px;
-}
+    .about-info {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
 
 }
 
