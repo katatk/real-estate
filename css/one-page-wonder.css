@@ -564,6 +564,25 @@ ul li {
 
 /*-----contact form end------*/
 
+@media (max-width: 400px) {
+
+.featured-image {
+    max-width: 50%;
+    height: auto;
+}
+
+.agent-image {
+    width: 100%;
+    height: auto;
+}
+
+.about-info {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+}
+
 /*Taylas custom styles end*/
 
 /*---------------------*/
