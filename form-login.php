@@ -1,5 +1,8 @@
 <?php
 session_start();
+error_reporting(E_ALL);
+ini_set('display_errors', "1");
+
 
 // user can only access form-login via the POST method, not GET (typing directly into the address bar)
 if (empty($_POST['submit'])) {
@@ -52,7 +55,7 @@ if ($valid_form) {
 
       // running insert statement
         if ($stmt->execute() === true) {
-            echo "Email checked successfully";
+            // echo "Email checked successfully";
         } else {
             echo "Error: " . $db->error;
         }
@@ -65,7 +68,8 @@ if ($valid_form) {
         
         // close statement
         $stmt->close();
-    
+        
+
     // if email address does not exist, redirect back to login page with an error message
     if ($stored_email == null) {
          $_SESSION['error_email'] = "That email address does not exist";
@@ -98,7 +102,8 @@ if ($valid_form) {
             die();
         }
         $_SESSION['role'] = "Agent";
-        header("Location: dashboard");
+        header("Location: dashboard.php");
+        
         die();
     } else {
          $_SESSION['error_password'] = "Your password is incorrect";
