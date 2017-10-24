@@ -15,7 +15,6 @@ include_once 'config.php';
 $msg_fail = 'One or more fields have an error.';
 $msg_empty = 'Please fill in all required fields.';
 $msg_success_add = 'Property successfully added.';
-$msg_success_edit = 'Property successfully updated.';
 
 // set POST values to variables
 $img_url = $_POST['img-url'];
@@ -133,7 +132,7 @@ if (!empty($_POST['id'])) {
 
 
     // show a success message
-     $_SESSION['alertMessage'] = $msg_success_edit;
+     $_SESSION['alertMessage'] = "Property 00" . $id . " successfully edited.";
 
     header("Location: " . $redirect_url);
     die();

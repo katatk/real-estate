@@ -32,17 +32,19 @@ if (isset($_SESSION['logged_in']) && $_SESSION['role'] == "User") {
  
     // close statement
     $stmt->close();
+        
+   
  
     // check id is unique
-    if ($stored_id === $id) {
+    if ($stored_id == $id) {
  
     $_SESSION['alertMessage'] = "This property is already added to your Wishlist";
  
     // go back to the wishlist page
     header("Location: wishlist");
     die();
-    } elseif {
-
+        
+    } elseif ($stored_id != $id) {
 
     $sql = "INSERT INTO user_wishlist SET Property_ID=?, Email_Address=?";
         
@@ -63,10 +65,10 @@ if (isset($_SESSION['logged_in']) && $_SESSION['role'] == "User") {
      $_SESSION['alertMessage'] = "Property added to wishlist";
         
     header("Location: wishlist");
-    die();}
+    die();
     
-    
-    } 
+    }
+} 
 } elseif (isset($_SESSION['logged_in']) && $_SESSION['role'] == "Agent") {
     // show a success message
     $_SESSION['alertMessage'] = "You must be logged in as a user to view your wishlist.";
