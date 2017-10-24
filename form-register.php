@@ -106,7 +106,7 @@ if ($valid_form) {
 
     // running insert statement
     if ($stmt->execute() === TRUE) {
-        echo "New record created successfully";
+        // echo "New record created successfully";
 
     } else {
         echo "Error: " . $db->error;
