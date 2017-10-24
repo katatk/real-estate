@@ -10,7 +10,7 @@ if ($_SESSION['logged_in'] == false) {
 ?>
 <div class="row">
     <div class="col-12">
-        <h1>Dashboard</h1>
+        <h1 class="title">Dashboard</h1>
 
         <span class="welcome">Welcome, <?php echo $_SESSION['first_name']; ?></span>
 

@@ -43,7 +43,8 @@ html {
     -webkit-box-flex: 1;
     -ms-flex: 1 0 auto;
     flex: 1 0 auto;
-    padding: 6rem 0;
+    padding-top: 2rem;
+    padding-bottom: 6rem;
 }
 
 .container-fluid {
@@ -219,8 +220,8 @@ input[type=radio] {
     font-size: 20px;
     color: #ffcd73;
     position: absolute;
-    left: 5rem;
-    top: 2rem;
+    left: 2.5rem;
+    top: -1rem;
 }
 
 
@@ -262,13 +263,20 @@ body {
 }
 
 .title {
-    margin: 50px;
-    font-size: 30px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-size: 38px;
     padding: 5px;
     padding-left: 10px;
     text-align: left;
     border-left: 4px solid #ffcd73;
     /*    text-transform: uppercase;*/
+}
+
+.contact-info {
+    font-size: 20px;
+    padding-top: 15px;
+    padding-bottom: 40px;
 }
 
 .listing-title {
@@ -297,8 +305,8 @@ body {
 }
 
 .featured-image {
-    width: 444px;
-    height: 300px;
+    width: 100%;
+    height: auto;
     position: relative;
 }
 
@@ -327,11 +335,8 @@ body {
 
 .property-border {
     border: 1px solid #efefef;
-    width: 445px;
-    height: 448px;
     -webkit-transition: border-color .22s ease-in-out;
     transition: border-color .22s ease-in-out;
-
 }
 
 .property-border:hover {
@@ -341,6 +346,7 @@ body {
 
 .property-padding {
     padding: 1.5rem;
+    padding-bottom: 4rem;
 }
 
 
@@ -417,10 +423,11 @@ body {
 }
 
 .own-listing-image {
-    width: 700px;
-    height: 500px;
+    width: 100%;
+    height: auto;
     float: left;
     padding-right: 2rem;
+    padding-top: 2rem;
 }
 
 .own-listing-title {
@@ -430,7 +437,8 @@ body {
 
 .own-listing-price {
     font-size: 24px;
-    padding: 2rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
 }
 
 .own-listing-details {
@@ -441,6 +449,15 @@ body {
     font-size: 30px;
     color: #ffcd73;
     float: right;
+    padding-top: 3rem;
+}
+
+.wishlist-link {
+    color: black;
+}
+
+.wishlist-link:hover {
+    color: #9b9b9b;
 }
 
 footer {
@@ -570,22 +587,50 @@ ul li {
 
 @media (max-width: 400px) {
 
-.featured-image {
-    max-width: 50%;
-    height: auto;
 }
+
+@media (max-width: 540px) {
 
 .agent-image {
     width: 100%;
     height: auto;
 }
 
+}
+
+@media (max-width: 575px) {
+
 .about-info {
     padding-left: 15px;
     padding-right: 15px;
 }
 
+.property-border {
+    border: 1px solid #efefef;
+    width: 100%;
+    height: auto;
+    -webkit-transition: border-color .22s ease-in-out;
+    transition: border-color .22s ease-in-out;
 }
+
+.featured-image {
+    max-width: 100%;
+    height: auto;
+}
+
+.contact-info,
+.contact-form {
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.title {
+    margin-left: 20px;
+}
+
+}
+
+  
 
 /*Taylas custom styles end*/
 
