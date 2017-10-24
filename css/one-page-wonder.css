@@ -99,11 +99,11 @@ a:hover {
     display: inline-block;
     background-color: #ffdc73;
     cursor: pointer;
-    margin-bottom: 1rem;
-    vertical-align: bottom;
+    vertical-align: middle;
     padding: .25rem .5rem;
     width: 80px;
     height: 60px;
+    border: 0px;
 }
 
 select {

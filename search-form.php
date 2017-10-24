@@ -85,7 +85,8 @@ $stmt->close();
             <option value="2000000">$2M</option>
             <option value="5000000">$5M</option>
             <option value="10000000">$10M+</option>
-        </select> to
+        </select></div>to
+        <div class="form-group search-separator">
         <select name="price-max" id="price-max">
             <option value="100000">$100k</option>
             <option value="500000">$500k</option>

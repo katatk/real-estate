@@ -12,7 +12,7 @@ if (!$_SESSION['logged_in']) {
 <div class="row">
                 <div class="col-12">
         <h1>Wishlist</h1>
-
+        <br>
         <span class="welcome">Hi, <?php echo $_SESSION['first_name']; ?></span>
 
             <table class="table table-responsive table-striped">
