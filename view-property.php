@@ -42,14 +42,14 @@ $title = "View Property";
             // close statement
             $stmt->close();
 
-            $output = "<form method='post' action='add-wishlist.php' enctype='multipart/form-data'><a href='add-wishlist?id=".$id."'><i class='icon icon-heart-empty shadow'></i></a></form>";
-            $output .= "<img src='" . $stored_img_url . "' alt='" .$stored_title. "'>";
-            $output .= "<h1>" . $stored_title . "</h1>";
-            $output .= "<h2>" . $stored_type . "</h2>";
-            $output .= "<h2>" . $stored_city . "</h2>";
-            $output .= "<h2>$" . number_format($stored_price) . "</h2>";
-            $output .= "<p>Address: " . $stored_address . "</p>";
-            $output .= "<p>" . $stored_description . "</p>";
+            $output = "<form method='post' action='add-wishlist.php' enctype='multipart/form-data'><a href='add-wishlist?id=".$id."'><i class='icon own-heart icon-heart-empty shadow'></i></a></form>";
+            $output .= "<img class='own-listing-image'src='" . $stored_img_url . "' alt='" .$stored_title. "'>";
+            $output .= "<h1 class='own-listing-title'>" . $stored_title . "</h1>";
+            // $output .= "<h2>" . $stored_type . "</h2>";
+            $output .= "<h2 class='own-listing-details'>" . $stored_city . "</h2>";
+            $output .= "<h2 class='own-listing-price'>$" . number_format($stored_price) . "</h2>";
+            // $output .= "<p>Address: " . $stored_address . "</p>";
+            $output .= "<p class='own-listing-details'>" . $stored_description . "</p></span>";
             
             echo $output;
             }
