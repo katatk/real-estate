@@ -32,11 +32,9 @@ include_once 'header.php';
     </div>
     <div class="container">
         <section>
-            <h1 class="title">
-                <?php echo (isset($_SESSION['num_results']) ? $_SESSION['num_results'] : "")?> Results
-                <?php echo (isset($_GET['city']) ? "For " . $_GET['city'] : "")?> </h1>
-            <div class="row align-items-center">
-                <?php
+
+
+            <?php
 
 if(isset($_GET['city'])) {
    
@@ -94,11 +92,12 @@ if(isset($_GET['city'])) {
         }
 
         $results = $stmt->get_result();
-
+        
+        $output = "";
         if ($results->num_rows > 0) {
             // output data of each row
             while($row = $results->fetch_assoc()) {
-                $output = "";
+               
                 $output .= "<div class='col-md-6'><div class='p-5'>";
                 $output .= "<form method='post' action='add-wishlist.php' enctype='multipart/form-data'><a href='add-wishlist?id=" . $row['Property_ID'] . "'><i class='icon homepage-heart icon-heart-empty shadow'>Add to wishlist</i></a></form>";
                 $output .= "<div class='property-padding'><div class='property-border'><a href='./view-property?id=" . $row['Property_ID'] . "'>";
@@ -109,13 +108,13 @@ if(isset($_GET['city'])) {
                 $output .= "<h1 class='listing-price'>$".number_format($row["Price"])."</h1>";
                 $output .= "</div></div></div></div></div>";
 
-                echo $output;
+                  $_SESSION['num_results'] = $results->num_rows;
             }
           
-           $_SESSION['num_results'] = $results->num_rows;
+       
 
         } else {
-            echo "<p>No properties found.</p>";
+            $output = "<p>No properties found.</p>";
         }
 
         // close statement
@@ -123,8 +122,12 @@ if(isset($_GET['city'])) {
 
 }
 ?>
-
-            </div>
+                <h1 class="title">
+                    <?php echo (isset($_SESSION['num_results']) ? $_SESSION['num_results'] : "")?> Results
+                    <?php echo (isset($_GET['city']) ? "For " . $_GET['city'] : "")?> </h1>
+                <div class="row align-items-center">
+                <?php echo $output; ?>
+                </div>
         </section>
     </div>
 
