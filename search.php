@@ -5,37 +5,38 @@ $title = "Home";
 include_once 'header.php';
 
 ?>
-<header class="masthead">
-<div class="overlay">
-<div class="container featured-text-container">
-    <p class="featured-text1">
-        <a href="./search?city=Auckland">AUCKLAND</a>
-        <a href="./search?city=Hamilton">HAMILTON</a>
-        <a href="./search?city=Tauranga">TAURANGA</a>
-    </p>
-    <p class="featured-heading">THE REAL ESTATE COMPANY<br>THAT'S WITH YOU ALL THE WAY</p>
-    <p class="featured-text2">HIGH END LUXURY HOUSES &amp; GRAND SECTIONS WITH BEAUTIFUL VIEWS</p>
-    <section>
+    <header class="masthead">
+        <div class="overlay">
+            <div class="container featured-text-container">
+                <p class="featured-text1">
+                    <a href="./search?city=Auckland">AUCKLAND</a>
+                    <a href="./search?city=Hamilton">HAMILTON</a>
+                    <a href="./search?city=Tauranga">TAURANGA</a>
+                </p>
+                <p class="featured-heading">THE REAL ESTATE COMPANY<br>THAT'S WITH YOU ALL THE WAY</p>
+                <p class="featured-text2">HIGH END LUXURY HOUSES &amp; GRAND SECTIONS WITH BEAUTIFUL VIEWS</p>
+                <section>
 
-        <div class="row">
-            <div class="col-12 search-container">
+                    <div class="row">
+                        <div class="col-12 search-container">
 
-                <?php include_once 'search-form.php'; ?>
+                            <?php include_once 'search-form.php'; ?>
 
+                        </div>
+                    </div>
+                </section>
             </div>
         </div>
-    </section>
-</div>
-</div>
-</header>
-<!-- container-fluid -->
-</div>
-<div class="container">
-<section>
-<h1 class="title">Results
-    <?php echo (isset($_GET['city']) ? "For " . $_GET['city'] : "")?> </h1>
-<div class="row align-items-center">
-<?php
+    </header>
+    <!-- container-fluid -->
+    </div>
+    <div class="container">
+        <section>
+            <h1 class="title">
+                <?php echo (isset($_SESSION['num_results']) ? $_SESSION['num_results'] : "")?> Results
+                <?php echo (isset($_GET['city']) ? "For " . $_GET['city'] : "")?> </h1>
+            <div class="row align-items-center">
+                <?php
 
 if(isset($_GET['city'])) {
    
@@ -96,20 +97,22 @@ if(isset($_GET['city'])) {
 
         if ($results->num_rows > 0) {
             // output data of each row
-while($row = $results->fetch_assoc()) {
-    $output = "";
-    $output .= "<div class='col-md-6'><div class='p-5'>";
-    $output .= "<form method='post' action='add-wishlist.php' enctype='multipart/form-data'><a href='add-wishlist?id=" . $row['Property_ID'] . "'><i class='icon homepage-heart icon-heart-empty shadow'></i></a></form>";
-    $output .= "<div class='property-padding'><div class='property-border'><a href='./view-property?id=" . $row['Property_ID'] . "'>";
-    $output .= "<img class='featured-image' src='".$row['Image_URL']."'>";
-    $output .= "</a>";
-    $output .= "<h1 class='listing-title'>".$row["Title"]."</h1>";
-    $output .= "<div class='property-details'><h1 class='listing-city'>".$row["City"]."</h1>";
-    $output .= "<h1 class='listing-price'>$".number_format($row["Price"])."</h1>";
-    $output .= "</div></div></div></div></div>";
+            while($row = $results->fetch_assoc()) {
+                $output = "";
+                $output .= "<div class='col-md-6'><div class='p-5'>";
+                $output .= "<form method='post' action='add-wishlist.php' enctype='multipart/form-data'><a href='add-wishlist?id=" . $row['Property_ID'] . "'><i class='icon homepage-heart icon-heart-empty shadow'>Add to wishlist</i></a></form>";
+                $output .= "<div class='property-padding'><div class='property-border'><a href='./view-property?id=" . $row['Property_ID'] . "'>";
+                $output .= "<img class='featured-image' src='".$row['Image_URL']."'>";
+                $output .= "</a>";
+                $output .= "<h1 class='listing-title'>".$row["Title"]."</h1>";
+                $output .= "<div class='property-details'><h1 class='listing-city'>".$row["City"]."</h1>";
+                $output .= "<h1 class='listing-price'>$".number_format($row["Price"])."</h1>";
+                $output .= "</div></div></div></div></div>";
 
-    echo $output;
+                echo $output;
             }
+          
+           $_SESSION['num_results'] = $results->num_rows;
 
         } else {
             echo "<p>No properties found.</p>";
@@ -121,8 +124,8 @@ while($row = $results->fetch_assoc()) {
 }
 ?>
 
-</div>
-</section>
-</div>
+            </div>
+        </section>
+    </div>
 
-<?php include_once 'footer.php'; ?>
+    <?php include_once 'footer.php'; ?>

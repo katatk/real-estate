@@ -21,7 +21,7 @@ if ($results->num_rows > 0) {
 while($row = $results->fetch_assoc()) {
     $output = "";
     $output .= "<div class='col-lg-6 col-12'><div class='p-5'>";
-    $output .= "<form method='post' action='add-wishlist.php' enctype='multipart/form-data'><a href='add-wishlist?id=" . $row['Property_ID'] . "'><i class='icon homepage-heart icon-heart-empty shadow'></i></a></form>";
+    $output .= "<form method='post' action='add-wishlist.php' enctype='multipart/form-data'><a href='add-wishlist?id=" . $row['Property_ID'] . "'><i class='icon homepage-heart icon-heart-empty shadow'>Add to wishlist</i></a></form>";
     $output .= "<div class='property-padding'><div class='property-border'><a href='./view-property?id=" . $row['Property_ID'] . "'>";
     $output .= "<img class='featured-image' src='".$row['Image_URL']."'>";
     $output .= "</a>";
