@@ -33,7 +33,9 @@ if (isset($_SESSION['logged_in']) && $_SESSION['role'] == "User") {
     // close statement
     $stmt->close();
         
-   
+        
+   echo $stored_id . " " . $id;
+    die();
  
     // check id is unique
     if ($stored_id == $id) {

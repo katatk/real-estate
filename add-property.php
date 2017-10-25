@@ -132,10 +132,7 @@ if (isset($_GET['id'])) {
                 ?>" name="id">
 
             <div class="form-group">
-               <?php if($edit){
-                echo "<img class='thumbnail' src='" . $stored_img_url . "'>";
-               }
-               ?>
+             
                 <br><label for="img-url">Image URL</label>
                 <input type="text" class="form-control" id="img-url" name="img-url" placeholder="eg. http://www.houses.com/your-property.jpg" value="<?php 
                 if (isset($_SESSION['img_url'])) 
@@ -145,6 +142,7 @@ if (isset($_GET['id'])) {
 
                 <label for="img-url">or upload an image</label>
                 <input type="file" name="img-upload" accept="image/*">
+               
                 <div class="error">
                     <?php 
                     if (isset($_SESSION['error_img'])) { 
@@ -153,7 +151,16 @@ if (isset($_GET['id'])) {
                     }; 
                     ?>
                 </div>
+                
+                
             </div>
+            
+              <?php
+                   if (isset($_SESSION['img_url'])) {
+                        echo "<img class='thumbnail' src='" . $_SESSION['img_url'] . "'>"; 
+                   }
+                ?>
+                
             <div class="form-group">
                 <label for="title">Title</label>
                 <input type="text" class="form-control" id="title" name="title" placeholder="Enter title" value="<?php 
@@ -194,7 +201,7 @@ if (isset($_GET['id'])) {
                  foreach ($cityArray as $city) {
                     echo "<option ";
                     echo "value='".$city."'";
-                    if(isset($stored_city) && city == $stored_city) {
+                    if(isset($stored_city) && $city == $stored_city) {
                         echo " selected";
                     }
                     echo ">";

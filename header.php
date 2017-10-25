@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="We sell highend properties and spacious sections with breathtaking views.">
     <meta name="author" content="Tayla and Kat">
+    
 
     <title>Rich List Real Estate -
         <?php echo $title ?>
@@ -16,10 +17,11 @@
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
+    <!-- Custom styles -->
     <link href="css/one-page-wonder.css" rel="stylesheet">
     <link href="icons/css/fontello.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Product+Sans:400,400i,700,700i' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" href="favicon.ico">
 
 </head>
 

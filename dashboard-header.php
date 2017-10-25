@@ -16,10 +16,12 @@
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
+    <!-- Custom styles -->
     <link href="css/one-page-wonder.css" rel="stylesheet">
-    <link href="icons/css/fontello.css" rel="stylesheet">s
+    <link href="icons/css/fontello.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Product+Sans:400,400i,700,700i' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" href="favicon.ico">
+
 
 </head>
 
