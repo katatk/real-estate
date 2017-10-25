@@ -10,7 +10,7 @@ $title = "Register";
         <div class="row align-items-center">
             <div class="col-xs-12 col-lg-7">
 
-                <h2>Register an Account</h2>
+                <h1 class="title">Register an Account</h1>
                 <p>As a buyer, an account allows you to add properties to your wishlist. If you are an agent, you can manage and add new properties and update exsiting listings.</p>
                 <form method="post" action="form-register.php" enctype="multipart/form-data">
                     <div class="form-group">

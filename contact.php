@@ -15,7 +15,7 @@ include_once 'header.php';
 
         <div class="row">
 
-            <div class="col-lg-6 col-sm-12">
+            <div class="col-lg-6 col-sm-12 contact-info">
 
                 <span class="bold">Phone:</span> 0800 RICH LIST<br>
                     <span class="bold">Email:</span> hello@richlist.com<br>
@@ -25,7 +25,7 @@ include_once 'header.php';
                 
             </div>
 
-            <div class="col-lg-6 col-sm-12">
+            <div class="col-lg-6 col-sm-12 contact-form">
                 <form>
                     <div class="form-group" id="name-group">
                         <label for="full-name">Name:</label>
@@ -35,8 +35,8 @@ include_once 'header.php';
                         <label for="email">Email:</label>
                         <input type="email" class="form-control">
                     </div>
-                    <div class="form-group">Your Message:</div>
-                    <div id="messagebox"><textarea id="textarea" rows="8" cols="30" maxlength="300"></textarea>
+                    <div class="form-group">Your Message:
+                    <div id="messagebox"><textarea id="textarea" rows="8" cols="30" maxlength="300"></textarea></div>
                     </div>
                     <div id="textarea_feedback"></div>
                     <br>
