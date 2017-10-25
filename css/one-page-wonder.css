@@ -174,8 +174,8 @@ input[type=radio] {
     font-size: 20px;
     color: #ffcd73;
     position: absolute;
-    left: 5rem;
-    top: 2rem;
+    left: 2.5rem;
+    top: -1rem;
     text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3);
 }
 
