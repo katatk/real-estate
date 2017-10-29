@@ -1,8 +1,8 @@
 <?php 
-session_start();
 $title = "Register";
+
 /// if user is logged in and their role is agent, show them the dashboard nav, otherwise show the normal header
-(isset($_SESSION['logged_in']) && $_SESSION['role'] == "Agent") ? include_once 'dashboard-header.php' : include_once 'header.php';
+(isset($_SESSION['logged_in']) && $_SESSION['role'] == "Agent") ? include_once 'inc/dashboard-header.php' : include_once 'inc/header.php';
 ?>
 
 <section>
@@ -12,7 +12,7 @@ $title = "Register";
 
                 <h1 class="title">Register an Account</h1>
                 <p>As a buyer, an account allows you to add properties to your wishlist. If you are an agent, you can manage and add new properties and update exsiting listings.</p>
-                <form method="post" action="form-register.php" enctype="multipart/form-data">
+                <form method="post" action="process/register-processing.php" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="firstname">First Name*</label>
                         <input type="text" class="form-control" name="firstname" id="firstname" value="<?php 
@@ -109,4 +109,4 @@ $title = "Register";
     </div>
 </section>
 
-<?php include_once 'footer.php'; ?>
+<?php include_once 'inc/footer.php'; ?>

@@ -1,4 +1,7 @@
-<?php include_once 'config.php'; ?>
+<?php
+include_once 'inc/config.php'; 
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,7 +21,7 @@
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles -->
-    <link href="css/one-page-wonder.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
     <link href="icons/css/fontello.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Product+Sans:400,400i,700,700i' rel='stylesheet' type='text/css'>
     <link rel="shortcut icon" href="favicon.ico">
@@ -55,7 +58,7 @@
                                     echo "<li class='nav-item'><a class='nav-link' href='dashboard'>Dashboard</a></li>";
                                 }
                                 // if logged in, show logout link
-                                echo "<li class='nav-item'><a class='nav-link' href='logout'>Hi ". $_SESSION['first_name'] .", Logout?</a></li>";
+                                echo "<li class='nav-item'><a class='nav-link' href='process/logout.php'>Hi ". $_SESSION['first_name'] .", Logout?</a></li>";
                             }
                         ?>
                 </ul>

@@ -1,13 +1,13 @@
 <?php
 session_start();
 
-include_once 'config.php';
+include_once '../inc/config.php';
 
 if (isset($_GET['id'])) {
    
     $id = $_GET['id'];
         
-    $sql = "DELETE FROM properties WHERE Property_ID=?";
+    $sql = "DELETE FROM properties WHERE property_id=?";
       
     $stmt = $db->prepare($sql);
       
@@ -23,10 +23,10 @@ if (isset($_GET['id'])) {
         
     // show a success message
     $_SESSION['alertMessage'] = "Property 00". $id . " deleted";
-    header("Location: dashboard");
+    header("Location: ../dashboard");
     die();
   }
 
 $_SESSION['alertMessage'] = "Something went wrong";
-header("Location: dashboard");
+header("Location: ../dashboard");
 die();

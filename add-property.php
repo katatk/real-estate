@@ -1,7 +1,7 @@
 <?php 
-session_start();
+
 $title = "Add a Property";
-include_once 'dashboard-header.php'; 
+include_once '../inc/dashboard-header.php'; 
 
 if (!$_SESSION['logged_in']) {
   header('Location: login');
@@ -31,7 +31,7 @@ $results = $stmt->get_result();
 if ($results->num_rows > 0) {
     // output data of each row
     while($row = $results->fetch_assoc()) {
-        array_push($cityArray, ($row["City"]));
+        array_push($cityArray, ($row["city"]));
 
     }
 }
@@ -55,7 +55,7 @@ $results = $stmt->get_result();
 if ($results->num_rows > 0) {
     // output data of each row
     while($row = $results->fetch_assoc()) {
-        array_push($typeArray, ($row["Type"]));
+        array_push($typeArray, ($row["type"]));
     }
 }
 
@@ -66,7 +66,7 @@ if (isset($_GET['id'])) {
 
     $property_id = $_GET['id'];
 
-    $sql = "SELECT Property_ID, Image_URL, Title, Type, City, Price, Address, Description FROM properties WHERE Property_ID=?";
+    $sql = "SELECT property_id, image_url, title, type, city, price, address, description FROM properties WHERE property_id=?";
 
     $stmt = $db->prepare($sql);
 
@@ -90,7 +90,8 @@ if (isset($_GET['id'])) {
 
     // close statement
     $stmt->close();
-
+    
+    // if no id set, we are adding new property not editing an existing one
     $edit = ($stored_id !== null);
     }
   
@@ -123,7 +124,7 @@ if (isset($_GET['id'])) {
             unset($_SESSION['alertMessage']);
         }; 
         ?>
-        <form method="post" action="form-add-property.php" enctype="multipart/form-data">
+        <form method="post" action="process/add-property-processing.php" enctype="multipart/form-data">
 
             <input type="hidden" value="<?php 
                 if (isset($_SESSION['property_id'])) 
@@ -141,7 +142,10 @@ if (isset($_GET['id'])) {
                 ?>">
 
                 <label for="img-url">or upload an image</label>
-                <input type="file" name="img-upload" accept="image/*">
+                <input type="file" name="img-upload" accept="image/*" id="img-upload" accept=".jpg, .jpeg, .png">
+                <br>
+                <button type="button" class="btn btn-default" id="btn-remove-file" onclick="removeFile();" >
+                X Remove uploaded image</button>
                
                 <div class="error">
                     <?php 
@@ -151,16 +155,12 @@ if (isset($_GET['id'])) {
                     }; 
                     ?>
                 </div>
-                
-                
             </div>
-            
               <?php
                    if (isset($_SESSION['img_url'])) {
                         echo "<img class='thumbnail' src='" . $_SESSION['img_url'] . "'>"; 
                    }
                 ?>
-                
             <div class="form-group">
                 <label for="title">Title</label>
                 <input type="text" class="form-control" id="title" name="title" placeholder="Enter title" value="<?php 
@@ -186,6 +186,8 @@ if (isset($_GET['id'])) {
                     echo "value='".$type."'";
                     if(isset($stored_type) && $type == $stored_type) {
                         echo " selected";
+                   } elseif(isset($_SESSION['type']) && $type == $_SESSION['type']) {
+                        echo " selected";
                     }
                     echo ">";
                     echo $type;
@@ -202,6 +204,8 @@ if (isset($_GET['id'])) {
                     echo "<option ";
                     echo "value='".$city."'";
                     if(isset($stored_city) && $city == $stored_city) {
+                        echo " selected";
+                    } elseif(isset($_SESSION['city']) && $city == $_SESSION['city']) {
                         echo " selected";
                     }
                     echo ">";
@@ -261,10 +265,17 @@ if (isset($_GET['id'])) {
                 </div>
             </div>
 
-            <input type="submit" class="btn btn-primary button" value="submit" name="submit">
+            <input type="submit" class="btn button" value="submit" name="submit">
         </form>
     </div>
 </div>
 
+<script type="text/javascript">
 
-<?php include_once "footer.php"; ?>
+function removeFile() {
+    document.getElementById('img-upload').value = "";
+}
+
+</script>
+
+<?php include_once "inc/footer.php"; ?>

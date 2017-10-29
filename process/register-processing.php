@@ -1,14 +1,14 @@
 <?php
 session_start();
 
-// user can only access form-register via the POST method, not GET (typing directly into the address bar)
+// user can only access process/register-processing via the POST method, not GET (typing directly into the address bar)
 if (empty($_POST['submit'])) {
-  header('Location: register.');
+  header('Location: ../register');
   die(); 
 } 
 
-include_once 'validation.php';
-include_once 'config.php';
+include_once '../inc/validation.php';
+include_once '../inc/config.php';
 
 // set the submit messages
 $msg_fail = 'One or more fields have an error.';
@@ -31,17 +31,11 @@ $_SESSION['placeholder_password_confirm'] = $password_confirm;
 // if no fields have been filled out
 if (empty($first_name) && empty($email) && empty($password) && empty($password_confirm)) {
      $_SESSION['alertMessage'] = $msg_empty;
-     header("Location: register");
+     header("Location: ../register");
      die();
 } 
 
 // function that removes white space, slashes and HTML special characters - for displaying data, stops scripts being sent to user, NOT for preventing SQL injection
-function clean_input($data) {
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-  return $data;
-}
 
 // if agent checkbox is checked, returns true, user is an agent
 if ($role) {
@@ -63,7 +57,7 @@ if (passwordsMatch($password, $password_confirm)){
     
 if ($valid_form) {
     
-    $sql = "SELECT Email_Address FROM users WHERE Email_Address=?";
+    $sql = "SELECT email_address FROM users WHERE email_address=?";
     
      // create query to check if email already exists in the database
     $stmt = $db->prepare($sql);
@@ -92,14 +86,14 @@ if ($valid_form) {
     $_SESSION['alertMessage'] = $msg_fail;
 
     // go back to the register page
-    header("Location: register");
+    header("Location: ../register");
     die();
     }
 
     // if data is valid, insert into database
     // creates the statement, prepare removes SQL syntax to prevent SQL injection attacks eg someone typing 'DROP table students' into a field
     
-    $sql = "INSERT INTO users (Email_Address, First_Name, Password, Role) VALUES (?, ?, ?, ?)";
+    $sql = "INSERT INTO users (email_address, first_name, password, role) VALUES (?, ?, ?, ?)";
     
     $stmt = $db->prepare($sql);
     $stmt->bind_param('ssss', $email, $first_name, $hashed_password, $role);
@@ -117,11 +111,11 @@ if ($valid_form) {
 
     // take user to login page
     $_SESSION['alertMessage'] = "Account created successfully";
-    header("Location: login");
+    header("Location: ../login");
     die();
 
 } else {
     $_SESSION['alertMessage'] = $msg_fail;
-    header("Location: register");
+    header("Location: ../register");
     die();
 }

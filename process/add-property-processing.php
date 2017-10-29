@@ -1,15 +1,15 @@
 <?php
 session_start();
 
-// user can only access form-register via the POST method, not GET (typing directly into the address bar)
+// user can only access process/register-processing via the POST method, not GET (typing directly into the address bar)
 if (empty($_POST['submit'])) {
-  header('Location: add-property');
+  header('Location: ../add-property');
   die(); 
 } 
 
-include_once 'validation.php';
-include_once 'file-upload.php';
-include_once 'config.php';
+include_once '../inc/validation.php';
+include_once '../inc/file-upload.php';
+include_once '../inc/config.php';
 
 // set the submit messages
 $msg_fail = 'One or more fields have an error.';
@@ -26,6 +26,8 @@ $price = $_POST['price'];
 $address = $_POST['address'];
 $description = $_POST['description'];
 
+
+// redirect url if no post id is set (not editing an existing property)
 $redirect_url = 'add-property';
 
 // edit redirect url
@@ -34,18 +36,19 @@ if(!empty($_POST['id'])) {
 }
 
 // set the placeholders
-$_SESSION['placeholder_img_url'] = $img_url;
-$_SESSION['placeholder_title'] = $title;
-$_SESSION['placeholder_type'] = $type;
-$_SESSION['placeholder_city'] = $city;
-$_SESSION['placeholder_price'] = $price;
-$_SESSION['placeholder_address'] = $address;
-$_SESSION['placeholder_description'] = $description;
+$_SESSION['img_url'] = $img_url;
+$_SESSION['img_upload'] = $_FILES['img-upload']['name'];
+$_SESSION['title'] = $title;
+$_SESSION['type'] = $type;
+$_SESSION['city'] = $city;
+$_SESSION['price'] = $price;
+$_SESSION['address'] = $address;
+$_SESSION['description'] = $description;
 
 // if no fields have been filled out
 if ((empty($img_url) || empty($img_upload)) && empty($title) && empty($type) && empty($city) && empty($price) && empty($address) && empty($description)) {
      $_SESSION['alertMessage'] = $msg_empty;
-     header("Location: " . $redirect_url);
+     header("Location: ../" . $redirect_url);
      die();
 }
 
@@ -55,6 +58,10 @@ $empty_form = true;
 if (empty($img_url) && empty($img_upload)) {
    $_SESSION['error_img'] = "Please upload an image or enter a url";
     $empty_form = false;
+}
+if (!empty($img_url) && !empty($img_upload)) {
+    $_SESSION['error_img'] = "Please choose either an image or a url";
+     $empty_form = false;
 }
 if (empty($title)) {
     $_SESSION['error_title'] = "Please enter a title";
@@ -83,17 +90,9 @@ if (!$empty_form) {
 // validate the data
 $valid_form = true;
 
-// if url has been set, validate it
-if (!empty($img_url)) {
-    // returns false if url not valid
-    if(!filter_var($img_url, FILTER_VALIDATE_URL)) {
-    $_SESSION['error_img'] = "Please enter a valid url";
-    $valid_form = false; 
-    }
-}
-
 // if an image has been uploaded (not empty) then validate it
 if (!empty($img_upload)) {
+    
     validateMimeType($img_upload);
     
     if (validateMimeType($img_upload) == false) {
@@ -111,11 +110,13 @@ if (!$valid_form) {
 }
 
 // if id has been set, edit the current listing, else we are adding a new entry
+// id is set in hidden form field
+
 if (!empty($_POST['id'])) {
     
     $id = $_POST['id'];
     
-    $sql = "UPDATE properties SET Image_URL=?, Title=?, Type=?, City=?, Price=?, Address=?, Description=? WHERE Property_ID=?";
+    $sql = "UPDATE properties SET image_url=?, title=?, type=?, city=?, price=?, address=?, description=? WHERE property_id=?";
 
     // creates the statement, prepare removes SQL syntax to prevent SQL injection attacks eg someone typing 'DROP table' into a field
     $stmt = $db->prepare($sql);
@@ -130,7 +131,6 @@ if (!empty($_POST['id'])) {
     // close statement
     $stmt->close();
 
-
     // show a success message
      $_SESSION['alertMessage'] = "Property 00" . $id . " successfully edited.";
 
@@ -139,7 +139,7 @@ if (!empty($_POST['id'])) {
     
 } else {
     
-    $sql = "INSERT INTO properties (Image_URL, Title, Type, City, Price, Address, Description) VALUES (?, ?, ?, ?, ?, ?, ?)";  
+    $sql = "INSERT INTO properties (image_url, title, type, city, price, address, description) VALUES (?, ?, ?, ?, ?, ?, ?)";  
 
     // creates the statement, prepare removes SQL syntax to prevent SQL injection attacks eg someone typing 'DROP table' into a field
     $stmt = $db->prepare($sql);

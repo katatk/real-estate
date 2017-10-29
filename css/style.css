@@ -1,5 +1,5 @@
 header.masthead {
-    background: url('../css/auckland2.jpg') no-repeat center center scroll;
+    background: url('../images/searchbar-img.jpg') no-repeat center center scroll;
     background-size: cover;
     -o-background-size: cover;
     height: 92vh;
@@ -357,6 +357,7 @@ body {
 
 .featured-text-container {
     padding-bottom: 100px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.4);
 }
 
 .agent-image {
@@ -506,6 +507,10 @@ select,
     border-radius: 6px;
 }
 
+select {
+    padding: 0 !important;
+}
+
 input[type=text]:focus,
 input[type=password]:focus,
 input[type=email]:focus,
@@ -549,7 +554,19 @@ ul li {
     text-shadow: none;
     /* Prevent inheritence from `body` */
     background-color: #fff;
-    border: 1px solid #fff;
+    border: 1px solid #ccc;
+}
+input[type="submit"]:hover {
+      background-color: #ffcd73;
+    border: 1px solid #ffcd73;
+}
+
+input[type="submit"]:focus {
+    outline: none;
+}
+
+#btn-remove-file {
+    text-transform: none;
 }
 
 .lead {

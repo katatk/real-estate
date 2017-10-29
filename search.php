@@ -1,8 +1,7 @@
 <?php
-session_start();
-$title = "Home";
+$title = "Search";
 
-include_once 'header.php';
+include_once 'inc/header.php';
 
 ?>
     <header class="masthead">
@@ -20,7 +19,7 @@ include_once 'header.php';
                     <div class="row">
                         <div class="col-12 search-container">
 
-                            <?php include_once 'search-form.php'; ?>
+                            <?php include_once 'inc/search-form.php'; ?>
 
                         </div>
                     </div>
@@ -42,7 +41,7 @@ if(isset($_GET['city'])) {
     
     // if get get request is made by selecting a city, not submitting form
     if (!isset($_GET['submit'])) {
-        $sql = "SELECT * FROM properties WHERE City=?";
+        $sql = "SELECT * FROM properties WHERE city=?";
         $stmt = $db->prepare($sql);
         $stmt->bind_param('s', $city);
 
@@ -66,20 +65,20 @@ if(isset($_GET['city'])) {
         // if values are set
         } elseif ($city != 'All Cities' && $type != 'All Types') {
             
-            $sql = $sql_select_all . "City=? AND Type=? AND " . $sql_price_range;
+            $sql = $sql_select_all . "city=? AND =? AND " . $sql_price_range;
             $stmt = $db->prepare($sql);
             $stmt->bind_param('ssss', $city, $type, $price_min, $price_max);
             
             // all cities selected, one type selected
         } elseif ($city == 'All Cities' && $type != 'All Types') {
             
-            $sql = $sql_select_all . "Type=? AND " . $sql_price_range;
+            $sql = $sql_select_all . "=? AND " . $sql_price_range;
             $stmt = $db->prepare($sql);
             $stmt->bind_param('sss', $type, $price_min, $price_max);
             
              // all types selected, one city selected
         } elseif ($city != 'All Cities' && $type == 'All Types') {
-             $sql = $sql_select_all . "City=? AND " . $sql_price_range;
+             $sql = $sql_select_all . "city=? AND " . $sql_price_range;
             
             $stmt = $db->prepare($sql);
             $stmt->bind_param('sss', $city, $price_min, $price_max);
@@ -99,13 +98,13 @@ if(isset($_GET['city'])) {
             while($row = $results->fetch_assoc()) {
                
                 $output .= "<div class='col-md-6'><div class='p-5'>";
-                $output .= "<form method='post' action='add-wishlist.php' enctype='multipart/form-data'><a href='add-wishlist?id=" . $row['Property_ID'] . "'><i class='icon homepage-heart icon-heart-empty shadow'>Add to wishlist</i></a></form>";
-                $output .= "<div class='property-padding'><div class='property-border'><a href='./view-property?id=" . $row['Property_ID'] . "'>";
-                $output .= "<img class='featured-image' src='".$row['Image_URL']."'>";
+                $output .= "<a href='add-wishlist?id=" . $row['property_id'] . "'><i class='icon homepage-heart icon-heart-empty shadow'>Add to wishlist</i></a>";
+                $output .= "<div class='property-padding'><div class='property-border'><a href='./view-property?id=" . $row['property_id'] . "'>";
+                $output .= "<img class='featured-image' src='".$row['image_url']."'>";
                 $output .= "</a>";
-                $output .= "<h1 class='listing-title'>".$row["Title"]."</h1>";
-                $output .= "<div class='property-details'><h1 class='listing-city'>".$row["City"]."</h1>";
-                $output .= "<h1 class='listing-price'>$".number_format($row["Price"])."</h1>";
+                $output .= "<a href='./view-property?id=" . $row['property_id'] . "'><h1 class='listing-title'>".$row["title"]."</h1></a>";
+                $output .= "<div class='property-details'><h1 class='listing-city'>".$row["city"]."</h1>";
+                $output .= "<h1 class='listing-price'>$".number_format($row["price"])."</h1>";
                 $output .= "</div></div></div></div></div>";
 
                   $_SESSION['num_results'] = $results->num_rows;
@@ -131,4 +130,4 @@ if(isset($_GET['city'])) {
         </section>
     </div>
 
-    <?php include_once 'footer.php'; ?>
+    <?php include_once 'inc/footer.php'; ?>

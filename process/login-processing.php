@@ -1,17 +1,14 @@
 <?php
 session_start();
-error_reporting(E_ALL);
-ini_set('display_errors', "1");
-
 
 // user can only access form-login via the POST method, not GET (typing directly into the address bar)
 if (empty($_POST['submit'])) {
-  header('Location: login');
+  header('Location: ../login');
   die(); 
 } 
 
-include_once 'validation.php';
-include_once 'config.php';
+include_once '../inc/validation.php';
+include_once '../inc/config.php';
 
 // set the submit messages
 $msg_fail = 'One or more fields have an error.';
@@ -29,24 +26,17 @@ $_SESSION['placeholder_password'] = $password;
 // if no fields have been filled out
 if (empty($email) && empty($password)) {
      $_SESSION['alertMessage'] = $msg_empty;
-     header("Location: login");
+     header("Location: ../login");
      die();
 } 
 
-// function that removes white space, slashes and HTML special characters - for displaying data, stops scripts being sent to user, NOT for preventing SQL injection
-function clean_input($data) {
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-  return $data;
-}
 
 // if everything is valid then set valid_form to true
 $valid_form = validateEmail($email) && validatePassword($password);
 
 if ($valid_form) {
     
-    $sql = "SELECT Email_Address, Password, Role, First_Name FROM users WHERE Email_Address=?";
+    $sql = "SELECT email_address, password, role, first_name FROM users WHERE email_address=?";
     
     // check if email exists in database
     $stmt = $db->prepare($sql);
@@ -74,7 +64,7 @@ if ($valid_form) {
     if ($stored_email == null) {
          $_SESSION['error_email'] = "That email address does not exist";
          $_SESSION['alertMessage'] = $msg_fail;
-         header("Location: login");
+         header("Location: ../login");
          die();
     }
     
@@ -97,24 +87,24 @@ if ($valid_form) {
       
         if ($stored_role == "User") {
             $_SESSION['role'] = "User";
-            $_SESSION['email_address'] = $stored_email;
-            header("Location: wishlist");
+            header("Location: ../wishlist");
             die();
         }
-        $_SESSION['role'] = "Agent";
-        header("Location: dashboard.php");
         
+        $_SESSION['role'] = "Agent";
+        header("Location: ../dashboard");
         die();
+        
     } else {
          $_SESSION['error_password'] = "Your password is incorrect";
          $_SESSION['alertMessage'] = $msg_fail;
-         header("Location: login");
+         header("Location: ../login");
          die();
     }
 
 } else {
     $_SESSION['alertMessage'] = $msg_fail;
-    header("Location: login");
+    header("Location: ../login");
     die();
 }
 ?>
