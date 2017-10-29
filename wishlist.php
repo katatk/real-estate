@@ -2,7 +2,9 @@
 $title = "Wishlist";
 include_once 'inc/header.php';
 
-if (!$_SESSION['logged_in']) {
+// user has to be logged in as a normal user to view this page
+if (!$_SESSION['logged_in'] || $_SESSION['role'] != 'User') {
+    $_SESSION['alertMessage'] = 'You do not have access to this page, you must be logged in as a user.';
     header('Location: login');
     die(); 
 } 

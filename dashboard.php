@@ -3,7 +3,9 @@
 $title = "Dashboard";
 include_once 'inc/dashboard-header.php'; 
 
-if ($_SESSION['logged_in'] == false) {
+// user has to be logged in as admin to access this page
+if (!$_SESSION['logged_in'] || $_SESSION['role'] == 'User') {
+$_SESSION['alertMessage'] = 'You do not have access to this page, you must be logged in as admin.';
   header('Location: login');
   die(); 
 }

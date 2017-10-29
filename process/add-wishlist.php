@@ -3,6 +3,13 @@ session_start();
 
 // this file adds a property to the user's wishlist, runs when heart icon is clicked
 
+// only logged in users can run this script
+if (!$_SESSION['logged_in'] || $_SESSION['role'] != 'User') {
+$_SESSION['alertMessage'] = 'You do not have access to this page, you must be logged in as a user.';
+  header('Location: ../login');
+  die(); 
+}
+
 // if there is nothing in the get parameter, redirect back to the wishlist page (if the user tries to visit process/add-wishlist.php)
 if (!isset($_GET['id'])) {
   header('Location: ../wishlist');

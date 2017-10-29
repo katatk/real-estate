@@ -1,6 +1,19 @@
 <?php
 session_start();
 
+// only admins can run this script
+if (!$_SESSION['logged_in'] || $_SESSION['role'] == 'User') {
+$_SESSION['alertMessage'] = 'You do not have access to this page, you must be logged in as admin.';
+  header('Location: ../login');
+  die(); 
+}
+
+// get parameter must be set to view this page
+if (!isset($_GET['id'])) {
+  header('Location: ../dashboard');
+  die(); 
+} 
+
 include_once '../inc/config.php';
 
 if (isset($_GET['id'])) {

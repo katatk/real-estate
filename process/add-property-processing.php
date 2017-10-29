@@ -1,7 +1,15 @@
 <?php
 session_start();
 
+// only admins can run this script
+if (!$_SESSION['logged_in'] || $_SESSION['role'] == 'User') {
+$_SESSION['alertMessage'] = 'You do not have access to this page, you must be logged in as admin.';
+  header('Location: ../login');
+  die(); 
+}
+
 // user can only access process/register-processing via the POST method, not GET (typing directly into the address bar)
+
 if (empty($_POST['submit'])) {
   header('Location: ../add-property');
   die(); 
@@ -28,7 +36,7 @@ $description = $_POST['description'];
 
 
 // redirect url if no post id is set (not editing an existing property)
-$redirect_url = 'add-property';
+$redirect_url = '../add-property';
 
 // edit redirect url
 if(!empty($_POST['id'])) {

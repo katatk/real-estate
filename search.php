@@ -98,7 +98,7 @@ if(isset($_GET['city'])) {
             while($row = $results->fetch_assoc()) {
                
                 $output .= "<div class='col-md-6'><div class='p-5'>";
-                $output .= "<a href='add-wishlist?id=" . $row['property_id'] . "'><i class='icon homepage-heart icon-heart-empty shadow'>Add to wishlist</i></a>";
+                $output .= "<a href='process/add-wishlist?id=" . $row['property_id'] . "'><i class='icon homepage-heart icon-heart-empty shadow'>Add to wishlist</i></a>";
                 $output .= "<div class='property-padding'><div class='property-border'><a href='./view-property?id=" . $row['property_id'] . "'>";
                 $output .= "<img class='featured-image' src='".$row['image_url']."'>";
                 $output .= "</a>";
