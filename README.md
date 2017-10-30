@@ -26,6 +26,10 @@ The height property was defined as a way to create a sticky footer using flexbox
 [BrowserStack Screenshots](https://www.browserstack.com/screenshots/ed6345d8f543b921878f877ec13a2b2448986f96 "BrowserStack")
 25 modern browsers (including iOS and Android) were chosen for testing, the above the fold area was displayed.
 
+
+### Unit Testing
+Kat tested the login form, [here are the results](https://docs.google.com/document/d/1fwdmBwhWU-WT-Nll5rhmTdvEPUdM7a13FC43zQ2luOo/edit?usp=sharing).
+
 ## File Structure
 The .php files in the root directory are page files, the files in the 'inc' folder are included in other files in the project (eg. database config, header, footer). Files in the 'process' folder are used for processing things such as logging in, logging out, adding properties to the database, removing a property from wishlist, etc. 
 

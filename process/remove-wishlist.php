@@ -8,7 +8,6 @@ $_SESSION['alertMessage'] = 'You do not have access to this page, you must be lo
   die(); 
 }
 
-
 include_once '../inc/config.php';
 
 if (isset($_GET['id'])) {
