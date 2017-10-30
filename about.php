@@ -1,7 +1,6 @@
 <?php
-session_start();
 $title = "About Us";
-include_once 'header.php';
+include_once 'inc/header.php';
 ?>
     <div class="row">
         <div class="col-12">
@@ -157,4 +156,4 @@ include_once 'header.php';
     </section>
 
 
-    <?php include_once 'footer.php'; ?>
+    <?php include_once 'inc/footer.php'; ?>

@@ -1,7 +1,0 @@
-cd c:/wamp64/bin/mysql/mysql5.7.19/bin
-
-mysql.exe -use -h 66.147.244.216 -P 3306 beautzo8_richlist -u beautzo8_rl -p
-
-password: !r85[b4STZSC
-
-source richlist-db.sql

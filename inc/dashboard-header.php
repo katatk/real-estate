@@ -1,4 +1,9 @@
-<?php include_once 'config.php'; ?>
+<?php
+session_start();
+
+include_once 'config.php'; 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,7 +22,7 @@
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles -->
-    <link href="css/one-page-wonder.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
     <link href="icons/css/fontello.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Product+Sans:400,400i,700,700i' rel='stylesheet' type='text/css'>
     <link rel="shortcut icon" href="favicon.ico">
@@ -28,7 +33,7 @@
 <body>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" role="navigation">
         <div class="container">
             <a class="navbar-brand" href="./"><img class="logo" src="images/logo.svg" alt="logo"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,7 +55,7 @@
                     </li>
                     <?php 
                     if (isset($_SESSION['logged_in'])) {
-                        echo "<li class='nav-item'><a class='nav-link' href='logout'>Hi ". $_SESSION['first_name'] .", Logout?</a></li>";
+                        echo "<li class='nav-item'><a class='nav-link' href='process/logout.php'>Hi ". $_SESSION['first_name'] .", Logout?</a></li>";
                     }
                     ?>
                 </ul>

@@ -1,6 +1,14 @@
 <?php
 // validation functions
 
+// function that removes white space, slashes and HTML special characters - for displaying data, stops scripts being sent to user, NOT for preventing SQL injection
+function clean_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
+
 // checks for a valid email address
 function validateEmail($param_email) {
    $valid_email = false; 

@@ -1,13 +1,21 @@
 <?php
 session_start();
 
-include_once 'config.php';
+// only logged in users can run this script
+if (!$_SESSION['logged_in'] || $_SESSION['role'] != 'User') {
+$_SESSION['alertMessage'] = 'You do not have access to this page, you must be logged in as a user.';
+  header('Location: ../login');
+  die(); 
+}
+
+
+include_once '../inc/config.php';
 
 if (isset($_GET['id'])) {
    
     $id = $_GET['id'];
         
-    $sql = "DELETE FROM user_wishlist WHERE Property_ID=?";
+    $sql = "DELETE FROM user_wishlist WHERE property_id=?";
       
     $stmt = $db->prepare($sql);
       
@@ -23,10 +31,10 @@ if (isset($_GET['id'])) {
         
     // show a success message
     $_SESSION['alertMessage'] = "Property removed from Wishlist";
-    header("Location: wishlist");
+    header("Location: ../wishlist");
     die();
   }
 
 $_SESSION['alertMessage'] = "Something went wrong";
-header("Location: wishlist");
+header("Location: ../wishlist");
 die();

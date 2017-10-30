@@ -1,13 +1,6 @@
 <?php
-session_start();
-
 $title = "Home";
-
-include_once 'header.php';
-
-error_reporting(E_ALL);
-ini_set('display_errors', "1");
-
+include_once 'inc/header.php';
 ?>
     <header class="masthead">
         <div class="overlay">
@@ -24,7 +17,7 @@ ini_set('display_errors', "1");
                     <div class="row">
                         <div class="col-12 search-container">
 
-                            <?php include_once 'search-form.php'; ?>
+                            <?php include_once 'inc/search-form.php'; ?>
 
                         </div>
                     </div>
@@ -40,10 +33,10 @@ ini_set('display_errors', "1");
             <h1 class="title">All Properties</h1>
             <div class="row align-items-center">
 
-                <?php include_once 'homepage-listings.php'; ?>
+                <?php include_once 'inc/homepage-listings.php'; ?>
 
             </div>
         </section>
     </div>
 
-    <?php include_once 'footer.php'; ?>
+    <?php include_once 'inc/footer.php'; ?>
