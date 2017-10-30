@@ -65,14 +65,14 @@ if(isset($_GET['city'])) {
         // if values are set
         } elseif ($city != 'All Cities' && $type != 'All Types') {
             
-            $sql = $sql_select_all . "city=? AND =? AND " . $sql_price_range;
+            $sql = $sql_select_all . "city=? AND type=? AND " . $sql_price_range;
             $stmt = $db->prepare($sql);
             $stmt->bind_param('ssss', $city, $type, $price_min, $price_max);
             
             // all cities selected, one type selected
         } elseif ($city == 'All Cities' && $type != 'All Types') {
             
-            $sql = $sql_select_all . "=? AND " . $sql_price_range;
+            $sql = $sql_select_all . "type=? AND " . $sql_price_range;
             $stmt = $db->prepare($sql);
             $stmt->bind_param('sss', $type, $price_min, $price_max);
             
@@ -93,6 +93,9 @@ if(isset($_GET['city'])) {
         $results = $stmt->get_result();
         
         $output = "";
+    
+        $_SESSION['num_results'] = 0;
+    
         if ($results->num_rows > 0) {
             // output data of each row
             while($row = $results->fetch_assoc()) {
@@ -122,8 +125,8 @@ if(isset($_GET['city'])) {
 }
 ?>
                 <h1 class="title">
-                    <?php echo (isset($_SESSION['num_results']) ? $_SESSION['num_results'] : "")?> Results
-                    <?php echo (isset($_GET['city']) ? "For " . $_GET['city'] : "")?> </h1>
+                    <?php echo (isset($_SESSION['num_results']) ? $_SESSION['num_results'] : ""); unset($_SESSION['num_results']);?> Results
+                    <?php echo (isset($_GET['city']) ? "For " . $_GET['city'] : ""); unset($_SESSION['city']);?> </h1>
                 <div class="row align-items-center">
                 <?php echo $output; ?>
                 </div>
