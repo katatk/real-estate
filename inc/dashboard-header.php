@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include_once 'inc/config.php'; 
+include_once 'config.php'; 
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +33,7 @@ include_once 'inc/config.php';
 <body>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" role="navigation">
         <div class="container">
             <a class="navbar-brand" href="./"><img class="logo" src="images/logo.svg" alt="logo"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">

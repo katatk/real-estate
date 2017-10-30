@@ -46,6 +46,6 @@ include_once 'inc/header.php';
 
         </div>
 
-        <script src="js/character-counter.js" type="text/javascript"></script>
+       <!-- <script src="js/character-counter.js" type="text/javascript"></script>-->
           
         <?php include_once 'inc/footer.php'; ?>

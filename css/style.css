@@ -30,6 +30,7 @@ body {
     -ms-flex-direction: column;
     flex-direction: column;
     height: 100%;
+    min-height: 100vh;
 }
 
 
@@ -482,7 +483,7 @@ main {
     /* Prevent inheritence from `body` */
     background-color: #ffcd73;
     border: 1px solid #ffcd73;
-    padding: 10px;
+    padding: .5rem .75rem;
     border-radius: 6px;
 }
 

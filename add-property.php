@@ -136,15 +136,19 @@ if (isset($_GET['id'])) {
 
             <div class="form-group">
 
-                <br><label for="img-url">Image URL</label>
+              
+                <?php if($edit) {
+                    echo "<h6>Current Image</h6><p><img src='" . $_SESSION['img_url'] . "' class='thumbnail' id='uploaded-img'></p>";
+                } ?>
+                <label for="img-url">Image URL</label>
                 <input type="text" class="form-control" id="img-url" name="img-url" placeholder="eg. http://www.houses.com/your-property.jpg" value="<?php 
                 if (isset($_SESSION['img_url'])) 
                     echo $_SESSION['img_url']; 
                     unset($_SESSION['img_url']);
                 ?>">
 
-                <label for="img-url">or upload an image</label>
-                <input type="file" name="img-upload" accept="image/*" id="img-upload" accept=".jpg, .jpeg, .png">
+                <label for="input-img-upload">or upload an image</label>
+                <input type="file" name="img-upload" accept="image/*" id="input-img-upload" accept=".jpg, .jpeg, .png">
                 <br>
                 <button type="button" class="btn btn-default" id="btn-remove-file" onclick="removeFile();">
                 X Remove uploaded image</button>
@@ -273,10 +277,10 @@ if (isset($_GET['id'])) {
 </div>
 
 <script type="text/javascript">
+    // button that removes the uploaded file
     function removeFile() {
-        document.getElementById('img-upload').value = "";
+        document.getElementById('input-img-upload').value = "";
     }
-
 </script>
 
 <?php include_once "inc/footer.php"; ?>

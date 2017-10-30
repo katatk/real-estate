@@ -16,4 +16,7 @@
 
 </html>
 
-<?php $db->close(); ?>
+<?php
+// close the databse connection
+$db->close();
+?>
