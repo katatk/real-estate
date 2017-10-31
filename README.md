@@ -11,6 +11,9 @@ Before attempting to view the site, please do the following:
 [Database Schema](https://docs.google.com/spreadsheets/d/1skd8sPF0WfSo3pmhIPfwBniHJORSzYSg9VBqM903kiY/edit?usp=sharing "Google Sheets")
 The schema shows the structure of the database before initial data is added. See db.sql for initial data.
 
+## File Structure
+The .php files in the root directory are page files, the files in the 'inc' folder are included in other files in the project (eg. database config, header, footer). Files in the 'process' folder are used for processing things such as logging in, logging out, adding properties to the database, removing a property from wishlist, etc. 
+
 ## Testing
 ### Different Browsers
 On our local machines we were able to test the following browsers at a variety of screen sizes:
@@ -31,7 +34,7 @@ The height property was defined as a way to create a sticky footer using flexbox
 There were no bugs or problems with the MacOS browsers.
 
 ### Responsive Testing
-Tested various screen sizes and orientations, [screenshots](https://docs.google.com/document/d/1R6TL4tNGZMae2iB3TuKIy1v0kyxMpWN9pkmWN1ZrCfY/edit?usp=sharing)
+Tested various screen sizes and orientations, [see screenshots](https://docs.google.com/document/d/1R6TL4tNGZMae2iB3TuKIy1v0kyxMpWN9pkmWN1ZrCfY/edit?usp=sharing)
 
 
 ### Unit Testing
@@ -39,8 +42,6 @@ Kat tested the login form, [here are the results](https://docs.google.com/docume
 
 Tayla tested the remove from wishlist function, [here are the results](https://docs.google.com/document/d/1cDbL2gRtjap_kUIEPJktXqsdDPMnuy9eASOJ1AiX-OY/edit?usp=sharing)
 
-## File Structure
-The .php files in the root directory are page files, the files in the 'inc' folder are included in other files in the project (eg. database config, header, footer). Files in the 'process' folder are used for processing things such as logging in, logging out, adding properties to the database, removing a property from wishlist, etc. 
 
 ## Workload
 Person 1 (Tayla) was required to create the search function and the wishlist functionality for a logged in user, view a single property and browse categories (we used cities as our categories).
@@ -49,7 +50,9 @@ Person 2 (Kat) was required to build the admin dashboard and the functionality b
 
 Shared tasks included the styling and register/login pages. We deligated these tasks according to our areas of strength, Tayla did more of the styling/css, and Kat did more of the script behind register/login.
 
-We both created the database schema and decided what cities and property types to use and what columns the 'properties' table needed. Based on this, Kat came up with an inital draft of the schema and Tayla created the addresses and descriptions for properties (6 inital properties in the db). Database was created in Google sheets (link above).
+We both created the database schema and decided what cities and property types to use and what columns the 'properties' table needed. Based on this, Kat came up with an inital draft of the schema and Tayla created the addresses and descriptions for properties (6 inital properties in the db).
+
+Database was created in Google sheets (link above), we both created the tables and added data types.
 
 ## Colour Scheme
-We chose gold as our primary colour as it is traditionally the colour of wealth, and the target market for Rich List Real Estate is the wealthy, as only they are able to afford to buy property in the current market... We kept the rest of the colour palette neutral/minimal (black, white, grey) so as not to overwhelm.
+We chose gold as our primary colour as it is traditionally the colour of wealth, and the target market for Rich List Real Estate is the wealthy, since only they are able to afford to buy property in the current market... We kept the rest of the colour palette neutral/minimal (black, white, grey) so as not to overwhelm.
